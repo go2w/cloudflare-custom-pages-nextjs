@@ -3,14 +3,8 @@
 import { AlertOctagon } from "lucide-react";
 import type { ErrorPageConfig } from "@/config/routes";
 import { CFCard } from "./common";
-import { useEffect, useState } from "react";
 
 export const ErrorBox = ({ title, message, code, box }: ErrorPageConfig) => {
-  const [boxContent, setBoxContent] = useState<HTMLElement | string>('');
-
-  useEffect(() => {
-    setBoxContent(`::${box}::`);
-  }, []);
 
   return (
     <CFCard
@@ -23,7 +17,7 @@ export const ErrorBox = ({ title, message, code, box }: ErrorPageConfig) => {
         <>
           <div
             className="text-sm text-gray-600 dark:text-gray-400 prose dark:prose-invert max-w-none"
-            dangerouslySetInnerHTML={{ __html: boxContent }}
+            dangerouslySetInnerHTML={{ __html: `::${box}::` }}
           />
         </>
       )}

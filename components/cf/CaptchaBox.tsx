@@ -3,14 +3,8 @@
 import { AlertCircle, ShieldCheck } from 'lucide-react';
 import type { ChallengePageConfig } from "@/config/routes";
 import { CFCard } from "./common";
-import { useEffect, useState } from "react";
 
 export const CaptchaBox = ({ title, message, type, box }: ChallengePageConfig) => {
-  const [boxContent, setBoxContent] = useState<HTMLElement | string>('');
-
-  useEffect(() => {
-    setBoxContent(`<div>::${box}::</div>`);
-  }, []);
 
   return (
     <CFCard
@@ -32,7 +26,7 @@ export const CaptchaBox = ({ title, message, type, box }: ChallengePageConfig) =
         {box ? (
           <div
             className="text-gray-600 dark:text-gray-300 p-4 w-full h-full flex items-center justify-center"
-            dangerouslySetInnerHTML={{ __html: boxContent }}
+            dangerouslySetInnerHTML={{ __html: `<div>::${box}::</div>` }}
           />
         ) : (
           <p className="text-gray-400 dark:text-gray-500 font-medium">Loading verification...</p>
