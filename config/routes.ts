@@ -58,13 +58,13 @@ export const errorPages: Record<string, ErrorPageConfig> = {
 export const challengePages: Record<string, ChallengePageConfig> = {
     interactive: {
         type: "interactive",
-        title: "Security Check",
-        message: "Please complete this security check to access the site.",
+        title: "Interactive Challenge",
+        message: "Please complete this CAPTCHA to access the site.",
         box: "::CAPTCHA_BOX::",
     },
     managed: {
         type: "managed",
-        title: "Managed Challenge",
+        title: "I'm Under Attack Mode™",
         message: "You might need to click on CAPTCHA before you can continue.",
         box: "::CAPTCHA_BOX::",
     },

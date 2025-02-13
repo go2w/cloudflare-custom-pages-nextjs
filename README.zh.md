@@ -2,7 +2,7 @@
 
 使用 **Next.js**、**Tailwind CSS** 和 **HeroUI** 实现一套美观的、开箱即用的 Cloudflare WAF 自定义页面模板。本模板基于 Next.js 15、使用 TypeScript 和 Tailwind CSS 开发，适配多种设备布局、支持深色模式、自动替换 Cloudflare 变量。
 
-简体中文 | [English](README.md)
+简体中文 | [English](README.md) | [Online Demo](https://cw-preview.000000039.xyz/)
 
 > [!TIP]
 > 二次开发时，请注意遵守本项目的 [开源许可证](LICENSE)。
@@ -34,13 +34,42 @@
 -   `::CAPTCHA_BOX::` - Cloudflare 的 CAPTCHA 组件
 -   `::IM_UNDER_ATTACK_BOX::` - Cloudflare 的 JavaScript 挑战组件
 
+## 🔭 使用指南
+
+可快速点击 [这个链接](https://dash.cloudflare.com/?to=/:account/:zone/custom-pages) 快速跳转到 Cloudflare 的 Custom Pages 页面。
+
+> [!TIP]
+> 您的域必须购买 Pro 及以上的付费套餐才能使用本模板。
+
+| 类型     | 子类型                             | 链接                            |
+| -------- | ---------------------------------- | ------------------------------- |
+| 错误页面 | 服务器错误 500s                    | [传送门][error-500s]            |
+|          | CF 1000s 错误页面                  | [传送门][error-1000s]           |
+| 阻止页面 | IP 拦截页面 (1006)                 | [传送门][block-ip]              |
+|          | WAF 拦截页面 (1010)                | [传送门][block-waf]             |
+|          | 速率限制拦截 (429)                 | [传送门][block-rate-limit]      |
+| 验证页面 | 交互式质询                         | [传送门][challenge-interactive] |
+|          | 托管质询 (I'm Under Attack Mode™) | [传送门][challenge-managed]     |
+|          | 国家 (地区) 质询                   | [传送门][challenge-country]     |
+|          | JavaScript 质询                    | [传送门][challenge-js]          |
+
+[error-500s]: https://cw-preview.000000039.xyz/cf/error/500s/
+[error-1000s]: https://cw-preview.000000039.xyz/cf/error/1000s/
+[block-ip]: https://cw-preview.000000039.xyz/cf/block/ip/
+[block-waf]: https://cw-preview.000000039.xyz/cf/block/waf/
+[block-rate-limit]: https://cw-preview.000000039.xyz/cf/block/rate-limit/
+[challenge-interactive]: https://cw-preview.000000039.xyz/cf/challenge/interactive/
+[challenge-managed]: https://cw-preview.000000039.xyz/cf/challenge/managed/
+[challenge-country]: https://cw-preview.000000039.xyz/cf/challenge/country/
+[challenge-js]: https://cw-preview.000000039.xyz/cf/challenge/javascript/
+
 ## 🌍 部署指南
 
-1. **部署到 Vercel (推荐)**：
+-   **部署到 Vercel (推荐)**：
 
-    [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FAlice39s%2Fcloudflare-custom-pages-nextjs%2Ftree%2Fmain)
+    [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FAlice39s%2Fcloudflare-custom-pages-nextjs%2Ftree%2Fmain&project-name=cloudflare-custom-pages-nextjs-fork&repository-name=cloudflare-custom-pages-nextjs-fork&demo-title=Online%20Demo&demo-description=A%20beautiful%2C%20out-of-the-box%20Cloudflare%20WAF%20custom%20page%20template.&demo-url=https%3A%2F%2Fcw-preview.000000039.xyz%2F)
 
-2. **自行部署**：
+-   **自行部署**：
 
     ```bash
     bun run build
@@ -122,35 +151,6 @@ components/
 ├── home/      # 🏠 首页组件
 └── layout/    # 🖼️ 全局布局组件
 ```
-
-### 4. 提交到 Cloudflare
-
-可快速点击 [这个链接](https://dash.cloudflare.com/?to=/:account/:zone/custom-pages) 快速跳转到 Cloudflare 的 Custom Pages 页面。
-
-> [!TIP]
-> 您的域必须购买 Pro 及以上的付费套餐才能使用本模板。
-
-| 类型     | 子类型              | 链接                            |
-| -------- | ------------------- | ------------------------------- |
-| 错误页面 | 服务器错误 500s     | [传送门][error-500s]            |
-|          | CF 1000s 错误页面   | [传送门][error-1000s]           |
-| 阻止页面 | IP 拦截页面 (1006)  | [传送门][block-ip]              |
-|          | WAF 拦截页面 (1010) | [传送门][block-waf]             |
-|          | 速率限制拦截 (429)  | [传送门][block-rate-limit]      |
-| 验证页面 | 安全检查            | [传送门][challenge-interactive] |
-|          | 托管验证            | [传送门][challenge-managed]     |
-|          | 国家 (地区) 验证    | [传送门][challenge-country]     |
-|          | JavaScript 验证     | [传送门][challenge-js]          |
-
-[error-500s]: https://cw-preview.000000039.xyz/error/500s/
-[error-1000s]: https://cw-preview.000000039.xyz/error/1000s/
-[block-ip]: https://cw-preview.000000039.xyz/block/ip/
-[block-waf]: https://cw-preview.000000039.xyz/block/waf/
-[block-rate-limit]: https://cw-preview.000000039.xyz/block/rate-limit/
-[challenge-interactive]: https://cw-preview.000000039.xyz/challenge/interactive/
-[challenge-managed]: https://cw-preview.000000039.xyz/challenge/managed/
-[challenge-country]: https://cw-preview.000000039.xyz/challenge/country/
-[challenge-js]: https://cw-preview.000000039.xyz/challenge/js/
 
 ## 📜 许可证
 

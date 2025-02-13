@@ -2,7 +2,7 @@
 
 A set of elegant, out-of-the-box Cloudflare WAF Custom Page Templates implemented using **Next.js**, **Tailwind CSS**, and **HeroUI**. Built with Next.js 15, TypeScript, and Tailwind CSS, featuring responsive design, dark mode support, and automatic Cloudflare variable replacement.
 
-English | [简体中文](README.zh.md)
+English | [简体中文](README.zh.md) | [Online Demo](https://cw-preview.000000039.xyz/)
 
 > [!TIP]
 > Please comply with the project's [Open Source License](LICENSE) when making modifications.
@@ -34,13 +34,42 @@ Currently supported automatic variable replacements:
 -   `::CAPTCHA_BOX::` - Cloudflare CAPTCHA Component
 -   `::IM_UNDER_ATTACK_BOX::` - Cloudflare JavaScript Challenge Component
 
+## 🔭 Usage
+
+Quickly access Cloudflare Custom Pages via [this link](https://dash.cloudflare.com/?to=/:account/:zone/custom-pages).
+
+> [!TIP]
+> Your Cloudflare zone must be on Pro plan or higher to use these templates.
+
+| Type        | Subtype                                     | Link                                 |
+| ----------- | ------------------------------------------- | ------------------------------------ |
+| Error Pages | Server Errors (500s)                        | [Import Link][error-500s]            |
+|             | CF 1000s Errors                             | [Import Link][error-1000s]           |
+| Block Pages | IP Block (1006)                             | [Import Link][block-ip]              |
+|             | WAF Block (1010)                            | [Import Link][block-waf]             |
+|             | Rate Limit Block (429)                      | [Import Link][block-rate-limit]      |
+| Challenges  | Interactive Challenge                       | [Import Link][challenge-interactive] |
+|             | Managed Challenge (I'm Under Attack Mode™) | [Import Link][challenge-managed]     |
+|             | Country/Region Challenge                    | [Import Link][challenge-country]     |
+|             | JavaScript Challenge                        | [Import Link][challenge-js]          |
+
+[error-500s]: https://cw-preview.000000039.xyz/cf/error/500s/
+[error-1000s]: https://cw-preview.000000039.xyz/cf/error/1000s/
+[block-ip]: https://cw-preview.000000039.xyz/cf/block/ip/
+[block-waf]: https://cw-preview.000000039.xyz/cf/block/waf/
+[block-rate-limit]: https://cw-preview.000000039.xyz/cf/block/rate-limit/
+[challenge-interactive]: https://cw-preview.000000039.xyz/cf/challenge/interactive/
+[challenge-managed]: https://cw-preview.000000039.xyz/cf/challenge/managed/
+[challenge-country]: https://cw-preview.000000039.xyz/cf/challenge/country/
+[challenge-js]: https://cw-preview.000000039.xyz/cf/challenge/javascript/
+
 ## 🌍 Deployment Guide
 
-1. **Deploy to Vercel (Recommended)**:
+- **Deploy to Vercel (Recommended)**:
 
-    [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FAlice39s%2Fcloudflare-custom-pages-nextjs%2Ftree%2Fmain)
+    [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FAlice39s%2Fcloudflare-custom-pages-nextjs%2Ftree%2Fmain&project-name=cloudflare-custom-pages-nextjs-fork&repository-name=cloudflare-custom-pages-nextjs-fork&demo-title=Online%20Demo&demo-description=A%20beautiful%2C%20out-of-the-box%20Cloudflare%20WAF%20custom%20page%20template.&demo-url=https%3A%2F%2Fcw-preview.000000039.xyz%2F)
 
-2. **Manual Deployment**:
+- **Manual Deployment**:
 
     ```bash
     bun run build
@@ -122,35 +151,6 @@ components/
 ├── home/      # 🏠 Homepage Components
 └── layout/    # 🖼️ Global Layout Components
 ```
-
-### 4. Submit to Cloudflare
-
-Quickly access Cloudflare Custom Pages via [this link](https://dash.cloudflare.com/?to=/:account/:zone/custom-pages).
-
-> [!TIP]
-> Your Cloudflare zone must be on Pro plan or higher to use these templates.
-
-| Type        | Subtype                | Link                                 |
-| ----------- | ---------------------- | ------------------------------------ |
-| Error Pages | Server Errors (500s)   | [Import Link][error-500s]            |
-|             | CF 1000s Errors        | [Import Link][error-1000s]           |
-| Block Pages | IP Block (1006)        | [Import Link][block-ip]              |
-|             | WAF Block (1010)       | [Import Link][block-waf]             |
-|             | Rate Limit Block (429) | [Import Link][block-rate-limit]      |
-| Challenges  | Security Check         | [Import Link][challenge-interactive] |
-|             | Managed Challenge      | [Import Link][challenge-managed]     |
-|             | Country Challenge      | [Import Link][challenge-country]     |
-|             | JavaScript Challenge   | [Import Link][challenge-js]          |
-
-[error-500s]: https://cw-preview.000000039.xyz/error/500s/
-[error-1000s]: https://cw-preview.000000039.xyz/error/1000s/
-[block-ip]: https://cw-preview.000000039.xyz/block/ip/
-[block-waf]: https://cw-preview.000000039.xyz/block/waf/
-[block-rate-limit]: https://cw-preview.000000039.xyz/block/rate-limit/
-[challenge-interactive]: https://cw-preview.000000039.xyz/challenge/interactive/
-[challenge-managed]: https://cw-preview.000000039.xyz/challenge/managed/
-[challenge-country]: https://cw-preview.000000039.xyz/challenge/country/
-[challenge-js]: https://cw-preview.000000039.xyz/challenge/js/
 
 ## 📜 License
 
