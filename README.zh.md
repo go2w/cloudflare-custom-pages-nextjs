@@ -31,6 +31,8 @@
 -   `::CLIENT_IP::` - 客户端 IP 地址
 -   `::RAY_ID::` - Cloudflare Ray ID
 -   `::GEO::` - 客户端地理位置
+-   `::CLOUDFLARE_ERROR_500S_BOX::` - 500s 错误页面组件
+-   `::CLOUDFLARE_ERROR_1000S_BOX::` - 1000s 错误页面组件
 -   `::CAPTCHA_BOX::` - Cloudflare 的 CAPTCHA 组件
 -   `::IM_UNDER_ATTACK_BOX::` - Cloudflare 的 JavaScript 挑战组件
 

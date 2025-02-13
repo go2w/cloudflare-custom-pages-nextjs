@@ -31,6 +31,8 @@ Currently supported automatic variable replacements:
 -   `::CLIENT_IP::` - Client IP Address
 -   `::RAY_ID::` - Cloudflare Ray ID
 -   `::GEO::` - Client Geolocation
+-   `::CLOUDFLARE_ERROR_500S_BOX::` - 500s Error Page Component
+-   `::CLOUDFLARE_ERROR_1000S_BOX::` - 1000s Error Page Component
 -   `::CAPTCHA_BOX::` - Cloudflare CAPTCHA Component
 -   `::IM_UNDER_ATTACK_BOX::` - Cloudflare JavaScript Challenge Component
 
