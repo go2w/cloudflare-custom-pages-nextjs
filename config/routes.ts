@@ -45,13 +45,13 @@ export const errorPages: Record<string, ErrorPageConfig> = {
         code: "500",
         title: "Server Error",
         message: "An unexpected error occurred. Please try again later.",
-        box: "::CLOUDFLARE_ERROR_500S_BOX::",
+        box: "CLOUDFLARE_ERROR_500S_BOX",
     },
     "1000s": {
         code: "1000",
         title: "DNS Resolution Error",
         message: "The requested hostname could not be resolved.",
-        box: "::CLOUDFLARE_ERROR_1000S_BOX::",
+        box: "CLOUDFLARE_ERROR_1000S_BOX",
     },
 };
 
@@ -60,24 +60,24 @@ export const challengePages: Record<string, ChallengePageConfig> = {
         type: "interactive",
         title: "Interactive Challenge",
         message: "Please complete this CAPTCHA to access the site.",
-        box: "::CAPTCHA_BOX::",
+        box: "CAPTCHA_BOX",
     },
     managed: {
         type: "managed",
         title: "I'm Under Attack Mode™",
         message: "You might need to click on CAPTCHA before you can continue.",
-        box: "::CAPTCHA_BOX::",
+        box: "CAPTCHA_BOX",
     },
     country: {
         type: "country",
         title: "Country Challenge",
-        message: "Additional verification is required for visitors from [::GEO::].",
-        box: "::CAPTCHA_BOX::",
+        message: "Additional verification is required for visitors from [GEO].",
+        box: "CAPTCHA_BOX",
     },
     javascript: {
         type: "javascript",
         title: "JavaScript Challenge",
         message: "Please wait a moment while our security system verifies your request.",
-        box: "::IM_UNDER_ATTACK_BOX::",
+        box: "IM_UNDER_ATTACK_BOX",
     },
 };

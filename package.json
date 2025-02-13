@@ -6,8 +6,7 @@
         "dev": "next dev --turbo",
         "build": "next build",
         "start": "bun x serve out -p 3001",
-        "lint": "echo 'Skipping lint'",
-        "postbuild": "bun scripts/mark-process.ts"
+        "lint": "echo 'Skipping lint'"
     },
     "dependencies": {
         "@heroui/button": "2.2.9",
