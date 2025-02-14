@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion, MotionProps } from 'framer-motion';
 import { RiBookOpenLine, RiGithubFill, RiHeartFill } from '@remixicon/react';
 import { siteConfig } from "@/config/site";
 import print from "@/utils/console";
@@ -10,6 +10,7 @@ import { ThemeSwitch } from "@/components/theme-switch";
 
 interface FooterLinkProps {
   href: string;
+  key: number;
   icon: React.ComponentType<{ className?: string }>;
 }
 
@@ -19,28 +20,40 @@ interface FooterSectionProps {
   delay?: number;
 }
 
-const FooterLink = ({ href, icon: Icon }: FooterLinkProps) => (
-  <motion.a
+const MotionDiv = motion.div as React.ComponentType<
+  MotionProps & React.HTMLAttributes<HTMLDivElement>
+>;
+
+const FooterLink = ({ href, icon: Icon, key }: FooterLinkProps) => (
+  <MotionDiv
     whileHover={{ scale: 1.1 }}
     whileTap={{ scale: 0.95 }}
-    href={href}
-    target="_blank"
-    rel="noopener noreferrer"
     className="p-2 rounded-full hover:bg-default-100 transition-colors"
   >
-    <Icon className="w-5 h-5 text-default-500 hover:text-primary-500 transition-colors" />
-  </motion.a>
+    <a
+      href={href}
+      aria-label={`Link ${key}`}
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <Icon className="w-5 h-5 text-default-500 hover:text-primary-500 transition-colors" />
+    </a>
+  </MotionDiv>
 );
 
-const FooterSection = ({ children, className, delay = 0 }: FooterSectionProps) => (
-  <motion.div
+const FooterSection: React.FC<FooterSectionProps> = ({
+  children,
+  className,
+  delay = 0
+}) => (
+  <MotionDiv
     initial={{ opacity: 0, y: 20 }}
     animate={{ opacity: 1, y: 0 }}
     transition={{ duration: 0.6, delay }}
     className={className}
   >
     {children}
-  </motion.div>
+  </MotionDiv>
 );
 
 const HomeFooter = () => {

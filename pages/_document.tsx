@@ -8,7 +8,8 @@ export default function Document() {
         {/* <!-- Cloudflare Pages Custom Error Pages --> */}
         <meta charSet="utf-8" />
         <meta name="description" content={siteConfig.description} />
-        <meta name="robots" content="noindex, nofollow" />
+        <meta name="robots" content="index, nofollow" />
+        <title>{siteConfig.name}</title>
       </Head>
       <body className="min-h-screen bg-background font-sans antialiased">
         <Main />
