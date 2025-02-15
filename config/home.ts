@@ -1,13 +1,7 @@
 import {
-  AlertCircle,
   AlertTriangle,
-  Construction,
   Lock,
-  Shield,
-  ShieldAlert,
   ShieldCheck,
-  Split,
-  Timer,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { blockPages, challengePages, errorPages } from "./routes";
@@ -75,7 +69,7 @@ export const sections: Section[] = [
       title: config.title,
       path: `/cf/error/${type}/`,
       code: config.code,
-      icon: type === "500s" ? Construction : AlertCircle,
+      icon: config.icon,
     })),
   },
   {
@@ -87,7 +81,7 @@ export const sections: Section[] = [
       title: config.title,
       path: `/cf/block/${type}/`,
       code: config.code,
-      icon: type === "rate-limit" ? Split : ShieldAlert,
+      icon: config.icon,
     })),
   },
   {
@@ -98,7 +92,7 @@ export const sections: Section[] = [
     pages: Object.entries(challengePages).map(([type, config]) => ({
       title: config.title,
       path: `/cf/challenge/${type}/`,
-      icon: type === "javascript" ? Timer : Shield,
+      icon: config.icon,
     })),
   },
 ];

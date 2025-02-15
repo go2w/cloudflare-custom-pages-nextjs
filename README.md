@@ -140,12 +140,13 @@ Edit `./config/routes.ts`. Example:
 
 ```ts
 export const blockPages: Record<string, BlockPageConfig> = {
-    ip: {
-        type: "ip",
-        title: "Access Denied (1006)",
-        message: "The owner of this website has banned your IP address.",
-        code: "1006",
-    },
+  ip: {
+    type: "ip",
+    title: "Access Denied (1006)",
+    message: "The owner of this website has banned your IP address.",
+    code: "1006",
+    icon: ShieldBan,
+  },
     ...
 }
 ```
@@ -154,6 +155,7 @@ export const blockPages: Record<string, BlockPageConfig> = {
 -   `title`: Page title (editable).
 -   `message`: Custom message (string only).
 -   `code`: Error code for display purposes.
+-   `icon`: Icon component from `lucide-react`, reference: [lucide-react](https://lucide.dev/icons/info).
 
 ### 3. Component Styling
 

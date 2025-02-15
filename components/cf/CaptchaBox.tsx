@@ -1,27 +1,27 @@
 "use client";
 
 import type { ChallengePageConfig } from "@/config/routes";
-import { AlertCircle, ShieldCheck } from "lucide-react";
+import { Info } from "lucide-react";
 import { CFCard } from "./common";
 
 export const CaptchaBox = ({
   title,
   message,
-  type,
   box,
+  icon: Icon,
 }: ChallengePageConfig) => {
   return (
     <CFCard
       title={title}
       message=""
       subtitle="Security Check"
-      icon={<ShieldCheck className="h-6 w-6 text-white" />}
+      icon={<Icon className="h-6 w-6 text-white" />}
       headerClassName="bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900/30 dark:to-blue-900/10"
       iconClassName="from-blue-500 to-blue-600"
     >
       {message && (
         <div className="flex items-center gap-2 mb-6 p-4 bg-blue-50 dark:bg-blue-900/30 rounded-lg">
-          <AlertCircle className="w-5 h-5 text-blue-500 dark:text-blue-400 flex-shrink-0" />
+          <Info className="w-5 h-5 text-blue-500 dark:text-blue-400 flex-shrink-0" />
           <p className="text-sm text-blue-700 dark:text-blue-300">{message}</p>
         </div>
       )}

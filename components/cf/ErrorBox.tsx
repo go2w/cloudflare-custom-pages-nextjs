@@ -2,10 +2,15 @@
 
 import type { ErrorPageConfig } from "@/config/routes";
 import { Chip } from "@heroui/chip";
-import { AlertOctagon } from "lucide-react";
 import { CFCard } from "./common";
 
-export const ErrorBox = ({ title, message, code, box }: ErrorPageConfig) => {
+export const ErrorBox = ({
+  title,
+  message,
+  code,
+  box,
+  icon: Icon,
+}: ErrorPageConfig) => {
   return (
     <CFCard
       title={title}
@@ -15,7 +20,7 @@ export const ErrorBox = ({ title, message, code, box }: ErrorPageConfig) => {
           Error {code}
         </Chip>
       }
-      icon={<AlertOctagon className="h-6 w-6 text-white" />}
+      icon={<Icon className="h-6 w-6 text-white" />}
       iconClassName="from-red-500 to-red-600"
       footer={
         box && (

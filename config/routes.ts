@@ -1,6 +1,19 @@
+import {
+  BadgeAlert,
+  Construction,
+  ShieldEllipsis,
+  ShieldBan,
+  ShieldCheck,
+  Shield,
+  ShieldAlert,
+  Loader,
+  type LucideIcon,
+} from "lucide-react";
+
 interface BasePageConfig {
   title: string;
   message: string;
+  icon: LucideIcon;
 }
 
 export type BlockPageConfig = BasePageConfig & {
@@ -48,6 +61,7 @@ export const blockPages: Record<BlockType, BlockPageConfig> = {
     title: "Access Denied (1006)",
     message: "The owner of this website has banned your IP address.",
     code: "1006",
+    icon: ShieldBan,
   },
   waf: {
     type: "waf",
@@ -55,6 +69,7 @@ export const blockPages: Record<BlockType, BlockPageConfig> = {
     message:
       "The Cloudflare WAF (Web Application Firewall) has blocked your request.",
     code: "1010",
+    icon: Shield,
   },
   "rate-limit": {
     type: "rate-limit",
@@ -62,6 +77,7 @@ export const blockPages: Record<BlockType, BlockPageConfig> = {
     message:
       "You have made too many requests. Please wait a moment before trying again.",
     code: "429",
+    icon: Loader,
   },
 };
 
@@ -74,15 +90,19 @@ export const errorPages: Record<ErrorType, ErrorPageConfig> = {
     type: "500s",
     code: "500",
     title: "Server Error",
-    message: "An unexpected error occurred. Please try again later.",
+    message:
+      "Please try again later, there was an unexpected error on the site.",
     box: "CLOUDFLARE_ERROR_500S_BOX",
+    icon: BadgeAlert,
   },
   "1000s": {
     type: "1000s",
     code: "1000",
     title: "DNS Resolution Error",
-    message: "The requested hostname could not be resolved.",
+    message:
+      "The requested hostname could not be resolved. Don't worry, it's not your problem.",
     box: "CLOUDFLARE_ERROR_1000S_BOX",
+    icon: Construction,
   },
 };
 
@@ -96,12 +116,14 @@ export const challengePages: Record<ChallengeType, ChallengePageConfig> = {
     title: "Interactive Challenge",
     message: "Please complete this CAPTCHA to access the site.",
     box: "CAPTCHA_BOX",
+    icon: Shield,
   },
   managed: {
     type: "managed",
     title: "I'm Under Attack Mode™",
-    message: "You might need to click on CAPTCHA before you can continue.",
+    message: "Complete CAPTCHA to proceed. This is a general security check.",
     box: "CAPTCHA_BOX",
+    icon: ShieldCheck,
   },
   country: {
     type: "country",
@@ -109,6 +131,7 @@ export const challengePages: Record<ChallengeType, ChallengePageConfig> = {
     message:
       "Additional verification is required for visitors from your Country/Region.",
     box: "CAPTCHA_BOX",
+    icon: ShieldAlert,
   },
   javascript: {
     type: "javascript",
@@ -116,5 +139,6 @@ export const challengePages: Record<ChallengeType, ChallengePageConfig> = {
     message:
       "Please wait a moment while our security system verifies your request.",
     box: "IM_UNDER_ATTACK_BOX",
+    icon: ShieldEllipsis,
   },
 };
