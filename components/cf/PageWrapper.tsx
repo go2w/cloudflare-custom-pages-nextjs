@@ -62,9 +62,7 @@ export function PageWrapper({ pageType }: { pageType: PageType }) {
   return (
     <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
       <CFLayout>
-        <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
           <Component {...(config as any)} />
-        </div>
       </CFLayout>
     </Providers>
   );

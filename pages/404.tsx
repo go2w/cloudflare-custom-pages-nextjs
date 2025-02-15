@@ -18,7 +18,7 @@ export default function Custom404() {
     return (
         <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
             <CFLayout>
-                <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 space-y-6">
+                <div className="space-y-6">
                     <ErrorBox {...config} />
                     <div className="flex justify-center gap-4">
                         <Button

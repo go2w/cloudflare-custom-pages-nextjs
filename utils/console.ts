@@ -1,3 +1,4 @@
+"use client"
 import pkg from "@/package.json" assert { type: "json" };
 import { siteConfig } from "@/config/site";
 

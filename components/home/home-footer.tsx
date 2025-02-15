@@ -10,7 +10,6 @@ import { ThemeSwitch } from "@/components/theme-switch";
 
 interface FooterLinkProps {
   href: string;
-  key: number;
   icon: React.ComponentType<{ className?: string }>;
 }
 
@@ -24,7 +23,7 @@ const MotionDiv = motion.div as React.ComponentType<
   MotionProps & React.HTMLAttributes<HTMLDivElement>
 >;
 
-const FooterLink = ({ href, icon: Icon, key }: FooterLinkProps) => (
+const FooterLink = ({ href, icon: Icon }: FooterLinkProps) => (
   <MotionDiv
     whileHover={{ scale: 1.1 }}
     whileTap={{ scale: 0.95 }}
@@ -32,7 +31,7 @@ const FooterLink = ({ href, icon: Icon, key }: FooterLinkProps) => (
   >
     <a
       href={href}
-      aria-label={`Link ${key}`}
+      aria-label="External link"
       target="_blank"
       rel="noopener noreferrer"
     >

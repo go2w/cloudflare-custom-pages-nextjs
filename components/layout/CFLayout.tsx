@@ -14,10 +14,15 @@ export const CFLayout = ({
     <BaseLayout>
       <div className={clsx(
         "flex flex-col",
-        "min-h-[calc(100vh-4rem)]"
+        "min-h-[calc(100vh-4rem)]",
+        "w-full",
+        "px-4 sm:px-6 md:px-8"
       )}>
         <div className={clsx(
-          "flex-grow flex items-center justify-center"
+          "flex-grow",
+          "flex items-center justify-center",
+          "w-full max-w-7xl",
+          "mx-auto"
         )}>
           {children}
         </div>
@@ -27,4 +32,4 @@ export const CFLayout = ({
   );
 };
 
-export default CFLayout; 
+export default CFLayout;
