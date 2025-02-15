@@ -17,6 +17,18 @@
     -   `Captcha`: CAPTCHA 质询页面
 -   🎭 **自动替换 Cloudflare 变量**：无缝集成 Cloudflare 特定变量到页面中。
 
+## 📸 截图预览
+
+<div align="center">
+    <img src="./docs/assets/online-preview.png" alt="Preview" width="70%">
+    <br> 主页
+</div>
+
+|                              亮色                              |                            暗色                            |
+| :------------------------------------------------------------: | :--------------------------------------------------------: |
+|   ![](./docs/assets/block-from-waf-light.png) Block from WAF   |  ![](./docs/assets/block-from-ip-dark.png) Block from IP   |
+| ![](./docs/assets/challenge-light.png) UAM (Under Attack Mode) | ![](./docs/assets/challenge-dark.png) JavaScript Challenge |
+
 ## 🛠️ 技术栈
 
 -   **Next.js 15** + **React 19**

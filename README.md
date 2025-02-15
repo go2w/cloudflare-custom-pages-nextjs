@@ -7,6 +7,18 @@ English | [简体中文](README.zh.md) | [Online Demo](https://cw-preview.000000
 > [!TIP]
 > Please comply with the project's [Open Source License](LICENSE) when making modifications.
 
+## 📸 Screenshots
+
+<div align="center">
+    <img src="./docs/assets/online-preview.png" alt="Preview" width="70%">
+    <br> Main Page
+</div>
+
+|                             Light                              |                            Dark                            |
+| :------------------------------------------------------------: | :--------------------------------------------------------: |
+|   ![](./docs/assets/block-from-waf-light.png) Block from WAF   |  ![](./docs/assets/block-from-ip-dark.png) Block from IP   |
+| ![](./docs/assets/challenge-light.png) UAM (Under Attack Mode) | ![](./docs/assets/challenge-dark.png) JavaScript Challenge |
+
 ## ✨ Key Features
 
 -   🎨 **Modern Responsive Design**: Sleek and contemporary layout optimized for all devices.
@@ -67,11 +79,11 @@ Quickly access Cloudflare Custom Pages via [this link](https://dash.cloudflare.c
 
 ## 🌍 Deployment Guide
 
-- **Deploy to Vercel (Recommended)**:
+-   **Deploy to Vercel (Recommended)**:
 
     [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FAlice39s%2Fcloudflare-custom-pages-nextjs%2Ftree%2Fmain&project-name=cloudflare-custom-pages-nextjs-fork&repository-name=cloudflare-custom-pages-nextjs-fork&demo-title=Online%20Demo&demo-description=A%20beautiful%2C%20out-of-the-box%20Cloudflare%20WAF%20custom%20page%20template.&demo-url=https%3A%2F%2Fcw-preview.000000039.xyz%2F)
 
-- **Manual Deployment**:
+-   **Manual Deployment**:
 
     ```bash
     bun run build
