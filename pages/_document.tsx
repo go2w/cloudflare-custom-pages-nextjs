@@ -6,7 +6,6 @@ export default function Document() {
     <Html lang="en">
       <Head>
         {/* <!-- Cloudflare Pages Custom Error Pages --> */}
-        <meta charSet="utf-8" />
         <meta name="description" content={siteConfig.description} />
         <meta name="robots" content="index, nofollow" />
         <title>{siteConfig.name}</title>

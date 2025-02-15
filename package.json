@@ -4,7 +4,7 @@
     "private": true,
     "scripts": {
         "dev": "next dev --turbo",
-        "build": "next build",
+        "build": "next build && bun scripts/assets-process.ts",
         "start": "bun x serve out -p 3001",
         "lint": "echo 'Skipping lint'"
     },
