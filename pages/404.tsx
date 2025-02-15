@@ -3,6 +3,7 @@ import { CFLayout } from "@/components/layout/CFLayout";
 import { Providers } from "@/components/providers";
 import type { ErrorPageConfig } from "@/config/routes";
 import { Button } from "@heroui/button";
+import { FileQuestion } from "lucide-react";
 import { useRouter } from "next/router";
 
 export default function Custom404() {
@@ -13,6 +14,7 @@ export default function Custom404() {
     title: "Page Not Found",
     message: "The page you are looking for could not be found.",
     box: "RAY_ID",
+    icon: FileQuestion,
   } as ErrorPageConfig;
 
   return (

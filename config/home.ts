@@ -1,8 +1,4 @@
-import {
-  AlertTriangle,
-  Lock,
-  ShieldCheck,
-} from "lucide-react";
+import { AlertTriangle, Lock, ShieldCheck } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { blockPages, challengePages, errorPages } from "./routes";
 

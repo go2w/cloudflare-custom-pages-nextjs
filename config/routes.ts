@@ -1,13 +1,13 @@
 import {
   BadgeAlert,
   Construction,
-  ShieldEllipsis,
-  ShieldBan,
-  ShieldCheck,
-  Shield,
-  ShieldAlert,
   Loader,
   type LucideIcon,
+  Shield,
+  ShieldAlert,
+  ShieldBan,
+  ShieldCheck,
+  ShieldEllipsis,
 } from "lucide-react";
 
 interface BasePageConfig {
