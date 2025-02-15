@@ -6,8 +6,7 @@ import { blockPages, errorPages, challengePages } from '@/config/routes';
 import { CFLayout } from '@/components/layout/CFLayout';
 import { Providers } from '@/components/providers';
 import type { BlockPageConfig, ErrorPageConfig, ChallengePageConfig } from '@/config/routes';
-
-type PageType = 'error' | 'block' | 'challenge';
+import type { PageType } from '@/config/routes';
 
 type PageConfigMap = {
   error: {
@@ -54,7 +53,7 @@ export function PageWrapper({ pageType }: { pageType: PageType }) {
   const router = useRouter();
   const { type } = router.query;
   const { pages, defaultType, component: Component } = pageConfigs[pageType];
-  const config = typeof type === 'string' && type in pages ? pages[type] : pages[defaultType];
+  const config = typeof type === 'string' && type in pages ? pages[type as keyof typeof pages] : pages[defaultType as keyof typeof pages];
 
   if (router.isFallback) {
     return null;
