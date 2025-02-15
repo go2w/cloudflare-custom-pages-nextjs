@@ -1,8 +1,8 @@
 "use client";
 
+import type { ErrorPageConfig } from "@/config/routes";
 import { Chip } from "@heroui/chip";
 import { AlertOctagon } from "lucide-react";
-import type { ErrorPageConfig } from "@/config/routes";
 import { CFCard } from "./common";
 
 export const ErrorBox = ({ title, message, code, box }: ErrorPageConfig) => {
@@ -19,12 +19,10 @@ export const ErrorBox = ({ title, message, code, box }: ErrorPageConfig) => {
       iconClassName="from-red-500 to-red-600"
       footer={
         box && (
-          <>
-            <div
-              className="text-sm text-gray-600 dark:text-gray-400 prose dark:prose-invert max-w-none"
-              dangerouslySetInnerHTML={{ __html: `::${box}::` }}
-            />
-          </>
+          <div
+            className="text-sm text-gray-600 dark:text-gray-400 prose dark:prose-invert max-w-none"
+            dangerouslySetInnerHTML={{ __html: `::${box}::` }}
+          />
         )
       }
     />

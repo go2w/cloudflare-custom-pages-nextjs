@@ -1,13 +1,12 @@
-import React from 'react';
-import { RiShieldLine } from '@remixicon/react';
-import { siteConfig } from '@/config/site';
+import { siteConfig } from "@/config/site";
+import { Shield } from "lucide-react";
 
 export function Hero() {
   return (
     <div className="text-center space-y-6 lg:space-y-8">
       <div className="inline-flex justify-center p-4 bg-white dark:bg-gray-800 rounded-2xl shadow-lg">
         <div className="flex h-16 w-16 lg:h-20 lg:w-20 items-center justify-center rounded-xl bg-blue-100 dark:bg-blue-900/30 shadow-inner">
-          <RiShieldLine className="h-8 w-8 lg:h-10 lg:w-10 text-blue-600 dark:text-blue-400" />
+          <Shield className="h-8 w-8 lg:h-10 lg:w-10 text-blue-600 dark:text-blue-400" />
         </div>
       </div>
       <div className="max-w-3xl mx-auto space-y-4 lg:space-y-6">
@@ -20,4 +19,4 @@ export function Hero() {
       </div>
     </div>
   );
-} 
+}

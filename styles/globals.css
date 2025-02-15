@@ -3,23 +3,25 @@
 @tailwind utilities;
 
 :root {
-    --font-sans: "Inter", "Inter Fallback", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
-    --font-mono: "JetBrains Mono", "Fira Code", "Fira Mono", "SFMono-Regular", "Consolas", "Liberation Mono", ui-monospace, monospace;
+  --font-sans: "Inter", "Inter Fallback", "Helvetica Neue", "Helvetica", "Arial",
+    sans-serif;
+  --font-mono: "JetBrains Mono", "Fira Code", "Fira Mono", "SFMono-Regular",
+    "Consolas", "Liberation Mono", ui-monospace, monospace;
 }
 
 html {
-    font-family: var(--font-sans);
+  font-family: var(--font-sans);
 }
 
 code,
 pre {
-    font-family: var(--font-mono);
+  font-family: var(--font-mono);
 }
 
 .font-sans {
-    font-family: var(--font-sans);
+  font-family: var(--font-sans);
 }
 
 .font-mono {
-    font-family: var(--font-mono);
+  font-family: var(--font-mono);
 }

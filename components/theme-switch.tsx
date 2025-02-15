@@ -1,13 +1,12 @@
 "use client";
 
-import { FC } from "react";
-import { VisuallyHidden } from "@react-aria/visually-hidden";
-import { SwitchProps, useSwitch } from "@heroui/switch";
-import { useTheme } from "next-themes";
+import { type SwitchProps, useSwitch } from "@heroui/switch";
 import { useIsSSR } from "@react-aria/ssr";
-import clsx from "clsx";
-
-import { RiSunFill, RiMoonFill } from "@remixicon/react";
+import { VisuallyHidden } from "@react-aria/visually-hidden";
+import { clsx as cx } from "clsx";
+import { Moon, Sun } from "lucide-react";
+import { useTheme } from "next-themes";
+import type { FC } from "react";
 
 export interface ThemeSwitchProps {
   className?: string;
@@ -41,7 +40,7 @@ export const ThemeSwitch: FC<ThemeSwitchProps> = ({
   return (
     <Component
       {...getBaseProps({
-        className: clsx(
+        className: cx(
           "px-px transition-opacity hover:opacity-80 cursor-pointer",
           className,
           classNames?.base,
@@ -54,7 +53,7 @@ export const ThemeSwitch: FC<ThemeSwitchProps> = ({
       <div
         {...getWrapperProps()}
         className={slots.wrapper({
-          class: clsx(
+          class: cx(
             [
               "w-auto h-auto",
               "bg-transparent",
@@ -70,11 +69,7 @@ export const ThemeSwitch: FC<ThemeSwitchProps> = ({
           ),
         })}
       >
-        {!isSelected || isSSR ? (
-          <RiSunFill size={22} />
-        ) : (
-          <RiMoonFill size={22} />
-        )}
+        {!isSelected || isSSR ? <Sun size={22} /> : <Moon size={22} />}
       </div>
     </Component>
   );

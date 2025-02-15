@@ -1,5 +1,5 @@
-import { Html, Main, Head, NextScript } from 'next/document';
-import { siteConfig } from '@/config/site';
+import { siteConfig } from "@/config/site";
+import { Head, Html, Main, NextScript } from "next/document";
 
 export default function Document() {
   return (
@@ -15,4 +15,4 @@ export default function Document() {
       </body>
     </Html>
   );
-} 
+}

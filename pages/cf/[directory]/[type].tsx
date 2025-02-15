@@ -1,6 +1,10 @@
-import { PageWrapper, getStaticPaths as getStaticPathsHelper, getStaticProps as getStaticPropsHelper } from '@/components/cf/PageWrapper';
+import {
+  PageWrapper,
+  getStaticPaths as getStaticPathsHelper,
+  getStaticProps as getStaticPropsHelper,
+} from "@/components/cf/PageWrapper";
 
-import { directories, types, type PageType } from '@/config/routes';
+import { type PageType, directories, types } from "@/config/routes";
 
 interface DynamicPageProps {
   pageType: PageType;
@@ -11,34 +15,36 @@ export default function DynamicPage({ pageType }: DynamicPageProps) {
 }
 
 export async function getStaticPaths() {
-
-  const paths = directories.flatMap(directory => 
-    types[directory].map(type => ({
-      params: { directory, type }
-    }))
+  const paths = directories.flatMap((directory) =>
+    types[directory].map((type) => ({
+      params: { directory, type },
+    })),
   );
 
   return {
     paths,
-    fallback: false
+    fallback: false,
   };
 }
 
-export const getStaticProps = ({ params }: { params: { directory: PageType; type: string } }) => {
+export const getStaticProps = ({
+  params,
+}: { params: { directory: PageType; type: string } }) => {
   const validDirectories: PageType[] = directories;
   if (!validDirectories.includes(params.directory)) {
     return {
-      notFound: true 
+      notFound: true,
     };
   }
 
   const result = getStaticPropsHelper(params.directory, { type: params.type });
-  
+
   return {
     ...result,
     props: {
+      // biome-ignore lint/suspicious/noExplicitAny: <explanation>
       ...((result as any).props || {}),
-      pageType: params.directory
-    }
+      pageType: params.directory,
+    },
   };
-}; 
+};

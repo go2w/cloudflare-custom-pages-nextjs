@@ -1,9 +1,9 @@
-import React from 'react';
-import { sections } from '@/config/home';
-import { CardSection } from '@/components/home/card-section';
-import HomeFooter from '@/components/home/home-footer';
-import { Providers } from '@/components/providers';
-import { Hero } from '@/components/home/Hero';
+import { Hero } from "@/components/home/Hero";
+import { CardSection } from "@/components/home/card-section";
+import HomeFooter from "@/components/home/home-footer";
+import { Providers } from "@/components/providers";
+import { sections } from "@/config/home";
+import React from "react";
 
 export default function Home() {
   return (

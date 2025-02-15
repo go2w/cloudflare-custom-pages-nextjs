@@ -1,11 +1,15 @@
 "use client";
 
-import { AlertCircle, ShieldCheck } from 'lucide-react';
 import type { ChallengePageConfig } from "@/config/routes";
+import { AlertCircle, ShieldCheck } from "lucide-react";
 import { CFCard } from "./common";
 
-export const CaptchaBox = ({ title, message, type, box }: ChallengePageConfig) => {
-
+export const CaptchaBox = ({
+  title,
+  message,
+  type,
+  box,
+}: ChallengePageConfig) => {
   return (
     <CFCard
       title={title}
@@ -29,7 +33,9 @@ export const CaptchaBox = ({ title, message, type, box }: ChallengePageConfig) =
             dangerouslySetInnerHTML={{ __html: `<div>::${box}::</div>` }}
           />
         ) : (
-          <p className="text-gray-400 dark:text-gray-500 font-medium">Loading verification...</p>
+          <p className="text-gray-400 dark:text-gray-500 font-medium">
+            Loading verification...
+          </p>
         )}
       </div>
     </CFCard>

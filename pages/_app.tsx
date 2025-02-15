@@ -1,8 +1,8 @@
-import '@/styles/globals.css';
-import type { AppProps } from 'next/app';
-import { Providers } from '@/components/providers';
-import Head from 'next/head';
-import { siteConfig } from '@/config/site';
+import "@/styles/globals.css";
+import { Providers } from "@/components/providers";
+import { siteConfig } from "@/config/site";
+import type { AppProps } from "next/app";
+import Head from "next/head";
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
@@ -14,4 +14,4 @@ export default function App({ Component, pageProps }: AppProps) {
       <Component {...pageProps} />
     </Providers>
   );
-} 
+}

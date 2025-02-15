@@ -1,6 +1,6 @@
-import { Card, CardBody, CardHeader, CardFooter } from "@heroui/card";
-import { ReactNode } from "react";
 import { ThemeSwitch } from "@/components/theme-switch";
+import { Card, CardBody, CardFooter, CardHeader } from "@heroui/card";
+import type { ReactNode } from "react";
 
 interface CFCardProps {
   title: string;
@@ -26,7 +26,10 @@ export const CFCard = ({
   footer,
 }: CFCardProps) => {
   return (
-    <Card suppressHydrationWarning className="max-w-xl w-full mx-auto overflow-hidden bg-white dark:bg-gray-900 shadow-xl ring-1 ring-gray-900/5 dark:ring-gray-800 m-4 rounded-xl">
+    <Card
+      suppressHydrationWarning
+      className="max-w-xl w-full mx-auto overflow-hidden bg-white dark:bg-gray-900 shadow-xl ring-1 ring-gray-900/5 dark:ring-gray-800 m-4 rounded-xl"
+    >
       <CardHeader className={`relative ${headerClassName} p-6`}>
         {watermark && (
           <div className="absolute right-0 top-0 h-24 w-24 opacity-20">
@@ -41,21 +44,26 @@ export const CFCard = ({
         <div className="flex items-center gap-4">
           <div className="flex-shrink-0">
             <div className="relative">
-              <div className={`absolute inset-0 animate-pulse bg-${iconClassName.split(" ")[1]}/20 rounded-full blur-xl`} />
-              <div className={`relative rounded-full bg-gradient-to-br ${iconClassName} p-3`}>
+              <div
+                className={`absolute inset-0 animate-pulse bg-${iconClassName.split(" ")[1]}/20 rounded-full blur-xl`}
+              />
+              <div
+                className={`relative rounded-full bg-gradient-to-br ${iconClassName} p-3`}
+              >
                 {icon}
               </div>
             </div>
           </div>
 
           <div className="flex flex-col">
-            {subtitle && (
-              typeof subtitle === 'string' ? (
+            {subtitle &&
+              (typeof subtitle === "string" ? (
                 <span className="text-sm font-medium text-default-600 dark:text-default-400">
                   {subtitle}
                 </span>
-              ) : subtitle
-            )}
+              ) : (
+                subtitle
+              ))}
             <h3 className="mt-2 text-xl font-semibold tracking-tight text-gray-900 dark:text-white">
               {title}
             </h3>
@@ -64,17 +72,23 @@ export const CFCard = ({
       </CardHeader>
 
       <CardBody suppressHydrationWarning className="space-y-6 p-6">
-        <p suppressHydrationWarning className="text-gray-600 dark:text-gray-300 leading-relaxed">
+        <p
+          suppressHydrationWarning
+          className="text-gray-600 dark:text-gray-300 leading-relaxed"
+        >
           {message}
         </p>
         {children}
       </CardBody>
 
       {footer && (
-        <CardFooter suppressHydrationWarning className="bg-gray-50 dark:bg-gray-800/50 border-t border-gray-100 dark:border-gray-800 px-6 py-4">
+        <CardFooter
+          suppressHydrationWarning
+          className="bg-gray-50 dark:bg-gray-800/50 border-t border-gray-100 dark:border-gray-800 px-6 py-4"
+        >
           {footer}
         </CardFooter>
       )}
     </Card>
   );
-}; 
+};

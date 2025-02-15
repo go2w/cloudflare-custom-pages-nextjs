@@ -1,12 +1,16 @@
-import { useRouter } from 'next/router';
-import { ErrorBox } from './ErrorBox';
-import { BlockBox } from './BlockBox';
-import { CaptchaBox } from './CaptchaBox';
-import { blockPages, errorPages, challengePages } from '@/config/routes';
-import { CFLayout } from '@/components/layout/CFLayout';
-import { Providers } from '@/components/providers';
-import type { BlockPageConfig, ErrorPageConfig, ChallengePageConfig } from '@/config/routes';
-import type { PageType } from '@/config/routes';
+import { CFLayout } from "@/components/layout/CFLayout";
+import { Providers } from "@/components/providers";
+import { blockPages, challengePages, errorPages } from "@/config/routes";
+import type {
+  BlockPageConfig,
+  ChallengePageConfig,
+  ErrorPageConfig,
+} from "@/config/routes";
+import type { PageType } from "@/config/routes";
+import { useRouter } from "next/router";
+import { BlockBox } from "./BlockBox";
+import { CaptchaBox } from "./CaptchaBox";
+import { ErrorBox } from "./ErrorBox";
 
 type PageConfigMap = {
   error: {
@@ -30,30 +34,33 @@ type PageConfigMap = {
 };
 
 const pageConfigs: {
-  [K in PageType]: Omit<PageConfigMap[K], 'config'>;
+  [K in PageType]: Omit<PageConfigMap[K], "config">;
 } = {
   error: {
     pages: errorPages,
-    defaultType: '500s',
-    component: ErrorBox
+    defaultType: "500s",
+    component: ErrorBox,
   },
   block: {
     pages: blockPages,
-    defaultType: 'ip',
-    component: BlockBox
+    defaultType: "ip",
+    component: BlockBox,
   },
   challenge: {
     pages: challengePages,
-    defaultType: 'interactive',
-    component: CaptchaBox
-  }
+    defaultType: "interactive",
+    component: CaptchaBox,
+  },
 };
 
 export function PageWrapper({ pageType }: { pageType: PageType }) {
   const router = useRouter();
   const { type } = router.query;
   const { pages, defaultType, component: Component } = pageConfigs[pageType];
-  const config = typeof type === 'string' && type in pages ? pages[type as keyof typeof pages] : pages[defaultType as keyof typeof pages];
+  const config =
+    typeof type === "string" && type in pages
+      ? pages[type as keyof typeof pages]
+      : pages[defaultType as keyof typeof pages];
 
   if (router.isFallback) {
     return null;
@@ -62,7 +69,8 @@ export function PageWrapper({ pageType }: { pageType: PageType }) {
   return (
     <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
       <CFLayout>
-          <Component {...(config as any)} />
+        {/* biome-ignore lint/suspicious/noExplicitAny: TypeScript Too HARD */}
+        <Component {...(config as any)} />
       </CFLayout>
     </Providers>
   );
@@ -72,23 +80,23 @@ export function getStaticPaths(pageType: PageType) {
   const { pages } = pageConfigs[pageType];
   return {
     paths: Object.keys(pages).map((type) => ({
-      params: { type }
+      params: { type },
     })),
-    fallback: false
+    fallback: false,
   };
 }
 
 export function getStaticProps(pageType: PageType, params: { type: string }) {
   const { pages } = pageConfigs[pageType];
   const type = params.type;
-  
+
   if (!(type in pages)) {
     return {
-      notFound: true
+      notFound: true,
     };
   }
 
   return {
-    props: {}
+    props: {},
   };
-} 
+}

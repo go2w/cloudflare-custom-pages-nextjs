@@ -1,8 +1,7 @@
 "use client";
 
-import { ShieldOff } from "lucide-react";
-import { RiFireFill } from "@remixicon/react";
 import type { BlockPageConfig } from "@/config/routes";
+import { ShieldOff } from "lucide-react";
 import { CFCard } from "./common";
 
 export const BlockBox = ({ title, message, type }: BlockPageConfig) => {
