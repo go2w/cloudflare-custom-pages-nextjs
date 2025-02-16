@@ -7,6 +7,7 @@ import { clsx as cx } from "clsx";
 import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 import type { FC } from "react";
+import { motion } from "framer-motion";
 
 export interface ThemeSwitchProps {
   className?: string;
@@ -43,7 +44,7 @@ export const ThemeSwitch: FC<ThemeSwitchProps> = ({
         className: cx(
           "px-px transition-opacity hover:opacity-80 cursor-pointer",
           className,
-          classNames?.base,
+          classNames?.base
         ),
       })}
     >
@@ -65,11 +66,19 @@ export const ThemeSwitch: FC<ThemeSwitchProps> = ({
               "px-0",
               "mx-0",
             ],
-            classNames?.wrapper,
+            classNames?.wrapper
           ),
         })}
       >
-        {!isSelected || isSSR ? <Sun size={22} /> : <Moon size={22} />}
+        <motion.div
+          key={theme}
+          initial={{ rotate: -90, opacity: 0 }}
+          animate={{ rotate: 0, opacity: 1 }}
+          exit={{ rotate: 90, opacity: 0 }}
+          transition={{ duration: 0.3 }}
+        >
+          {!isSelected || isSSR ? <Sun size={22} /> : <Moon size={22} />}
+        </motion.div>
       </div>
     </Component>
   );
