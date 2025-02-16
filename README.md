@@ -155,7 +155,7 @@ export const blockPages: Record<string, BlockPageConfig> = {
 -   `title`: Page title (editable).
 -   `message`: Custom message (string only).
 -   `code`: Error code for display purposes.
--   `icon`: Icon component from `@iconify/react`, reference: [Iconify](https://icon-sets.iconify.design/).
+-   `icon`: Icon component from `lucide-react`, reference: [4. Custom Icons](#4-custom-icons).
 
 ### 3. Component Styling
 
@@ -167,6 +167,25 @@ components/
 ├── home/      # 🏠 Homepage Components
 └── layout/    # 🖼️ Global Layout Components
 ```
+
+### 4. Custom Icons
+
+This project utilizes the `lucide-react` icon library. To optimize the project's size, we have encapsulated a unified entry point and on-demand loading component called `Icon`.
+
+You can follow the steps below to add or replace icons:
+
+1. Check if the icon you want to use is not already listed in `./config/icons.ts`. If it exists, skip directly to step 5.
+
+2. Visit the [Lucide](https://lucide.dev/icons/) icon library and select your preferred icon.
+
+3. Click the `Copy Component Name` button to copy the icon's name.
+
+4. Then, navigate to `./config/icons.ts` and follow the instructions to add the icon name to:
+   1. `import { ... Component } from "lucide-react"` (import the icon component)
+   2. `export type IconKey = ...` (add the icon name to the type list)
+   3. `export const icons = { ... }` (add the icon name to the mapping dictionary)
+
+5. Finally, use the desired icon in `./config/routes.ts`.
 
 ## 📜 License
 

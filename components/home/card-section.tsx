@@ -1,8 +1,8 @@
+import { Icon } from "@/components/ui/icon";
 import type { Section } from "@/config/home";
 import { colorSchemes } from "@/config/home";
-import { CardItem } from "./card-item";
 import { clsx as cx } from "clsx";
-import { Icon } from "@iconify/react";
+import { CardItem } from "./card-item";
 
 interface CardSectionProps extends Section {}
 
@@ -19,7 +19,7 @@ export const CardSection = ({
     <div
       className={cx(
         "group relative rounded-3xl border bg-white/90 dark:bg-gray-900/90 backdrop-blur-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 h-full",
-        classes.border
+        classes.border,
       )}
     >
       <div className="absolute inset-0 rounded-3xl border border-white/50 dark:border-gray-800/50 pointer-events-none" />
@@ -28,11 +28,11 @@ export const CardSection = ({
           <div
             className={cx(
               "flex-shrink-0 flex h-12 w-12 lg:h-14 lg:w-14 items-center justify-center rounded-xl shadow-lg",
-              classes.iconBg
+              classes.iconBg,
             )}
           >
             <Icon
-              icon={icon}
+              name={icon}
               className={cx("h-6 w-6 lg:h-7 lg:w-7", classes.iconText)}
             />
           </div>

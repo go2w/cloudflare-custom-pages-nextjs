@@ -1,9 +1,9 @@
 "use client";
 
+import { Icon } from "@/components/ui/icon";
 import type { ErrorPageConfig } from "@/config/routes";
 import { Chip } from "@heroui/chip";
 import { CFCard } from "./common";
-import { Icon } from "@iconify/react";
 
 export const ErrorBox = ({
   title,
@@ -21,7 +21,7 @@ export const ErrorBox = ({
           Error {code}
         </Chip>
       }
-      icon={<Icon icon={icon} className="h-6 w-6 text-white" />}
+      icon={<Icon name={icon} className="h-6 w-6 text-white" />}
       iconClassName="from-red-500 to-red-600"
       footer={
         box && (

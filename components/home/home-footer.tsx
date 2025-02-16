@@ -1,15 +1,16 @@
 "use client";
 
 import { ThemeSwitch } from "@/components/theme-switch";
+import { Icon } from "@/components/ui/icon";
+import type { IconKey } from "@/config/icons";
 import { siteConfig } from "@/config/site";
 import print from "@/utils/console";
 import { clsx as cx } from "clsx";
-import { Icon } from "@iconify/react";
 import type { FC, ReactNode } from "react";
 
 interface FooterLinkProps {
   href: string;
-  icon: string;
+  icon: IconKey;
 }
 
 interface FooterSectionProps {
@@ -27,7 +28,7 @@ const FooterLink = ({ href, icon }: FooterLinkProps) => (
       rel="noopener noreferrer"
     >
       <Icon
-        icon={icon}
+        name={icon}
         className="w-5 h-5 text-default-500 hover:text-primary-500 transition-colors"
       />
     </a>
@@ -49,8 +50,8 @@ const FooterSection: FC<FooterSectionProps> = ({
 
 const HomeFooter = () => {
   const links = [
-    { href: siteConfig.links.docs, icon: "lucide:book-open" },
-    { href: siteConfig.links.github, icon: "lucide:github" },
+    { href: siteConfig.links.docs, icon: "book-open" as IconKey },
+    { href: siteConfig.links.github, icon: "github" as IconKey },
   ];
 
   print();
@@ -80,9 +81,8 @@ const HomeFooter = () => {
             delay={0.4}
           >
             <div className="text-xs text-default-400 flex items-center gap-2">
-              Made with{" "}
-              <Icon icon="lucide:heart" className="w-4 h-4 text-red-500" /> by
-              Alice39s
+              Made with <Icon name="heart" className="w-4 h-4 text-red-500" />{" "}
+              by Alice39s
             </div>
           </FooterSection>
         </div>

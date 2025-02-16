@@ -1,13 +1,13 @@
 "use client";
 
+import { Icon } from "@/components/ui/icon";
 import { type SwitchProps, useSwitch } from "@heroui/switch";
 import { useIsSSR } from "@react-aria/ssr";
 import { VisuallyHidden } from "@react-aria/visually-hidden";
 import { clsx as cx } from "clsx";
+import { motion } from "framer-motion";
 import { useTheme } from "next-themes";
 import type { FC } from "react";
-import { motion } from "framer-motion";
-import { Icon } from "@iconify/react";
 
 export interface ThemeSwitchProps {
   className?: string;
@@ -44,7 +44,7 @@ export const ThemeSwitch: FC<ThemeSwitchProps> = ({
         className: cx(
           "px-px transition-opacity hover:opacity-80 cursor-pointer",
           className,
-          classNames?.base
+          classNames?.base,
         ),
       })}
     >
@@ -66,7 +66,7 @@ export const ThemeSwitch: FC<ThemeSwitchProps> = ({
               "px-0",
               "mx-0",
             ],
-            classNames?.wrapper
+            classNames?.wrapper,
           ),
         })}
       >
@@ -78,9 +78,9 @@ export const ThemeSwitch: FC<ThemeSwitchProps> = ({
           transition={{ duration: 0.3 }}
         >
           {!isSelected || isSSR ? (
-            <Icon icon="lucide:sun" width={22} />
+            <Icon name="sun" className="h-6 w-6" />
           ) : (
-            <Icon icon="lucide:moon" width={22} />
+            <Icon name="moon" className="h-6 w-6" />
           )}
         </motion.div>
       </div>

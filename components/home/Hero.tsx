@@ -1,5 +1,5 @@
+import { Icon } from "@/components/ui/icon";
 import { siteConfig } from "@/config/site";
-import { Icon } from "@iconify/react";
 
 export function Hero() {
   return (
@@ -7,7 +7,7 @@ export function Hero() {
       <div className="inline-flex justify-center p-4 bg-white dark:bg-gray-800 rounded-2xl shadow-lg">
         <div className="flex h-16 w-16 lg:h-20 lg:w-20 items-center justify-center rounded-xl bg-blue-100 dark:bg-blue-900/30 shadow-inner">
           <Icon
-            icon="lucide:shield"
+            name="shield"
             className="h-8 w-8 lg:h-10 lg:w-10 text-blue-600 dark:text-blue-400"
           />
         </div>

@@ -1,7 +1,7 @@
 import { ThemeSwitch } from "@/components/theme-switch";
 import { Card, CardBody, CardFooter, CardHeader } from "@heroui/card";
-import type { ReactNode } from "react";
 import { clsx as cx } from "clsx";
+import type { ReactNode } from "react";
 
 interface CFCardProps {
   title: string;
@@ -48,13 +48,13 @@ export const CFCard = ({
               <div
                 className={cx(
                   "absolute inset-0 animate-pulse rounded-full blur-xl",
-                  `bg-${iconClassName.split(" ")[1]}/20`
+                  `bg-${iconClassName.split(" ")[1]}/20`,
                 )}
               />
               <div
                 className={cx(
                   "relative rounded-full bg-gradient-to-br p-3",
-                  iconClassName
+                  iconClassName,
                 )}
               >
                 {icon}

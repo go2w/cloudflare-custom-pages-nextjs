@@ -1,3 +1,4 @@
+import type { IconKey } from "./icons";
 import { blockPages, challengePages, errorPages } from "./routes";
 
 export type ColorScheme = "danger" | "warning" | "primary";
@@ -15,13 +16,13 @@ export interface Page {
   title: string;
   path: string;
   code?: string;
-  icon?: string;
+  icon?: IconKey;
 }
 
 export interface Section {
   title: string;
   description: string;
-  icon: string;
+  icon: IconKey;
   color: ColorScheme;
   pages: Page[];
 }
@@ -57,7 +58,7 @@ export const sections: Section[] = [
   {
     title: "Error Pages",
     description: "Server error pages",
-    icon: "lucide:triangle-alert",
+    icon: "triangle-alert",
     color: "danger",
     pages: Object.entries(errorPages).map(([type, config]) => ({
       title: config.title,
@@ -69,7 +70,7 @@ export const sections: Section[] = [
   {
     title: "Block Pages",
     description: "Access denied pages",
-    icon: "lucide:lock",
+    icon: "lock",
     color: "warning",
     pages: Object.entries(blockPages).map(([type, config]) => ({
       title: config.title,
@@ -81,7 +82,7 @@ export const sections: Section[] = [
   {
     title: "Challenge Pages",
     description: "Security verification challenges",
-    icon: "lucide:shield-check",
+    icon: "shield-check",
     color: "primary",
     pages: Object.entries(challengePages).map(([type, config]) => ({
       title: config.title,

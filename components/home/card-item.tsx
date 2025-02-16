@@ -1,8 +1,8 @@
 "use client";
 
+import { Icon } from "@/components/ui/icon";
 import type { ColorClasses, Page } from "@/config/home";
 import { Link } from "@heroui/link";
-import { Icon } from "@iconify/react";
 import { clsx as cx } from "clsx";
 
 interface CardItemProps {
@@ -17,19 +17,19 @@ export const CardItem = ({ page, classes }: CardItemProps) => {
       isExternal
       className={cx(
         "group flex items-center justify-between py-3 px-4 rounded-xl transition-all duration-200 hover:scale-[1.02]",
-        classes.itemBg
+        classes.itemBg,
       )}
     >
       <div className="flex items-center gap-3">
         <div
           className={cx(
             "flex h-8 w-8 items-center justify-center rounded-lg shadow-sm",
-            classes.iconBg
+            classes.iconBg,
           )}
         >
           {page.icon && (
             <Icon
-              icon={page.icon}
+              name={page.icon}
               className={cx("h-4 w-4", classes.iconText)}
             />
           )}
@@ -44,17 +44,17 @@ export const CardItem = ({ page, classes }: CardItemProps) => {
             className={cx(
               "text-xs px-2 py-0.5 font-mono rounded-full",
               classes.codeBg,
-              classes.codeText
+              classes.codeText,
             )}
           >
             {page.code}
           </span>
         )}
         <Icon
-          icon="lucide:arrow-right"
+          name="arrow-right"
           className={cx(
             "h-4 w-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200",
-            classes.iconText
+            classes.iconText,
           )}
         />
       </div>

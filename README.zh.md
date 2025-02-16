@@ -154,7 +154,7 @@ export const blockPages: Record<string, BlockPageConfig> = {
 -   `title` 表示错误页面的标题，可随意更改。
 -   `message` 表示页面提示信息，可随意更改，只允许字符串类型。
 -   `code` 表示页面错误代码，主要用于首页展示。
--   `icon` 表示页面所用图标，可随意更改，图标名称参考：[Iconify](https://icon-sets.iconify.design/)。
+-   `icon` 表示页面所用图标，可随意更改，自定义图标可参考 [4. 自定义图标](#4-自定义图标) 一节。
 
 ### 3. 自定义组件样式
 
@@ -166,6 +166,21 @@ components/
 ├── home/      # 🏠 首页组件
 └── layout/    # 🖼️ 全局布局组件
 ```
+
+### 4. 自定义图标
+
+本项目使用 `lucide-react` 图标库，为了节省项目体积，封装了一个统一入口、按需引入的组件 `Icon` 。
+
+你可以根据以下步骤添加/替换图标：
+
+1. 在 `./config/icons.ts` 中确定你想要使用的图标不在清单中，如果已存在，则直接跳到第 5 步。
+2. 前往 [Lucide](https://lucide.dev/icons/) 图标库，挑选你喜欢的图标。
+3. 点击 `Copy Component Name` 按钮复制图标名称。
+4. 随后前往 `./config/icons.ts` 按照指引依次将图标名称添加到：
+   1. `import { ... Component } from "lucide-react"` (引入图标组件)
+   2. `export type IconKey = ...` (添加图标名称到类型列表)
+   3. `export const icons = { ... }` (添加图标名称到映射字典)
+5. 最后在 `./config/routes.ts` 中使用你想要的图标。
 
 ## 📜 许可证
 

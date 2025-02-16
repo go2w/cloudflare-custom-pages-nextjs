@@ -13,7 +13,7 @@ export default function Custom404() {
     title: "Page Not Found",
     message: "The page you are looking for could not be found.",
     box: "RAY_ID",
-    icon: "lucide:file-question",
+    icon: "file-question",
   } as ErrorPageConfig;
 
   return (

@@ -1,8 +1,8 @@
 "use client";
 
+import { Icon } from "@/components/ui/icon";
 import type { ChallengePageConfig } from "@/config/routes";
 import { CFCard } from "./common";
-import { Icon } from "@iconify/react";
 
 export const CaptchaBox = ({
   title,
@@ -15,16 +15,13 @@ export const CaptchaBox = ({
       title={title}
       message=""
       subtitle="Security Check"
-      icon={<Icon icon={icon} className="h-6 w-6 text-white" />}
+      icon={<Icon name={icon} className="h-6 w-6 text-white" />}
       headerClassName="bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900/30 dark:to-blue-900/10"
       iconClassName="from-blue-500 to-blue-600"
     >
       {message && (
         <div className="flex items-center gap-2 mb-6 p-4 bg-blue-50 dark:bg-blue-900/30 rounded-lg">
-          <Icon
-            icon="lucide:info"
-            className="w-5 h-5 text-blue-500 dark:text-blue-400 flex-shrink-0"
-          />
+          <Icon name="info" className="w-4 h-4" />
           <p className="text-sm text-blue-700 dark:text-blue-300">{message}</p>
         </div>
       )}
