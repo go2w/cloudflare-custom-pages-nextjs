@@ -154,7 +154,7 @@ export const blockPages: Record<string, BlockPageConfig> = {
 -   `title` 表示错误页面的标题，可随意更改。
 -   `message` 表示页面提示信息，可随意更改，只允许字符串类型。
 -   `code` 表示页面错误代码，主要用于首页展示。
--   `icon` 表示页面所用图标，可随意更改，图标名称参考：[lucide-react](https://lucide.dev/icons/info)。
+-   `icon` 表示页面所用图标，可随意更改，图标名称参考：[Iconify](https://icon-sets.iconify.design/)。
 
 ### 3. 自定义组件样式
 

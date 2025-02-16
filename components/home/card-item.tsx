@@ -2,7 +2,7 @@
 
 import type { ColorClasses, Page } from "@/config/home";
 import { Link } from "@heroui/link";
-import { ArrowRight } from "lucide-react";
+import { Icon } from "@iconify/react";
 import { clsx as cx } from "clsx";
 
 interface CardItemProps {
@@ -28,7 +28,10 @@ export const CardItem = ({ page, classes }: CardItemProps) => {
           )}
         >
           {page.icon && (
-            <page.icon className={cx("h-4 w-4", classes.iconText)} />
+            <Icon
+              icon={page.icon}
+              className={cx("h-4 w-4", classes.iconText)}
+            />
           )}
         </div>
         <span className="text-gray-800 dark:text-gray-200 font-medium">
@@ -47,7 +50,8 @@ export const CardItem = ({ page, classes }: CardItemProps) => {
             {page.code}
           </span>
         )}
-        <ArrowRight
+        <Icon
+          icon="lucide:arrow-right"
           className={cx(
             "h-4 w-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200",
             classes.iconText

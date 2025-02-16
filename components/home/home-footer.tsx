@@ -4,12 +4,12 @@ import { ThemeSwitch } from "@/components/theme-switch";
 import { siteConfig } from "@/config/site";
 import print from "@/utils/console";
 import { clsx as cx } from "clsx";
-import { BookOpen, Github, Heart } from "lucide-react";
-import type { ComponentType, FC, ReactNode } from "react";
+import { Icon } from "@iconify/react";
+import type { FC, ReactNode } from "react";
 
 interface FooterLinkProps {
   href: string;
-  icon: ComponentType<{ className?: string }>;
+  icon: string;
 }
 
 interface FooterSectionProps {
@@ -18,7 +18,7 @@ interface FooterSectionProps {
   delay?: number;
 }
 
-const FooterLink = ({ href, icon: Icon }: FooterLinkProps) => (
+const FooterLink = ({ href, icon }: FooterLinkProps) => (
   <div className="p-2 rounded-full hover:bg-default-100 transition-all duration-200 hover:scale-110 active:scale-95">
     <a
       href={href}
@@ -26,7 +26,10 @@ const FooterLink = ({ href, icon: Icon }: FooterLinkProps) => (
       target="_blank"
       rel="noopener noreferrer"
     >
-      <Icon className="w-5 h-5 text-default-500 hover:text-primary-500 transition-colors" />
+      <Icon
+        icon={icon}
+        className="w-5 h-5 text-default-500 hover:text-primary-500 transition-colors"
+      />
     </a>
   </div>
 );
@@ -46,8 +49,8 @@ const FooterSection: FC<FooterSectionProps> = ({
 
 const HomeFooter = () => {
   const links = [
-    { href: siteConfig.links.docs, icon: BookOpen },
-    { href: siteConfig.links.github, icon: Github },
+    { href: siteConfig.links.docs, icon: "lucide:book-open" },
+    { href: siteConfig.links.github, icon: "lucide:github" },
   ];
 
   print();
@@ -77,7 +80,9 @@ const HomeFooter = () => {
             delay={0.4}
           >
             <div className="text-xs text-default-400 flex items-center gap-2">
-              Made with <Heart className="w-4 h-4 text-red-500" /> by Alice39s
+              Made with{" "}
+              <Icon icon="lucide:heart" className="w-4 h-4 text-red-500" /> by
+              Alice39s
             </div>
           </FooterSection>
         </div>

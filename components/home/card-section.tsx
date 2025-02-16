@@ -2,13 +2,14 @@ import type { Section } from "@/config/home";
 import { colorSchemes } from "@/config/home";
 import { CardItem } from "./card-item";
 import { clsx as cx } from "clsx";
+import { Icon } from "@iconify/react";
 
 interface CardSectionProps extends Section {}
 
 export const CardSection = ({
   title,
   description,
-  icon: Icon,
+  icon,
   color,
   pages,
 }: CardSectionProps) => {
@@ -30,7 +31,10 @@ export const CardSection = ({
               classes.iconBg
             )}
           >
-            <Icon className={cx("h-6 w-6 lg:h-7 lg:w-7", classes.iconText)} />
+            <Icon
+              icon={icon}
+              className={cx("h-6 w-6 lg:h-7 lg:w-7", classes.iconText)}
+            />
           </div>
           <div className="flex-grow">
             <h2 className="text-xl lg:text-2xl font-bold text-gray-900 dark:text-gray-50 mb-2">

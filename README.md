@@ -155,7 +155,7 @@ export const blockPages: Record<string, BlockPageConfig> = {
 -   `title`: Page title (editable).
 -   `message`: Custom message (string only).
 -   `code`: Error code for display purposes.
--   `icon`: Icon component from `lucide-react`, reference: [lucide-react](https://lucide.dev/icons/info).
+-   `icon`: Icon component from `@iconify/react`, reference: [Iconify](https://icon-sets.iconify.design/).
 
 ### 3. Component Styling
 

@@ -1,5 +1,3 @@
-import { AlertTriangle, Lock, ShieldCheck } from "lucide-react";
-import type { LucideIcon } from "lucide-react";
 import { blockPages, challengePages, errorPages } from "./routes";
 
 export type ColorScheme = "danger" | "warning" | "primary";
@@ -17,13 +15,13 @@ export interface Page {
   title: string;
   path: string;
   code?: string;
-  icon?: LucideIcon;
+  icon?: string;
 }
 
 export interface Section {
   title: string;
   description: string;
-  icon: LucideIcon;
+  icon: string;
   color: ColorScheme;
   pages: Page[];
 }
@@ -59,7 +57,7 @@ export const sections: Section[] = [
   {
     title: "Error Pages",
     description: "Server error pages",
-    icon: AlertTriangle,
+    icon: "lucide:triangle-alert",
     color: "danger",
     pages: Object.entries(errorPages).map(([type, config]) => ({
       title: config.title,
@@ -71,7 +69,7 @@ export const sections: Section[] = [
   {
     title: "Block Pages",
     description: "Access denied pages",
-    icon: Lock,
+    icon: "lucide:lock",
     color: "warning",
     pages: Object.entries(blockPages).map(([type, config]) => ({
       title: config.title,
@@ -83,7 +81,7 @@ export const sections: Section[] = [
   {
     title: "Challenge Pages",
     description: "Security verification challenges",
-    icon: ShieldCheck,
+    icon: "lucide:shield-check",
     color: "primary",
     pages: Object.entries(challengePages).map(([type, config]) => ({
       title: config.title,

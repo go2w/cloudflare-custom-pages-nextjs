@@ -2,19 +2,15 @@
 
 import type { BlockPageConfig } from "@/config/routes";
 import { CFCard } from "./common";
+import { Icon } from "@iconify/react";
 
-export const BlockBox = ({
-  title,
-  message,
-  type,
-  icon: Icon,
-}: BlockPageConfig) => {
+export const BlockBox = ({ title, message, type, icon }: BlockPageConfig) => {
   return (
     <CFCard
       title={title}
       message={message}
       subtitle="Access Denied"
-      icon={<Icon className="h-6 w-6 text-white" />}
+      icon={<Icon icon={icon} className="h-6 w-6 text-white" />}
       headerClassName="bg-gradient-to-br from-red-50 to-red-100 dark:from-red-950 dark:to-gray-900"
       iconClassName="from-red-500 to-red-600"
     >
