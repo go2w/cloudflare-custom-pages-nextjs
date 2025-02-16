@@ -30,7 +30,7 @@ export const CFCard = ({
       suppressHydrationWarning
       className="max-w-xl w-full mx-auto overflow-hidden bg-white dark:bg-gray-900 shadow-xl ring-1 ring-gray-900/5 dark:ring-gray-800 m-4 rounded-xl"
     >
-      <CardHeader className={`relative ${headerClassName} p-6`}>
+      <CardHeader className={`relative ${headerClassName} p-6 rounded-t-xl`}>
         {watermark && (
           <div className="absolute right-0 top-0 h-24 w-24 opacity-20">
             {watermark}
