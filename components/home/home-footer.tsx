@@ -3,6 +3,7 @@
 import { ThemeSwitch } from "@/components/theme-switch";
 import { siteConfig } from "@/config/site";
 import print from "@/utils/console";
+import { clsx as cx } from "clsx";
 import { BookOpen, Github, Heart } from "lucide-react";
 import type { ComponentType, FC, ReactNode } from "react";
 
@@ -36,7 +37,7 @@ const FooterSection: FC<FooterSectionProps> = ({
   delay = 0,
 }) => (
   <div
-    className={`${className} animate-fade-in`}
+    className={cx("animate-fade-in", className)}
     style={{ animationDelay: `${delay}s` }}
   >
     {children}

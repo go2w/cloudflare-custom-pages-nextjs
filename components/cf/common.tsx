@@ -1,6 +1,7 @@
 import { ThemeSwitch } from "@/components/theme-switch";
 import { Card, CardBody, CardFooter, CardHeader } from "@heroui/card";
 import type { ReactNode } from "react";
+import { clsx as cx } from "clsx";
 
 interface CFCardProps {
   title: string;
@@ -30,7 +31,7 @@ export const CFCard = ({
       suppressHydrationWarning
       className="max-w-xl w-full mx-auto overflow-hidden bg-white dark:bg-gray-900 shadow-xl ring-1 ring-gray-900/5 dark:ring-gray-800 m-4 rounded-xl"
     >
-      <CardHeader className={`relative ${headerClassName} p-6 rounded-t-xl`}>
+      <CardHeader className={cx("relative p-6 rounded-t-xl", headerClassName)}>
         {watermark && (
           <div className="absolute right-0 top-0 h-24 w-24 opacity-20">
             {watermark}
@@ -45,10 +46,16 @@ export const CFCard = ({
           <div className="flex-shrink-0">
             <div className="relative">
               <div
-                className={`absolute inset-0 animate-pulse bg-${iconClassName.split(" ")[1]}/20 rounded-full blur-xl`}
+                className={cx(
+                  "absolute inset-0 animate-pulse rounded-full blur-xl",
+                  `bg-${iconClassName.split(" ")[1]}/20`
+                )}
               />
               <div
-                className={`relative rounded-full bg-gradient-to-br ${iconClassName} p-3`}
+                className={cx(
+                  "relative rounded-full bg-gradient-to-br p-3",
+                  iconClassName
+                )}
               >
                 {icon}
               </div>

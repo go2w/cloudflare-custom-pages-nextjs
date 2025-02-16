@@ -1,6 +1,7 @@
 import type { Section } from "@/config/home";
 import { colorSchemes } from "@/config/home";
 import { CardItem } from "./card-item";
+import { clsx as cx } from "clsx";
 
 interface CardSectionProps extends Section {}
 
@@ -15,15 +16,21 @@ export const CardSection = ({
 
   return (
     <div
-      className={`group relative rounded-3xl border ${classes.border} bg-white/90 dark:bg-gray-900/90 backdrop-blur-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 h-full`}
+      className={cx(
+        "group relative rounded-3xl border bg-white/90 dark:bg-gray-900/90 backdrop-blur-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 h-full",
+        classes.border
+      )}
     >
       <div className="absolute inset-0 rounded-3xl border border-white/50 dark:border-gray-800/50 pointer-events-none" />
       <div className="p-6 lg:p-8 flex flex-col h-full">
         <div className="flex items-center gap-6 mb-6">
           <div
-            className={`flex-shrink-0 flex h-12 w-12 lg:h-14 lg:w-14 items-center justify-center rounded-xl ${classes.iconBg} shadow-lg`}
+            className={cx(
+              "flex-shrink-0 flex h-12 w-12 lg:h-14 lg:w-14 items-center justify-center rounded-xl shadow-lg",
+              classes.iconBg
+            )}
           >
-            <Icon className={`h-6 w-6 lg:h-7 lg:w-7 ${classes.iconText}`} />
+            <Icon className={cx("h-6 w-6 lg:h-7 lg:w-7", classes.iconText)} />
           </div>
           <div className="flex-grow">
             <h2 className="text-xl lg:text-2xl font-bold text-gray-900 dark:text-gray-50 mb-2">
