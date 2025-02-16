@@ -7,8 +7,8 @@ export interface ColorClasses {
   itemBg: string;
   iconBg: string;
   iconText: string;
-  codeBg?: string;
-  codeText?: string;
+  codeBg: string;
+  codeText: string;
   border: string;
 }
 
@@ -30,25 +30,25 @@ export interface Section {
 export const colorSchemes: Record<ColorScheme, ColorClasses> = {
   danger: {
     itemBg: "hover:bg-red-50 dark:hover:bg-red-900/10",
-    iconBg: "bg-red-100 dark:bg-red-900/30",
+    iconBg: "bg-red-400 dark:bg-red-400",
     iconText: "text-red-500 dark:text-red-400",
-    codeBg: "bg-red-100 dark:bg-red-900/30",
+    codeBg: "bg-red-50 dark:bg-red-900/30",
     codeText: "text-red-600 dark:text-red-400",
     border: "border-red-100 dark:border-red-900/30",
   },
   warning: {
-    itemBg: "hover:bg-yellow-50 dark:hover:bg-yellow-900/10",
-    iconBg: "bg-yellow-100 dark:bg-yellow-900/30",
-    iconText: "text-yellow-600 dark:text-yellow-400",
-    codeBg: "bg-yellow-100 dark:bg-yellow-900/30",
-    codeText: "text-yellow-600 dark:text-yellow-400",
-    border: "border-yellow-100 dark:border-yellow-900/30",
+    itemBg: "hover:bg-amber-50 dark:hover:bg-amber-900/10",
+    iconBg: "bg-amber-400 dark:bg-amber-400",
+    iconText: "text-amber-600 dark:text-amber-400",
+    codeBg: "bg-amber-50 dark:bg-amber-900/30",
+    codeText: "text-amber-600 dark:text-amber-400",
+    border: "border-amber-100 dark:border-amber-900/30",
   },
   primary: {
     itemBg: "hover:bg-blue-50 dark:hover:bg-blue-900/10",
-    iconBg: "bg-blue-100 dark:bg-blue-900/30",
+    iconBg: "bg-blue-400 dark:bg-blue-400",
     iconText: "text-blue-500 dark:text-blue-400",
-    codeBg: "bg-blue-100 dark:bg-blue-900/30",
+    codeBg: "bg-blue-50 dark:bg-blue-900/30",
     codeText: "text-blue-600 dark:text-blue-400",
     border: "border-blue-100 dark:border-blue-900/30",
   },

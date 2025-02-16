@@ -3,7 +3,7 @@
 import { Icon } from "@/components/ui/icon";
 import type { ErrorPageConfig } from "@/config/routes";
 import { Chip } from "@heroui/chip";
-import { CFCard } from "./common";
+import { CFCard } from "./ui/CFCard";
 
 export const ErrorBox = ({
   title,
@@ -22,7 +22,7 @@ export const ErrorBox = ({
         </Chip>
       }
       icon={<Icon name={icon} className="h-6 w-6 text-white" />}
-      iconClassName="from-red-500 to-red-600"
+      scheme="danger"
       footer={
         box && (
           <div

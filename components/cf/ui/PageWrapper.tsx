@@ -8,9 +8,9 @@ import type {
 } from "@/config/routes";
 import type { PageType } from "@/config/routes";
 import { useRouter } from "next/router";
-import { BlockBox } from "./BlockBox";
-import { CaptchaBox } from "./CaptchaBox";
-import { ErrorBox } from "./ErrorBox";
+import { BlockBox } from "../BlockBox";
+import { CaptchaBox } from "../CaptchaBox";
+import { ErrorBox } from "../ErrorBox";
 
 type PageConfigMap = {
   error: {

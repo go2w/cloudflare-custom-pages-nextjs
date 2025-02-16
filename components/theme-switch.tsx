@@ -7,6 +7,7 @@ import { VisuallyHidden } from "@react-aria/visually-hidden";
 import { clsx as cx } from "clsx";
 import { motion } from "framer-motion";
 import { useTheme } from "next-themes";
+import { useEffect, useState } from "react";
 import type { FC } from "react";
 
 export interface ThemeSwitchProps {
@@ -20,6 +21,11 @@ export const ThemeSwitch: FC<ThemeSwitchProps> = ({
 }) => {
   const { theme, setTheme } = useTheme();
   const isSSR = useIsSSR();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const onChange = () => {
     theme === "light" ? setTheme("dark") : setTheme("light");
@@ -37,6 +43,13 @@ export const ThemeSwitch: FC<ThemeSwitchProps> = ({
     "aria-label": `Switch to ${theme === "light" || isSSR ? "dark" : "light"} mode`,
     onChange,
   });
+
+  // For SSR
+  if (!mounted) {
+    return (
+      <div className="w-10 h-10 rounded-lg bg-default-100 animate-pulse" />
+    );
+  }
 
   return (
     <Component
@@ -78,9 +91,19 @@ export const ThemeSwitch: FC<ThemeSwitchProps> = ({
           transition={{ duration: 0.3 }}
         >
           {!isSelected || isSSR ? (
-            <Icon name="sun" className="h-6 w-6" />
+            <div className="relative">
+              <Icon name="sun" className="h-6 w-6" />
+              <div className="absolute inset-0 flex items-center justify-center bg-default-100 rounded opacity-0 group-hover:opacity-100 transition-opacity">
+                ☀️
+              </div>
+            </div>
           ) : (
-            <Icon name="moon" className="h-6 w-6" />
+            <div className="relative">
+              <Icon name="moon" className="h-6 w-6" />
+              <div className="absolute inset-0 flex items-center justify-center bg-default-100 rounded opacity-0 group-hover:opacity-100 transition-opacity">
+                🌙
+              </div>
+            </div>
           )}
         </motion.div>
       </div>

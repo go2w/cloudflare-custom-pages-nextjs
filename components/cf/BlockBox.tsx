@@ -2,7 +2,7 @@
 
 import { Icon } from "@/components/ui/icon";
 import type { BlockPageConfig } from "@/config/routes";
-import { CFCard } from "./common";
+import { CFCard } from "./ui/CFCard";
 
 export const BlockBox = ({ title, message, type, icon }: BlockPageConfig) => {
   return (
@@ -12,7 +12,7 @@ export const BlockBox = ({ title, message, type, icon }: BlockPageConfig) => {
       subtitle="Access Denied"
       icon={<Icon name={icon} className="h-6 w-6 text-white" />}
       headerClassName="bg-gradient-to-br from-red-50 to-red-100 dark:from-red-950 dark:to-gray-900"
-      iconClassName="from-red-500 to-red-600"
+      scheme="danger"
     >
       <div className="rounded-lg bg-gradient-to-br from-red-50 to-red-100 dark:from-red-900/20 dark:to-red-900/10 p-4 backdrop-blur-sm border border-red-100 dark:border-red-900/50">
         <div className="font-mono text-sm">

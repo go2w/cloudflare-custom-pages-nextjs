@@ -1,4 +1,6 @@
 import { ThemeSwitch } from "@/components/theme-switch";
+import { getSchemeClasses } from "@/components/ui/color-scheme";
+import type { ColorScheme } from "@/config/home";
 import { Card, CardBody, CardFooter, CardHeader } from "@heroui/card";
 import { clsx as cx } from "clsx";
 import type { ReactNode } from "react";
@@ -11,6 +13,7 @@ interface CFCardProps {
   watermark?: ReactNode;
   headerClassName?: string;
   iconClassName?: string;
+  scheme?: ColorScheme;
   children?: ReactNode;
   footer?: ReactNode;
 }
@@ -22,10 +25,23 @@ export const CFCard = ({
   icon,
   watermark,
   headerClassName = "bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900",
-  iconClassName = "from-default-500 to-default-600",
+  iconClassName,
+  scheme = "primary",
   children,
   footer,
 }: CFCardProps) => {
+  const schemeClasses = getSchemeClasses(scheme);
+  const finalIconClassName =
+    iconClassName ||
+    cx("bg-gradient-to-br", schemeClasses.gradient, schemeClasses.iconBg);
+
+  const getIconGlowClass = () => {
+    if (scheme === "primary") return "bg-blue-500/20";
+    if (scheme === "danger") return "bg-red-500/20";
+    if (scheme === "warning") return "bg-amber-500/20";
+    return "bg-default-500/20";
+  };
+
   return (
     <Card
       suppressHydrationWarning
@@ -48,14 +64,11 @@ export const CFCard = ({
               <div
                 className={cx(
                   "absolute inset-0 animate-pulse rounded-full blur-xl",
-                  `bg-${iconClassName.split(" ")[1]}/20`,
+                  getIconGlowClass(),
                 )}
               />
               <div
-                className={cx(
-                  "relative rounded-full bg-gradient-to-br p-3",
-                  iconClassName,
-                )}
+                className={cx("relative rounded-full p-3", finalIconClassName)}
               >
                 {icon}
               </div>

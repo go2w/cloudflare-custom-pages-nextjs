@@ -2,7 +2,7 @@ import {
   PageWrapper,
   getStaticPaths as getStaticPathsHelper,
   getStaticProps as getStaticPropsHelper,
-} from "@/components/cf/PageWrapper";
+} from "@/components/cf/ui/PageWrapper";
 
 import { type PageType, directories, types } from "@/config/routes";
 
