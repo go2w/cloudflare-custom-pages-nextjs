@@ -19,16 +19,20 @@ export const ThemeSwitch: FC<ThemeSwitchProps> = ({
   className,
   classNames,
 }) => {
-  const { theme, setTheme } = useTheme();
+  const { theme, setTheme, systemTheme } = useTheme();
   const isSSR = useIsSSR();
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    const initialTheme = theme || systemTheme || 'light';
+    setTheme(initialTheme);
     setMounted(true);
-  }, []);
+  }, [theme, systemTheme, setTheme]);
 
+  const currentTheme = theme || systemTheme;
+  
   const onChange = () => {
-    theme === "light" ? setTheme("dark") : setTheme("light");
+    currentTheme === "light" ? setTheme("dark") : setTheme("light");
   };
 
   const {
@@ -39,16 +43,14 @@ export const ThemeSwitch: FC<ThemeSwitchProps> = ({
     getInputProps,
     getWrapperProps,
   } = useSwitch({
-    isSelected: theme === "light" || isSSR,
-    "aria-label": `Switch to ${theme === "light" || isSSR ? "dark" : "light"} mode`,
+    isSelected: currentTheme === "light" || isSSR,
+    "aria-label": `Switch to ${currentTheme === "light" || isSSR ? "dark" : "light"} mode`,
     onChange,
   });
 
-  // For SSR
-  if (!mounted) {
-    return (
-      <div className="w-10 h-10 rounded-lg bg-default-100 animate-pulse" />
-    );
+  // Prevent hydration mismatch
+  if (!mounted || isSSR) {
+    return null;
   }
 
   return (
@@ -84,7 +86,7 @@ export const ThemeSwitch: FC<ThemeSwitchProps> = ({
         })}
       >
         <motion.div
-          key={theme}
+          key={currentTheme}
           initial={{ rotate: -90, opacity: 0 }}
           animate={{ rotate: 0, opacity: 1 }}
           exit={{ rotate: 90, opacity: 0 }}

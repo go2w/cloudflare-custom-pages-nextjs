@@ -139,13 +139,19 @@ Modify fields in `./config/site.ts` (name, description, etc.).
 Edit `./config/routes.ts`. Example:
 
 ```ts
+// ./config/routes.ts
+export type BlockPageConfig = BasePageConfig & {
+  type: "ip" | "waf" | "rate-limit";
+  code: string;
+};
+
 export const blockPages: Record<string, BlockPageConfig> = {
   ip: {
     type: "ip",
     title: "Access Denied (1006)",
     message: "The owner of this website has banned your IP address.",
     code: "1006",
-    icon: ShieldBan,
+    icon: "shield-ban", // Icon name, refer to `./config/icons.ts` for `IconKey` type
   },
     ...
 }

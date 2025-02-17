@@ -138,13 +138,19 @@
 修改 `./config/routes.ts`，示例如下：
 
 ```ts
+// ./config/routes.ts
+export type BlockPageConfig = BasePageConfig & {
+  type: "ip" | "waf" | "rate-limit";
+  code: string;
+};
+
 export const blockPages: Record<string, BlockPageConfig> = {
     ip: {
         type: "ip",
         title: "Access Denied (1006)",
         message: "The owner of this website has banned your IP address.",
         code: "1006",
-        icon: ShieldBan,
+        icon: "shield-ban", // 图标名称, 可参考 `./config/icons.ts` 中的 `IconKey` 类型
     },
     ...
 }
@@ -177,9 +183,9 @@ components/
 2. 前往 [Lucide](https://lucide.dev/icons/) 图标库，挑选你喜欢的图标。
 3. 点击 `Copy Component Name` 按钮复制图标名称。
 4. 随后前往 `./config/icons.ts` 按照指引依次将图标名称添加到：
-   1. `import { ... Component } from "lucide-react"` (引入图标组件)
-   2. `export type IconKey = ...` (添加图标名称到类型列表)
-   3. `export const icons = { ... }` (添加图标名称到映射字典)
+    1. `import { ... Component } from "lucide-react"` (引入图标组件)
+    2. `export type IconKey = ...` (添加图标名称到类型列表)
+    3. `export const icons = { ... }` (添加图标名称到映射字典)
 5. 最后在 `./config/routes.ts` 中使用你想要的图标。
 
 ## 📜 许可证
