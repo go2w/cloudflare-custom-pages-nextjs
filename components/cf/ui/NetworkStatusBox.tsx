@@ -1,9 +1,9 @@
+import { interfaceTranslations } from "@/config/i18n";
 import type { NetworkStatusConfig } from "@/config/routes";
 import { clsx } from "clsx";
 import { useEffect, useState } from "react";
 import { NetworkLine } from "./NetworkLine";
 import { NetworkNode } from "./NetworkNode";
-import { interfaceTranslations } from "@/config/i18n";
 
 interface NetworkStatusBoxProps extends NetworkStatusConfig {
   rayId?: string;

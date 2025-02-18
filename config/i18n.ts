@@ -65,21 +65,20 @@ export const challengePageTranslations: Record<
   },
 } as const;
 
-export const interfaceTranslations: Record<string, InterfaceTranslations> =
-  {
-    "error-details": {
-      message: "Details (Click to expand):",
-    },
-    "connection-tracking": {
-      message: "Connection Tracking",
-    },
-    "network-status-you": {
-      message: "You",
-    },
-    "network-status-cdn": {
-      message: "CDN",
-    },
-    "network-status-origin": {
-      message: "Origin",
-    },
-  } as const;
+export const interfaceTranslations: Record<string, InterfaceTranslations> = {
+  "error-details": {
+    message: "Details (Click to expand):",
+  },
+  "connection-tracking": {
+    message: "Connection Tracking",
+  },
+  "network-status-you": {
+    message: "You",
+  },
+  "network-status-cdn": {
+    message: "CDN",
+  },
+  "network-status-origin": {
+    message: "Origin",
+  },
+} as const;

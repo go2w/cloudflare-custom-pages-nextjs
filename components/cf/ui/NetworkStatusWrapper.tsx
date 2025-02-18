@@ -1,6 +1,6 @@
 import { Icon } from "@/components/ui/icon";
-import type { ReactNode } from "react";
 import { interfaceTranslations } from "@/config/i18n";
+import type { ReactNode } from "react";
 
 export const NetworkStatusWrapper = ({ children }: { children: ReactNode }) => {
   return (

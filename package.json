@@ -1,6 +1,15 @@
 {
   "name": "cloudflare-custom-pages-nextjs",
-  "version": "1.0.3",
+  "version": "1.0.4",
+  "license": "GPL-3.0-or-later",
+  "description": "A beautiful, out-of-the-box Cloudflare WAF custom page template.",
+  "author": {
+    "name": "Alice39s"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Alice39s/cloudflare-custom-pages-nextjs.git"
+  },
   "private": true,
   "scripts": {
     "predev": "bun run format-lint",

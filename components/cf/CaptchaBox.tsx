@@ -1,11 +1,11 @@
 "use client";
 
 import { Icon } from "@/components/ui/icon";
+import { challengePageTranslations } from "@/config/i18n";
 import type { ChallengePageConfig } from "@/config/routes";
 import { CFCard } from "./ui/CFCard";
 import { NetworkStatusBox } from "./ui/NetworkStatusBox";
 import { NetworkStatusWrapper } from "./ui/NetworkStatusWrapper";
-import { challengePageTranslations } from "@/config/i18n";
 
 export const CaptchaBox = ({
   type,

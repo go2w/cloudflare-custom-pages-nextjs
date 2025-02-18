@@ -1,13 +1,13 @@
 "use client";
 
 import { Icon } from "@/components/ui/icon";
+import { errorPageTranslations, interfaceTranslations } from "@/config/i18n";
 import type { ErrorPageConfig } from "@/config/routes";
 import { Accordion, AccordionItem } from "@heroui/accordion";
 import { Chip } from "@heroui/chip";
 import { CFCard } from "./ui/CFCard";
 import { NetworkStatusBox } from "./ui/NetworkStatusBox";
 import { NetworkStatusWrapper } from "./ui/NetworkStatusWrapper";
-import { errorPageTranslations, interfaceTranslations } from "@/config/i18n";
 
 export const ErrorBox = ({
   type,
