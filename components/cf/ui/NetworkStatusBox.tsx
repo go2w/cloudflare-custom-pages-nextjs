@@ -1,4 +1,5 @@
 import type { NetworkStatusConfig } from "@/config/routes";
+import type { NetworkStatus } from "@/config/styles";
 import { clsx } from "clsx";
 import { useEffect, useState } from "react";
 import { NetworkLine } from "./NetworkLine";
@@ -8,6 +9,14 @@ interface NetworkStatusBoxProps extends NetworkStatusConfig {
   rayId?: string;
   className?: string;
 }
+
+const validLineStatus = (
+  status:
+    | NetworkStatusConfig["clientStatus"]
+    | NetworkStatusConfig["edgeStatus"],
+): NetworkStatus => {
+  return status === "challenging" ? "success" : status;
+};
 
 export const NetworkStatusBox = ({
   clientStatus,
@@ -33,12 +42,12 @@ export const NetworkStatusBox = ({
     >
       <div className="flex items-center justify-center">
         <NetworkNode label="You" status={clientStatus} />
-        <NetworkLine status={clientStatus} />
+        <NetworkLine status={validLineStatus(clientStatus)} />
         <NetworkNode label="CDN" status={edgeStatus} />
 
         {originStatus && (
           <>
-            <NetworkLine status={originStatus} />
+            <NetworkLine status={validLineStatus(edgeStatus)} />
             <NetworkNode label={hostname || "Origin"} status={originStatus} />
           </>
         )}

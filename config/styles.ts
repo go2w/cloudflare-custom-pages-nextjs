@@ -11,8 +11,9 @@ export const networkStatusStyles = {
     line: {
       base: "bg-green-100/50 dark:bg-green-900/30",
       animation: "animate-[flow_3s_cubic-bezier(0.4,0,0.6,1)_infinite]",
-      gradient: "bg-gradient-to-r from-transparent via-green-500/60 to-transparent dark:via-green-400/80",
-    }
+      gradient:
+        "bg-gradient-to-r from-transparent via-green-500/60 to-transparent dark:via-green-400/80",
+    },
   },
   error: {
     base: {
@@ -24,8 +25,9 @@ export const networkStatusStyles = {
     line: {
       base: "bg-red-100/50 dark:bg-red-900/30",
       animation: "animate-[flow_2.5s_cubic-bezier(0.4,0,0.6,1)_infinite]",
-      gradient: "bg-gradient-to-r from-transparent via-red-500/60 to-transparent dark:via-red-400/80",
-    }
+      gradient:
+        "bg-gradient-to-r from-transparent via-red-500/60 to-transparent dark:via-red-400/80",
+    },
   },
   challenging: {
     base: {
@@ -36,8 +38,10 @@ export const networkStatusStyles = {
     },
     line: {
       base: "bg-orange-100/50 dark:bg-orange-900/30",
-      animation: "animate-[network-loading_2s_cubic-bezier(0.4,0,0.6,1)_infinite]",
-      gradient: "bg-gradient-to-r from-transparent via-orange-500/60 to-transparent dark:via-orange-400/80",
-    }
+      animation:
+        "animate-[network-loading_2s_cubic-bezier(0.4,0,0.6,1)_infinite]",
+      gradient:
+        "bg-gradient-to-r from-transparent via-orange-500/60 to-transparent dark:via-orange-400/80",
+    },
   },
-} as const; 
+} as const;
