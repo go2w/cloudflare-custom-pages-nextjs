@@ -12,15 +12,18 @@ interface NetworkNodeProps {
 export const NetworkNode = ({ label, status, className }: NetworkNodeProps) => {
   const styles = {
     success: {
-      container: "bg-green-50/80 text-green-600 ring-1 ring-green-100/80 dark:bg-green-900/20 dark:text-green-300 dark:ring-green-900/30",
+      container:
+        "bg-green-50/80 text-green-600 ring-1 ring-green-100/80 dark:bg-green-900/20 dark:text-green-300 dark:ring-green-900/30",
       icon: "text-green-500 dark:text-green-400",
     },
     error: {
-      container: "bg-red-50/80 text-red-600 ring-1 ring-red-100/80 dark:bg-red-900/20 dark:text-red-300 dark:ring-red-900/30",
+      container:
+        "bg-red-50/80 text-red-600 ring-1 ring-red-100/80 dark:bg-red-900/20 dark:text-red-300 dark:ring-red-900/30",
       icon: "text-red-500 dark:text-red-400",
     },
     challenging: {
-      container: "bg-orange-50/80 text-orange-600 ring-1 ring-orange-100/80 dark:bg-orange-900/20 dark:text-orange-300 dark:ring-orange-900/30",
+      container:
+        "bg-orange-50/80 text-orange-600 ring-1 ring-orange-100/80 dark:bg-orange-900/20 dark:text-orange-300 dark:ring-orange-900/30",
       icon: "text-orange-500 dark:text-orange-400",
     },
   }[status];

@@ -56,7 +56,8 @@ module.exports = {
         "fade-in": "fade-in 0.3s ease-out forwards",
         "slide-in-from-bottom-4": "slide-in-from-bottom 0.4s ease-out forwards",
         flow: "flow 3s cubic-bezier(0.4,0,0.6,1) infinite",
-        "network-loading": "network-loading 2s cubic-bezier(0.4,0,0.6,1) infinite",
+        "network-loading":
+          "network-loading 2s cubic-bezier(0.4,0,0.6,1) infinite",
       },
     },
   },
