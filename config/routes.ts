@@ -9,17 +9,20 @@ interface BasePageConfig {
 export type BlockPageConfig = BasePageConfig & {
   type: "ip" | "waf" | "rate-limit";
   code: string;
+  networkStatus: NetworkStatusConfig;
 };
 
 export type ErrorPageConfig = BasePageConfig & {
   type: "500s" | "1000s";
   code: string;
   box: string;
+  networkStatus: NetworkStatusConfig;
 };
 
 export type ChallengePageConfig = BasePageConfig & {
   type: "interactive" | "managed" | "country" | "javascript";
   box: string | null;
+  networkStatus: NetworkStatusConfig;
 };
 
 export type PageType = "error" | "block" | "challenge";
@@ -52,6 +55,10 @@ export const blockPages: Record<BlockType, BlockPageConfig> = {
     message: "The owner of this website has banned your IP address.",
     code: "1006",
     icon: "shield-ban",
+    networkStatus: {
+      clientStatus: "error",
+      edgeStatus: "success",
+    },
   },
   waf: {
     type: "waf",
@@ -60,6 +67,10 @@ export const blockPages: Record<BlockType, BlockPageConfig> = {
       "The Cloudflare WAF (Web Application Firewall) has blocked your request.",
     code: "1010",
     icon: "shield",
+    networkStatus: {
+      clientStatus: "error",
+      edgeStatus: "success",
+    },
   },
   "rate-limit": {
     type: "rate-limit",
@@ -68,6 +79,10 @@ export const blockPages: Record<BlockType, BlockPageConfig> = {
       "You have made too many requests. Please wait a moment before trying again.",
     code: "429",
     icon: "loader",
+    networkStatus: {
+      clientStatus: "challenging",
+      edgeStatus: "success",
+    },
   },
 };
 
@@ -84,6 +99,11 @@ export const errorPages: Record<ErrorType, ErrorPageConfig> = {
       "Please try again later, there was an unexpected error on the site.",
     box: "CLOUDFLARE_ERROR_500S_BOX",
     icon: "badge-alert",
+    networkStatus: {
+      clientStatus: "success",
+      edgeStatus: "success",
+      originStatus: "error",
+    },
   },
   "1000s": {
     type: "1000s",
@@ -93,6 +113,11 @@ export const errorPages: Record<ErrorType, ErrorPageConfig> = {
       "The requested hostname could not be resolved. Don't worry, it's not your problem.",
     box: "CLOUDFLARE_ERROR_1000S_BOX",
     icon: "construction",
+    networkStatus: {
+      clientStatus: "success",
+      edgeStatus: "success",
+      originStatus: "error",
+    },
   },
 };
 
@@ -107,6 +132,10 @@ export const challengePages: Record<ChallengeType, ChallengePageConfig> = {
     message: "Please complete this CAPTCHA to access the site.",
     box: "CAPTCHA_BOX",
     icon: "shield",
+    networkStatus: {
+      clientStatus: "challenging",
+      edgeStatus: "success",
+    },
   },
   managed: {
     type: "managed",
@@ -114,6 +143,10 @@ export const challengePages: Record<ChallengeType, ChallengePageConfig> = {
     message: "Complete CAPTCHA to proceed. This is a general security check.",
     box: "CAPTCHA_BOX",
     icon: "shield-check",
+    networkStatus: {
+      clientStatus: "challenging",
+      edgeStatus: "success",
+    },
   },
   country: {
     type: "country",
@@ -122,6 +155,10 @@ export const challengePages: Record<ChallengeType, ChallengePageConfig> = {
       "Additional verification is required for visitors from your Country/Region.",
     box: "CAPTCHA_BOX",
     icon: "shield-alert",
+    networkStatus: {
+      clientStatus: "challenging",
+      edgeStatus: "success",
+    },
   },
   javascript: {
     type: "javascript",
@@ -130,5 +167,16 @@ export const challengePages: Record<ChallengeType, ChallengePageConfig> = {
       "Please wait a moment while our security system verifies your request.",
     box: "IM_UNDER_ATTACK_BOX",
     icon: "shield-ellipsis",
+    networkStatus: {
+      clientStatus: "challenging",
+      edgeStatus: "success",
+    },
   },
 };
+
+export interface NetworkStatusConfig {
+  clientStatus: "success" | "error" | "challenging";
+  edgeStatus: "success" | "error";
+  originStatus?: "success" | "error";
+  className?: string;
+}

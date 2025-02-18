@@ -24,13 +24,13 @@ export const ThemeSwitch: FC<ThemeSwitchProps> = ({
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    const initialTheme = theme || systemTheme || 'light';
+    const initialTheme = theme || systemTheme || "light";
     setTheme(initialTheme);
     setMounted(true);
   }, [theme, systemTheme, setTheme]);
 
   const currentTheme = theme || systemTheme;
-  
+
   const onChange = () => {
     currentTheme === "light" ? setTheme("dark") : setTheme("light");
   };
