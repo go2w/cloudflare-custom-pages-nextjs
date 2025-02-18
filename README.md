@@ -143,7 +143,7 @@ To change the page text, edit `. /config/i18n.ts`:
 ```ts
 export const blockPageTranslations = {
   ip: {
-    title: "Access Denied (1006)",
+    title: "Access Denied - IP Blocked",
     message: "The owner of this website has banned your IP address.",
   },
   // ... more translations

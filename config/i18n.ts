@@ -13,16 +13,16 @@ export interface ChallengePageTranslation extends PageTranslation {}
 
 export const blockPageTranslations: Record<string, BlockPageTranslation> = {
   ip: {
-    title: "Access Denied (1006)",
+    title: "Access Denied - IP Blocked",
     message: "The owner of this website has banned your IP address.",
   },
   waf: {
-    title: "Firewall Block (1010)",
+    title: "Firewall Block - WAF Blocked",
     message:
       "The Cloudflare WAF (Web Application Firewall) has blocked your request.",
   },
   "rate-limit": {
-    title: "Rate Limit Block (429)",
+    title: "Rate Limit Block - 429",
     message:
       "You have made too many requests. Please wait a moment before trying again.",
   },
@@ -67,7 +67,7 @@ export const challengePageTranslations: Record<
 
 export const interfaceTranslations: Record<string, InterfaceTranslations> = {
   "error-details": {
-    message: "Details (Click to expand):",
+    message: "Details (click to expand):",
   },
   "connection-tracking": {
     message: "Connection Tracking",

@@ -1,6 +1,10 @@
+import {
+  blockPageTranslations,
+  challengePageTranslations,
+  errorPageTranslations,
+} from "./i18n";
 import type { IconKey } from "./icons";
 import { blockPages, challengePages, errorPages } from "./routes";
-import { blockPageTranslations, errorPageTranslations, challengePageTranslations } from "./i18n";
 
 export type ColorScheme = "danger" | "warning" | "primary";
 

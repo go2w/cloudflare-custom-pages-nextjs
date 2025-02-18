@@ -142,7 +142,7 @@
 ```ts
 export const blockPageTranslations = {
   ip: {
-    title: "Access Denied (1006)",
+    title: "Access Denied - IP Blocked",
     message: "The owner of this website has banned your IP address.",
   },
   // ... 更多翻译

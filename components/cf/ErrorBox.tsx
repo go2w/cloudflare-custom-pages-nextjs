@@ -5,6 +5,7 @@ import { errorPageTranslations, interfaceTranslations } from "@/config/i18n";
 import type { ErrorPageConfig } from "@/config/routes";
 import { Accordion, AccordionItem } from "@heroui/accordion";
 import { Chip } from "@heroui/chip";
+import { useEffect, useState } from "react";
 import { CFCard } from "./ui/CFCard";
 import { NetworkStatusBox } from "./ui/NetworkStatusBox";
 import { NetworkStatusWrapper } from "./ui/NetworkStatusWrapper";
@@ -16,7 +17,28 @@ export const ErrorBox = ({
   icon,
   networkStatus,
 }: ErrorPageConfig) => {
+  const [errorContent, setErrorContent] = useState<string>("");
   const translation = errorPageTranslations[type];
+
+  useEffect(() => {
+    const num = Number.parseInt(code.toString(), 10);
+    const errorBoxId =
+      num >= 1000
+        ? "cf-error-1000s-box"
+        : num >= 500
+          ? "cf-error-500s-box"
+          : null;
+
+    if (errorBoxId) {
+      const errorBox = document.getElementById(errorBoxId);
+      if (errorBox) {
+        setErrorContent(errorBox.innerHTML);
+      }
+    } else if (box) {
+      setErrorContent(`<div>::${box}::</div>`);
+    }
+  }, [code, box]);
+
   return (
     <div>
       <CFCard
@@ -34,8 +56,20 @@ export const ErrorBox = ({
           <NetworkStatusBox {...networkStatus} />
         </NetworkStatusWrapper>
 
-        {box && (
-          <div className="mt-4">
+        {type === "1000s" && (
+          <div id="cf-error-1000s-box" style={{ display: "none" }}>
+            ::CLOUDFLARE_ERROR_1000S_BOX::
+          </div>
+        )}
+
+        {type === "500s" && (
+          <div id="cf-error-500s-box" style={{ display: "none" }}>
+            ::CLOUDFLARE_ERROR_500S_BOX::
+          </div>
+        )}
+
+        {(errorContent || box) && (
+          <div className="mt-4 space-y-4 p-2 rounded-lg bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-800">
             <Accordion variant="light">
               <AccordionItem
                 key="error-details"
@@ -50,7 +84,7 @@ export const ErrorBox = ({
                 <div className="text-sm text-gray-600 dark:text-gray-400">
                   <div
                     dangerouslySetInnerHTML={{
-                      __html: `<div>::${box}::</div>`,
+                      __html: errorContent,
                     }}
                   />
                 </div>
