@@ -1,7 +1,7 @@
 import { Icon } from "@/components/ui/icon";
-import type { NetworkStatus } from "@/config/styles";
-import { networkStatusStyles } from "@/config/styles";
 import { clsx } from "clsx";
+
+type NetworkStatus = "success" | "error" | "challenging";
 
 interface NetworkNodeProps {
   label: string;
@@ -10,7 +10,21 @@ interface NetworkNodeProps {
 }
 
 export const NetworkNode = ({ label, status, className }: NetworkNodeProps) => {
-  const styles = networkStatusStyles[status];
+  const styles = {
+    success: {
+      container: "bg-green-50/80 text-green-600 ring-1 ring-green-100/80 dark:bg-green-900/20 dark:text-green-300 dark:ring-green-900/30",
+      icon: "text-green-500 dark:text-green-400",
+    },
+    error: {
+      container: "bg-red-50/80 text-red-600 ring-1 ring-red-100/80 dark:bg-red-900/20 dark:text-red-300 dark:ring-red-900/30",
+      icon: "text-red-500 dark:text-red-400",
+    },
+    challenging: {
+      container: "bg-orange-50/80 text-orange-600 ring-1 ring-orange-100/80 dark:bg-orange-900/20 dark:text-orange-300 dark:ring-orange-900/30",
+      icon: "text-orange-500 dark:text-orange-400",
+    },
+  }[status];
+
   const iconName =
     status === "success"
       ? "check-circle"
@@ -24,9 +38,7 @@ export const NetworkNode = ({ label, status, className }: NetworkNodeProps) => {
         "px-4 py-2.5 rounded-xl font-medium text-sm flex items-center gap-2",
         "transition-all duration-300 ease-out hover:scale-[1.02] active:scale-100",
         "w-[120px] shrink-0",
-        styles.base.bg,
-        styles.base.text,
-        styles.base.ring,
+        styles.container,
         className,
       )}
     >
@@ -34,7 +46,7 @@ export const NetworkNode = ({ label, status, className }: NetworkNodeProps) => {
         name={iconName}
         className={clsx(
           "w-4 h-4 transition-transform flex-shrink-0",
-          styles.base.icon,
+          styles.icon,
           status === "challenging" && "animate-pulse",
         )}
       />
