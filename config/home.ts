@@ -1,5 +1,6 @@
 import type { IconKey } from "./icons";
 import { blockPages, challengePages, errorPages } from "./routes";
+import { blockPageTranslations, errorPageTranslations, challengePageTranslations } from "./i18n";
 
 export type ColorScheme = "danger" | "warning" | "primary";
 
@@ -61,7 +62,7 @@ export const sections: Section[] = [
     icon: "triangle-alert",
     color: "danger",
     pages: Object.entries(errorPages).map(([type, config]) => ({
-      title: config.title,
+      title: errorPageTranslations[type].title,
       path: `/cf/error/${type}/`,
       code: config.code,
       icon: config.icon,
@@ -73,7 +74,7 @@ export const sections: Section[] = [
     icon: "lock",
     color: "warning",
     pages: Object.entries(blockPages).map(([type, config]) => ({
-      title: config.title,
+      title: blockPageTranslations[type].title,
       path: `/cf/block/${type}/`,
       code: config.code,
       icon: config.icon,
@@ -85,7 +86,7 @@ export const sections: Section[] = [
     icon: "shield-check",
     color: "primary",
     pages: Object.entries(challengePages).map(([type, config]) => ({
-      title: config.title,
+      title: challengePageTranslations[type].title,
       path: `/cf/challenge/${type}/`,
       icon: config.icon,
     })),
