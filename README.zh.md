@@ -135,32 +135,36 @@
 
 ### 2. 自定义文案
 
-修改 `./config/routes.ts`，示例如下：
+可在 `./config/i18n.ts` 中修改所有文案的翻译 (TODO: 支持多语言)。
+
+如需修改页面文案，编辑 `./config/i18n.ts`：
 
 ```ts
-// ./config/routes.ts
-export type BlockPageConfig = BasePageConfig & {
-  type: "ip" | "waf" | "rate-limit";
-  code: string;
-};
-
-export const blockPages: Record<string, BlockPageConfig> = {
-    ip: {
-        type: "ip",
-        title: "Access Denied (1006)",
-        message: "The owner of this website has banned your IP address.",
-        code: "1006",
-        icon: "shield-ban", // 图标名称, 可参考 `./config/icons.ts` 中的 `IconKey` 类型
-    },
-    ...
+export const blockPageTranslations = {
+  ip: {
+    title: "Access Denied (1006)",
+    message: "The owner of this website has banned your IP address.",
+  },
+  // ... 更多翻译
 }
 ```
 
--   `type` 用于区分页面路由，若没有前端开发基础，不建议修改。
--   `title` 表示错误页面的标题，可随意更改。
--   `message` 表示页面提示信息，可随意更改，只允许字符串类型。
--   `code` 表示页面错误代码，主要用于首页展示。
--   `icon` 表示页面所用图标，可随意更改，自定义图标可参考 [4. 自定义图标](#4-自定义图标) 一节。
+如需修改页面配置（不含文案），编辑 `./config/routes.ts`：
+
+```ts
+export const blockPages = {
+  ip: {
+    type: "ip",
+    code: "1006",
+    icon: "shield-ban",
+    networkStatus: {
+      clientStatus: "error",
+      edgeStatus: "success",
+    },
+  },
+  // ... 更多配置
+}
+```
 
 ### 3. 自定义组件样式
 

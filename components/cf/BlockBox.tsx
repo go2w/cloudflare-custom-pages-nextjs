@@ -5,19 +5,20 @@ import type { BlockPageConfig } from "@/config/routes";
 import { CFCard } from "./ui/CFCard";
 import { NetworkStatusBox } from "./ui/NetworkStatusBox";
 import { NetworkStatusWrapper } from "./ui/NetworkStatusWrapper";
+import { blockPageTranslations } from "@/config/i18n";
 
 export const BlockBox = ({
-  title,
-  message,
   type,
+  code,
   icon,
   networkStatus,
 }: BlockPageConfig) => {
+  const translation = blockPageTranslations[type];
   return (
     <div>
       <CFCard
-        title={title}
-        message={message}
+        title={translation.title}
+        message={translation.message}
         subtitle="Access Denied"
         icon={<Icon name={icon} className="h-6 w-6 text-white" />}
         headerClassName="bg-gradient-to-br from-red-50 to-red-100 dark:from-red-950 dark:to-gray-900"

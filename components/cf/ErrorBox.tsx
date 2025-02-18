@@ -7,20 +7,21 @@ import { Chip } from "@heroui/chip";
 import { CFCard } from "./ui/CFCard";
 import { NetworkStatusBox } from "./ui/NetworkStatusBox";
 import { NetworkStatusWrapper } from "./ui/NetworkStatusWrapper";
+import { errorPageTranslations, interfaceTranslations } from "@/config/i18n";
 
 export const ErrorBox = ({
-  title,
-  message,
+  type,
   code,
   box,
   icon,
   networkStatus,
 }: ErrorPageConfig) => {
+  const translation = errorPageTranslations[type];
   return (
     <div>
       <CFCard
-        title={title}
-        message={message}
+        title={translation.title}
+        message={translation.message}
         subtitle={
           <Chip variant="flat" color="danger" size="sm">
             Error {code}
@@ -38,7 +39,7 @@ export const ErrorBox = ({
             <Accordion variant="light">
               <AccordionItem
                 key="error-details"
-                title="Details"
+                title={interfaceTranslations["error-details"].message}
                 classNames={{
                   base: "border-none",
                   heading: "p-0",

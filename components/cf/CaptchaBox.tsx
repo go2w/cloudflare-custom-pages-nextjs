@@ -5,18 +5,19 @@ import type { ChallengePageConfig } from "@/config/routes";
 import { CFCard } from "./ui/CFCard";
 import { NetworkStatusBox } from "./ui/NetworkStatusBox";
 import { NetworkStatusWrapper } from "./ui/NetworkStatusWrapper";
+import { challengePageTranslations } from "@/config/i18n";
 
 export const CaptchaBox = ({
-  title,
-  message,
+  type,
   box,
   icon,
   networkStatus,
 }: ChallengePageConfig) => {
+  const translation = challengePageTranslations[type];
   return (
     <div>
       <CFCard
-        title={title}
+        title={translation.title}
         message=""
         subtitle="Security Check"
         icon={<Icon name={icon} className="h-6 w-6 text-white" />}
@@ -24,14 +25,14 @@ export const CaptchaBox = ({
         scheme="primary"
       >
         <div className="space-y-6">
-          {message && (
+          {translation.message && (
             <div className="flex items-center gap-2 -mt-6 p-4 bg-blue-50 dark:bg-blue-900/30 rounded-lg border border-blue-100 dark:border-blue-900/30">
               <Icon
                 name="info"
                 className="w-4 h-4 text-blue-500 dark:text-blue-400 flex-shrink-0"
               />
               <p className="text-sm text-blue-700 dark:text-blue-300">
-                {message}
+                {translation.message}
               </p>
             </div>
           )}

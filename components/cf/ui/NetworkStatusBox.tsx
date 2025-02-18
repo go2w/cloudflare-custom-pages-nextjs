@@ -3,6 +3,7 @@ import { clsx } from "clsx";
 import { useEffect, useState } from "react";
 import { NetworkLine } from "./NetworkLine";
 import { NetworkNode } from "./NetworkNode";
+import { interfaceTranslations } from "@/config/i18n";
 
 interface NetworkStatusBoxProps extends NetworkStatusConfig {
   rayId?: string;
@@ -34,14 +35,26 @@ export const NetworkStatusBox = ({
       )}
     >
       <div className="flex items-center justify-center">
-        <NetworkNode label="You" status={clientStatus} />
+        <NetworkNode
+          label={interfaceTranslations["network-status-you"].message}
+          status={clientStatus}
+        />
         <NetworkLine status={clientStatus} />
-        <NetworkNode label="CDN" status={edgeStatus} />
+        <NetworkNode
+          label={interfaceTranslations["network-status-cdn"].message}
+          status={edgeStatus}
+        />
 
         {originStatus && (
           <>
             <NetworkLine status={edgeStatus} />
-            <NetworkNode label={hostname || "Origin"} status={originStatus} />
+            <NetworkNode
+              label={
+                hostname ||
+                interfaceTranslations["network-status-origin"].message
+              }
+              status={originStatus}
+            />
           </>
         )}
       </div>

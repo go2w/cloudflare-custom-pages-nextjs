@@ -136,32 +136,36 @@ Modify fields in `./config/site.ts` (name, description, etc.).
 
 ### 2. Content Customization
 
-Edit `./config/routes.ts`. Example:
+Translations of all texts can be modified in `. /config/i18n.ts` to change the translation of all texts (TODO: multi-language support).
+
+To change the page text, edit `. /config/i18n.ts`:
 
 ```ts
-// ./config/routes.ts
-export type BlockPageConfig = BasePageConfig & {
-  type: "ip" | "waf" | "rate-limit";
-  code: string;
-};
-
-export const blockPages: Record<string, BlockPageConfig> = {
+export const blockPageTranslations = {
   ip: {
-    type: "ip",
     title: "Access Denied (1006)",
     message: "The owner of this website has banned your IP address.",
-    code: "1006",
-    icon: "shield-ban", // Icon name, refer to `./config/icons.ts` for `IconKey` type
   },
-    ...
+  // ... more translations
 }
 ```
 
--   `type`: Used for routing (not recommended to modify without frontend experience).
--   `title`: Page title (editable).
--   `message`: Custom message (string only).
--   `code`: Error code for display purposes.
--   `icon`: Icon component from `lucide-react`, reference: [4. Custom Icons](#4-custom-icons).
+To modify page configurations (without text content), edit `./config/routes.ts`:
+
+```ts
+export const blockPages = {
+  ip: {
+    type: "ip",
+    code: "1006",
+    icon: "shield-ban",
+    networkStatus: {
+      clientStatus: "error",
+      edgeStatus: "success",
+    },
+  },
+  // ... more configurations
+}
+```
 
 ### 3. Component Styling
 

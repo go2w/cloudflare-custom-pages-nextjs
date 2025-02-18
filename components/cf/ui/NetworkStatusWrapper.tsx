@@ -1,5 +1,6 @@
 import { Icon } from "@/components/ui/icon";
 import type { ReactNode } from "react";
+import { interfaceTranslations } from "@/config/i18n";
 
 export const NetworkStatusWrapper = ({ children }: { children: ReactNode }) => {
   return (
@@ -10,7 +11,7 @@ export const NetworkStatusWrapper = ({ children }: { children: ReactNode }) => {
             name="chevron-left-right-ellipsis"
             className="w-6 h-6 text-blue-500"
           />
-          Connection Tracking
+          {interfaceTranslations["connection-tracking"].message}
         </h3>
         {children}
       </div>
