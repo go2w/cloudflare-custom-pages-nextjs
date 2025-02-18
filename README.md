@@ -14,11 +14,34 @@ English | [简体中文](README.zh.md) | [Online Demo](https://cw-preview.000000
     <br> Main Page
 </div>
 
-| Example Page | Light                                      | Dark                                      |
-| ------------ | ------------------------------------------ | ----------------------------------------- |
-| Block by IP  | ![](./docs/assets/block-from-ip-light.png) | ![](./docs/assets/block-from-ip-dark.png) |
-| JS Challenge | ![](./docs/assets/captcha-ic-light.png)    | ![](./docs/assets/captcha-ic-dark.png)    |
-| 500s Error   | ![](./docs/assets/error-500s-light.png)    | ![](./docs/assets/error-500s-dark.png)    |
+<div align="center">
+<table style="width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 16px; text-align: center; align-items: center; justify-content: center;">
+    <thead>
+        <tr>
+            <th style="padding: 12px; text-align: center; border: 1px solid; font-weight: bold;">Example Page</th>
+            <th style="padding: 12px; text-align: center; border: 1px solid; font-weight: bold;">Light Mode</th>
+            <th style="padding: 12px; text-align: center; border: 1px solid; font-weight: bold;">Dark Mode</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="padding: 12px; text-align: center; border: 1px solid;">IP Block</td>
+            <td style="padding: 12px; text-align: center; border: 1px solid;"><img src="./docs/assets/block-from-ip-light.png" style="max-width: 200px; height: auto;"></td>
+            <td style="padding: 12px; text-align: center; border: 1px solid;"><img src="./docs/assets/block-from-ip-dark.png" style="max-width: 200px; height: auto;"></td>
+        </tr>
+        <tr>
+            <td style="padding: 12px; text-align: center; border: 1px solid;">JS Challenge</td>
+            <td style="padding: 12px; text-align: center; border: 1px solid;"><img src="./docs/assets/captcha-ic-light.png" style="max-width: 200px; height: auto;"></td>
+            <td style="padding: 12px; text-align: center; border: 1px solid;"><img src="./docs/assets/captcha-ic-dark.png" style="max-width: 200px; height: auto;"></td>
+        </tr>
+        <tr>
+            <td style="padding: 12px; text-align: center; border: 1px solid;">500s Error</td>
+            <td style="padding: 12px; text-align: center; border: 1px solid;"><img src="./docs/assets/error-500s-light.png" style="max-width: 200px; height: auto;"></td>
+            <td style="padding: 12px; text-align: center; border: 1px solid;"><img src="./docs/assets/error-500s-dark.png" style="max-width: 200px; height: auto;"></td>
+        </tr>
+    </tbody>
+</table>
+</div>
 
 ## ✨ Key Features
 

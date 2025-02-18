@@ -19,16 +19,39 @@
 
 ## 📸 截图预览
 
-<div align="center">
-    <img src="./docs/assets/online-preview.png" alt="Preview" width="70%">
+<div align="center" style="margin-bottom: 20px;">
+    <img src="./docs/assets/home.png" alt="Preview" width="70%">
     <br> 主页
 </div>
 
-| 示例页面 | 亮色模式                                   | 暗色模式                                  |
-| -------- | ------------------------------------------ | ----------------------------------------- |
-| IP 拦截  | ![](./docs/assets/block-from-ip-light.png) | ![](./docs/assets/block-from-ip-dark.png) |
-| JS 质询  | ![](./docs/assets/captcha-ic-light.png)    | ![](./docs/assets/captcha-ic-dark.png)    |
-| 源站错误 | ![](./docs/assets/error-500s-light.png)    | ![](./docs/assets/error-500s-dark.png)    |
+<div align="center">
+<table style="width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 16px; text-align: center; align-items: center; justify-content: center;">
+    <thead>
+        <tr>
+            <th style="padding: 12px; text-align: center; border: 1px solid; font-weight: bold;">示例页面</th>
+            <th style="padding: 12px; text-align: center; border: 1px solid; font-weight: bold;">亮色模式</th>
+            <th style="padding: 12px; text-align: center; border: 1px solid; font-weight: bold;">暗色模式</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="padding: 12px; text-align: center; border: 1px solid;">IP 拦截</td>
+            <td style="padding: 12px; text-align: center; border: 1px solid;"><img src="./docs/assets/block-from-ip-light.png" style="max-width: 300px; height: auto;"></td>
+            <td style="padding: 12px; text-align: center; border: 1px solid;"><img src="./docs/assets/block-from-ip-dark.png" style="max-width: 300px; height: auto;"></td>
+        </tr>
+        <tr>
+            <td style="padding: 12px; text-align: center; border: 1px solid;">JS 质询</td>
+            <td style="padding: 12px; text-align: center; border: 1px solid;"><img src="./docs/assets/captcha-ic-light.png" style="max-width: 300px; height: auto;"></td>
+            <td style="padding: 12px; text-align: center; border: 1px solid;"><img src="./docs/assets/captcha-ic-dark.png" style="max-width: 300px; height: auto;"></td>
+        </tr>
+        <tr>
+            <td style="padding: 12px; text-align: center; border: 1px solid;">源站错误</td>
+            <td style="padding: 12px; text-align: center; border: 1px solid;"><img src="./docs/assets/error-500s-light.png" style="max-width: 300px; height: auto;"></td>
+            <td style="padding: 12px; text-align: center; border: 1px solid;"><img src="./docs/assets/error-500s-dark.png" style="max-width: 300px; height: auto;"></td>
+        </tr>
+    </tbody>
+</table>
+</div>
 
 ## 🛠️ 技术栈
 
