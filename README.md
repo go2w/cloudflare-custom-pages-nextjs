@@ -9,15 +9,16 @@ English | [简体中文](README.zh.md) | [Online Demo](https://cw-preview.000000
 
 ## 📸 Screenshots
 
-<div align="center">
-    <img src="./docs/assets/online-preview.png" alt="Preview" width="70%">
+<div align="center" style="margin-bottom: 20px;">
+    <img src="./docs/assets/home.png" alt="Preview" width="70%">
     <br> Main Page
 </div>
 
-|                             Light                              |                            Dark                            |
-| :------------------------------------------------------------: | :--------------------------------------------------------: |
-|   ![](./docs/assets/block-from-waf-light.png) Block from WAF   |  ![](./docs/assets/block-from-ip-dark.png) Block from IP   |
-| ![](./docs/assets/challenge-light.png) UAM (Under Attack Mode) | ![](./docs/assets/challenge-dark.png) JavaScript Challenge |
+| Example Page | Light                                      | Dark                                      |
+| ------------ | ------------------------------------------ | ----------------------------------------- |
+| Block by IP  | ![](./docs/assets/block-from-ip-light.png) | ![](./docs/assets/block-from-ip-dark.png) |
+| JS Challenge | ![](./docs/assets/captcha-ic-light.png)    | ![](./docs/assets/captcha-ic-dark.png)    |
+| 500s Error   | ![](./docs/assets/error-500s-light.png)    | ![](./docs/assets/error-500s-dark.png)    |
 
 ## ✨ Key Features
 
@@ -142,29 +143,29 @@ To change the page text, edit `. /config/i18n.ts`:
 
 ```ts
 export const blockPageTranslations = {
-  ip: {
-    title: "Access Denied - IP Blocked",
-    message: "The owner of this website has banned your IP address.",
-  },
-  // ... more translations
-}
+    ip: {
+        title: "Access Denied - IP Blocked",
+        message: "The owner of this website has banned your IP address.",
+    },
+    // ... more translations
+};
 ```
 
 To modify page configurations (without text content), edit `./config/routes.ts`:
 
 ```ts
 export const blockPages = {
-  ip: {
-    type: "ip",
-    code: "1006",
-    icon: "shield-ban",
-    networkStatus: {
-      clientStatus: "error",
-      edgeStatus: "success",
+    ip: {
+        type: "ip",
+        code: "1006",
+        icon: "shield-ban",
+        networkStatus: {
+            clientStatus: "error",
+            edgeStatus: "success",
+        },
     },
-  },
-  // ... more configurations
-}
+    // ... more configurations
+};
 ```
 
 ### 3. Component Styling
@@ -191,9 +192,10 @@ You can follow the steps below to add or replace icons:
 3. Click the `Copy Component Name` button to copy the icon's name.
 
 4. Then, navigate to `./config/icons.ts` and follow the instructions to add the icon name to:
-   1. `import { ... Component } from "lucide-react"` (import the icon component)
-   2. `export type IconKey = ...` (add the icon name to the type list)
-   3. `export const icons = { ... }` (add the icon name to the mapping dictionary)
+
+    1. `import { ... Component } from "lucide-react"` (import the icon component)
+    2. `export type IconKey = ...` (add the icon name to the type list)
+    3. `export const icons = { ... }` (add the icon name to the mapping dictionary)
 
 5. Finally, use the desired icon in `./config/routes.ts`.
 

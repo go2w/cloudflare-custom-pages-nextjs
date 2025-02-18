@@ -24,10 +24,11 @@
     <br> 主页
 </div>
 
-|                              亮色                              |                            暗色                            |
-| :------------------------------------------------------------: | :--------------------------------------------------------: |
-|   ![](./docs/assets/block-from-waf-light.png) Block from WAF   |  ![](./docs/assets/block-from-ip-dark.png) Block from IP   |
-| ![](./docs/assets/challenge-light.png) UAM (Under Attack Mode) | ![](./docs/assets/challenge-dark.png) JavaScript Challenge |
+| 示例页面 | 亮色模式                                   | 暗色模式                                  |
+| -------- | ------------------------------------------ | ----------------------------------------- |
+| IP 拦截  | ![](./docs/assets/block-from-ip-light.png) | ![](./docs/assets/block-from-ip-dark.png) |
+| JS 质询  | ![](./docs/assets/captcha-ic-light.png)    | ![](./docs/assets/captcha-ic-dark.png)    |
+| 源站错误 | ![](./docs/assets/error-500s-light.png)    | ![](./docs/assets/error-500s-dark.png)    |
 
 ## 🛠️ 技术栈
 
@@ -141,29 +142,29 @@
 
 ```ts
 export const blockPageTranslations = {
-  ip: {
-    title: "Access Denied - IP Blocked",
-    message: "The owner of this website has banned your IP address.",
-  },
-  // ... 更多翻译
-}
+    ip: {
+        title: "Access Denied - IP Blocked",
+        message: "The owner of this website has banned your IP address.",
+    },
+    // ... 更多翻译
+};
 ```
 
 如需修改页面配置（不含文案），编辑 `./config/routes.ts`：
 
 ```ts
 export const blockPages = {
-  ip: {
-    type: "ip",
-    code: "1006",
-    icon: "shield-ban",
-    networkStatus: {
-      clientStatus: "error",
-      edgeStatus: "success",
+    ip: {
+        type: "ip",
+        code: "1006",
+        icon: "shield-ban",
+        networkStatus: {
+            clientStatus: "error",
+            edgeStatus: "success",
+        },
     },
-  },
-  // ... 更多配置
-}
+    // ... 更多配置
+};
 ```
 
 ### 3. 自定义组件样式
