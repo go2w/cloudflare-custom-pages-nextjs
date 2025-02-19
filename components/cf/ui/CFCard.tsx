@@ -45,22 +45,24 @@ export const CFCard = ({
   return (
     <Card
       suppressHydrationWarning
-      className="max-w-xl w-full mx-auto overflow-hidden bg-white dark:bg-gray-900 shadow-xl ring-1 ring-gray-900/5 dark:ring-gray-800 m-4 rounded-xl"
+      className="max-w-xl w-full mx-auto overflow-hidden bg-white dark:bg-gray-900 shadow-xl ring-1 ring-gray-900/5 dark:ring-gray-800 m-2 sm:m-4 rounded-xl"
     >
-      <CardHeader className={cx("relative p-6 rounded-t-xl", headerClassName)}>
+      <CardHeader
+        className={cx("relative p-4 sm:p-6 rounded-t-xl", headerClassName)}
+      >
         {watermark && (
-          <div className="absolute right-0 top-0 h-24 w-24 opacity-20">
+          <div className="absolute right-0 top-0 h-16 sm:h-24 w-16 sm:w-24 opacity-20">
             {watermark}
           </div>
         )}
 
-        <div className="absolute right-6 top-6">
+        <div className="absolute right-4 sm:right-6 top-4 sm:top-6">
           <ThemeSwitch />
         </div>
 
-        <div className="flex items-center gap-4">
+        <div className="flex flex-row items-center gap-3 sm:gap-4">
           <div className="flex-shrink-0">
-            <div className="relative">
+            <div className="relative w-10 h-10 sm:w-12 sm:h-12">
               <div
                 className={cx(
                   "absolute inset-0 animate-pulse rounded-full blur-xl",
@@ -68,30 +70,38 @@ export const CFCard = ({
                 )}
               />
               <div
-                className={cx("relative rounded-full p-3", finalIconClassName)}
+                className={cx(
+                  "relative rounded-full p-2 sm:p-2.5 flex items-center justify-center h-full",
+                  finalIconClassName,
+                )}
               >
-                {icon}
+                <div className="w-5 h-5 sm:w-6 sm:h-6 flex items-center justify-center">
+                  {icon}
+                </div>
               </div>
             </div>
           </div>
 
-          <div className="flex flex-col">
+          <div className="flex flex-col min-w-0">
             {subtitle &&
               (typeof subtitle === "string" ? (
-                <span className="text-sm font-medium text-default-600 dark:text-default-400">
+                <span className="text-sm font-medium text-default-600 dark:text-default-400 truncate">
                   {subtitle}
                 </span>
               ) : (
                 subtitle
               ))}
-            <h3 className="mt-2 text-xl font-semibold tracking-tight text-gray-900 dark:text-white">
+            <h3 className="text-lg sm:text-xl font-semibold tracking-tight text-gray-900 dark:text-white truncate">
               {title}
             </h3>
           </div>
         </div>
       </CardHeader>
 
-      <CardBody suppressHydrationWarning className="space-y-6 p-6">
+      <CardBody
+        suppressHydrationWarning
+        className="space-y-4 sm:space-y-6 p-4 sm:p-6"
+      >
         <p
           suppressHydrationWarning
           className="text-gray-600 dark:text-gray-300 leading-relaxed"

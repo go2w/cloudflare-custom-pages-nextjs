@@ -38,9 +38,8 @@ export const NetworkNode = ({ label, status, className }: NetworkNodeProps) => {
   return (
     <div
       className={clsx(
-        "px-4 py-2.5 rounded-xl font-medium text-sm flex items-center gap-2",
+        "px-3 sm:px-4 py-2 sm:py-2.5 rounded-xl font-medium text-xs sm:text-sm flex items-center gap-1.5 sm:gap-2",
         "transition-all duration-300 ease-out hover:scale-[1.02] active:scale-100",
-        "w-[120px] shrink-0",
         styles.container,
         className,
       )}
@@ -48,7 +47,7 @@ export const NetworkNode = ({ label, status, className }: NetworkNodeProps) => {
       <Icon
         name={iconName}
         className={clsx(
-          "w-4 h-4 transition-transform flex-shrink-0",
+          "w-3.5 h-3.5 sm:w-4 sm:h-4 transition-transform flex-shrink-0",
           styles.icon,
           status === "challenging" && "animate-pulse",
         )}

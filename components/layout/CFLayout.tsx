@@ -9,11 +9,15 @@ interface CFLayoutProps {
 export const CFLayout = ({ children }: CFLayoutProps) => {
   return (
     <BaseLayout>
-      <div className="flex flex-col min-h-[calc(100vh-4rem)] w-full px-2 sm:px-4 lg:px-6">
-        <div className="flex-grow flex items-center justify-center w-full max-w-[420px] md:max-w-2xl lg:max-w-3xl mx-auto">
-          {children}
+      <div className="flex flex-col min-h-[calc(100vh-2rem)] sm:min-h-[calc(100vh-3rem)] w-full px-2 sm:px-4 lg:px-6">
+        <div className="flex-grow flex flex-col sm:justify-center w-full max-w-[360px] sm:max-w-[420px] md:max-w-2xl lg:max-w-3xl mx-auto">
+          <div className="w-full pt-2 pb-4">
+            {children}
+          </div>
         </div>
-        <Footer />
+        <div className="mt-4 sm:mt-6">
+          <Footer />
+        </div>
       </div>
     </BaseLayout>
   );

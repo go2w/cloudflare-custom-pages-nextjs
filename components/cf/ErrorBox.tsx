@@ -49,7 +49,7 @@ export const ErrorBox = ({
             Error {code}
           </Chip>
         }
-        icon={<Icon name={icon} className="h-6 w-6 text-white" />}
+        icon={<Icon name={icon} className="text-white w-6 h-6" />}
         scheme="danger"
       >
         <NetworkStatusWrapper>
@@ -69,7 +69,7 @@ export const ErrorBox = ({
         )}
 
         {(errorContent || box) && (
-          <div className="mt-4 space-y-4 p-2 rounded-lg bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-800">
+          <div className="mt-3 sm:mt-4 space-y-3 sm:space-y-4 p-2 sm:p-3 rounded-lg bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-800">
             <Accordion variant="light">
               <AccordionItem
                 key="error-details"
@@ -77,11 +77,12 @@ export const ErrorBox = ({
                 classNames={{
                   base: "border-none",
                   heading: "p-0",
-                  trigger: "px-0 py-2 hover:bg-transparent",
-                  content: "px-0 pt-2 pb-0",
+                  trigger:
+                    "px-0 py-1.5 sm:py-2 hover:bg-transparent text-sm sm:text-base",
+                  content: "px-0 pt-1.5 sm:pt-2 pb-0",
                 }}
               >
-                <div className="text-sm text-gray-600 dark:text-gray-400">
+                <div className="text-xs sm:text-sm text-gray-600 dark:text-gray-400">
                   <div
                     dangerouslySetInnerHTML={{
                       __html: errorContent,
