@@ -59,7 +59,7 @@ const HomeFooter = () => {
   return (
     <footer className="w-full py-8 border-t bg-gradient-to-b from-background/60 to-background/80 backdrop-blur-lg">
       <div className="container mx-auto max-w-7xl px-4">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8 items-center">
           <FooterSection className="flex flex-col items-center md:items-start space-y-2">
             <div className="text-sm text-default-500">
               Copyright © {new Date().getFullYear()} Alice39s
