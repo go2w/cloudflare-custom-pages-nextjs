@@ -1,0 +1,110 @@
+name: Create Release
+
+on:
+  push:
+    paths:
+      - "package.json"
+      - ".github/workflows/release.yml"
+    branches:
+      - main
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      discussions: write
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set environment variables
+        id: env_vars
+        run: |
+          echo "repo_name=${GITHUB_REPOSITORY,,}" >> $GITHUB_OUTPUT
+          echo "commit_url=${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/commit" >> $GITHUB_OUTPUT
+          echo "profile_url=${GITHUB_SERVER_URL}" >> $GITHUB_OUTPUT
+
+      - name: Get version from package.json
+        id: package_version
+        run: |
+          echo "version=$(node -p "require('./package.json').version")" >> $GITHUB_OUTPUT
+
+      - name: Check if release exists
+        id: check_release
+        run: |
+          latest_release=$(curl -s https://api.github.com/repos/${{ github.repository }}/releases/latest || echo '{"tag_name":"none"}')
+          latest_version=$(echo $latest_release | jq -r .tag_name | sed 's/^v//')
+          current_version=${{ steps.package_version.outputs.version }}
+
+          if [ "$latest_version" == "$current_version" ]; then
+            echo "version_exists=true" >> $GITHUB_OUTPUT
+          else
+            echo "version_exists=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Generate changelog
+        if: steps.check_release.outputs.version_exists == 'false'
+        id: changelog
+        env:
+          COMMIT_URL: ${{ steps.env_vars.outputs.commit_url }}
+          PROFILE_URL: ${{ steps.env_vars.outputs.profile_url }}
+        run: |
+          CHANGELOG=""
+          AUTHORS=""
+
+          # Function to add emoji based on commit message
+          add_emoji() {
+            local msg="$1"
+            local hash="$2"
+            case "$msg" in
+              *feat*|*特性*) echo "- ✨ [\`$msg\`]($COMMIT_URL/$hash)" ;;
+              *fix*|*修复*) echo "- 🐛 [\`$msg\`]($COMMIT_URL/$hash)" ;;
+              *docs*|*文档*) echo "- 📚 [\`$msg\`]($COMMIT_URL/$hash)" ;;
+              *style*|*样式*) echo "- 💎 [\`$msg\`]($COMMIT_URL/$hash)" ;;
+              *refactor*|*重构*) echo "- ♻️ [\`$msg\`]($COMMIT_URL/$hash)" ;;
+              *perf*|*性能*) echo "- ⚡️ [\`$msg\`]($COMMIT_URL/$hash)" ;;
+              *test*|*测试*) echo "- ✅ [\`$msg\`]($COMMIT_URL/$hash)" ;;
+              *chore*|*构建*) echo "- 🔧 [\`$msg\`]($COMMIT_URL/$hash)" ;;
+              *) echo "- 🔨 [\`$msg\`]($COMMIT_URL/$hash)" ;;
+            esac
+          }
+
+          # Get all commits and authors since last tag
+          LAST_TAG=$(git describe --tags --abbrev=0 2>/dev/null || git rev-list --max-parents=0 HEAD)
+          while IFS= read -r line; do
+            HASH=$(echo "$line" | cut -f1)
+            MSG=$(echo "$line" | cut -f2)
+            CHANGELOG="$CHANGELOG$(add_emoji "$MSG" "$HASH")\n"
+          done < <(git log --pretty=format:"%H%x09%s" $LAST_TAG..HEAD)
+
+          # Get unique authors
+          AUTHORS="\n\n## 👥 贡献者\n\n"
+          while IFS= read -r author; do
+            AUTHORS="$AUTHORS- [@$author]($PROFILE_URL/$author)\n"
+          done < <(git log $LAST_TAG..HEAD --format="%aN" | sort -u)
+
+          echo "CHANGELOG<<EOF" >> $GITHUB_OUTPUT
+          echo -e "$CHANGELOG$AUTHORS" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+
+      - name: Create Release
+        if: steps.check_release.outputs.version_exists == 'false'
+        uses: softprops/action-gh-release@v1
+        env:
+          VERSION: ${{ steps.package_version.outputs.version }}
+          REPO_NAME: ${{ steps.env_vars.outputs.repo_name }}
+        with:
+          tag_name: v${{ env.VERSION }}
+          name: 🚀 Release v${{ env.VERSION }}
+          body: |
+            ## 📝 更新日志
+
+            ${{ steps.changelog.outputs.CHANGELOG }}
+
+          draft: false
+          prerelease: false
+          generate_release_notes: true
