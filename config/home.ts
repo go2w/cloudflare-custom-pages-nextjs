@@ -1,4 +1,8 @@
-import { blockPageTranslations, challengePageTranslations, errorPageTranslations } from "./i18n";
+import {
+  blockPageTranslations,
+  challengePageTranslations,
+  errorPageTranslations,
+} from "./i18n";
 import type { IconKey } from "./icons";
 import { blockPages, challengePages, errorPages } from "./routes";
 
@@ -31,7 +35,8 @@ export interface Section {
 export const colorSchemes: Record<ColorScheme, ColorClasses> = {
   danger: {
     itemBg: "hover:bg-red-50/70 dark:hover:bg-red-900/20 hover:shadow-sm",
-    iconBg: "bg-gradient-to-br from-red-300 to-red-500 dark:from-red-400 dark:to-red-600",
+    iconBg:
+      "bg-gradient-to-br from-red-300 to-red-500 dark:from-red-400 dark:to-red-600",
     iconText: "text-white",
     codeBg: "bg-red-50/80 dark:bg-red-900/40",
     codeText: "text-red-600 dark:text-red-400",
@@ -39,7 +44,8 @@ export const colorSchemes: Record<ColorScheme, ColorClasses> = {
   },
   warning: {
     itemBg: "hover:bg-amber-50/70 dark:hover:bg-amber-900/20 hover:shadow-sm",
-    iconBg: "bg-gradient-to-br from-amber-300 to-amber-500 dark:from-amber-400 dark:to-amber-600",
+    iconBg:
+      "bg-gradient-to-br from-amber-300 to-amber-500 dark:from-amber-400 dark:to-amber-600",
     iconText: "text-white",
     codeBg: "bg-amber-50/80 dark:bg-amber-900/40",
     codeText: "text-amber-600 dark:text-amber-400",
@@ -47,7 +53,8 @@ export const colorSchemes: Record<ColorScheme, ColorClasses> = {
   },
   primary: {
     itemBg: "hover:bg-blue-50/70 dark:hover:bg-blue-900/20 hover:shadow-sm",
-    iconBg: "bg-gradient-to-br from-blue-300 to-blue-500 dark:from-blue-400 dark:to-blue-600",
+    iconBg:
+      "bg-gradient-to-br from-blue-300 to-blue-500 dark:from-blue-400 dark:to-blue-600",
     iconText: "text-white",
     codeBg: "bg-blue-50/80 dark:bg-blue-900/40",
     codeText: "text-blue-600 dark:text-blue-400",

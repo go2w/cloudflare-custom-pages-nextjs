@@ -6,5 +6,9 @@ interface CFCardWrapProps {
 }
 
 export const CFCardWrap = ({ children, className }: CFCardWrapProps) => {
-  return <div className={`flex items-center justify-center p-4 ${className || ""}`}>{children}</div>;
+  return (
+    <div className={`flex items-center justify-center p-4 ${className || ""}`}>
+      {children}
+    </div>
+  );
 };

@@ -18,26 +18,33 @@ export const blockPageTranslations: Record<string, BlockPageTranslation> = {
   },
   waf: {
     title: "You're blocked by WAF",
-    message: "The Cloudflare WAF (Web Application Firewall) has blocked your request.",
+    message:
+      "The Cloudflare WAF (Web Application Firewall) has blocked your request.",
   },
   "rate-limit": {
     title: "Rate Limit Block - 429",
-    message: "You have made too many requests. Please wait a moment before trying again.",
+    message:
+      "You have made too many requests. Please wait a moment before trying again.",
   },
 } as const;
 
 export const errorPageTranslations: Record<string, ErrorPageTranslation> = {
   "500s": {
     title: "Internal Server Error",
-    message: "Please try again later, there was an unexpected error on the site.",
+    message:
+      "Please try again later, there was an unexpected error on the site.",
   },
   "1000s": {
     title: "DNS Resolution Error",
-    message: "The requested hostname could not be resolved. Don't worry, it's not your problem.",
+    message:
+      "The requested hostname could not be resolved. Don't worry, it's not your problem.",
   },
 } as const;
 
-export const challengePageTranslations: Record<string, ChallengePageTranslation> = {
+export const challengePageTranslations: Record<
+  string,
+  ChallengePageTranslation
+> = {
   interactive: {
     title: "Interactive Challenge",
     message: "Please complete this CAPTCHA to access the site.",
@@ -48,11 +55,13 @@ export const challengePageTranslations: Record<string, ChallengePageTranslation>
   },
   country: {
     title: "Challenge",
-    message: "Additional verification is required for visitors from your Country/Region.",
+    message:
+      "Additional verification is required for visitors from your Country/Region.",
   },
   javascript: {
     title: "Please wait...",
-    message: "Please wait a moment while our security system verifies your request.",
+    message:
+      "Please wait a moment while our security system verifies your request.",
   },
 } as const;
 
