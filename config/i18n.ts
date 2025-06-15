@@ -13,11 +13,11 @@ export interface ChallengePageTranslation extends PageTranslation {}
 
 export const blockPageTranslations: Record<string, BlockPageTranslation> = {
   ip: {
-    title: "Access Denied - IP Blocked",
+    title: "Your IP is blocked",
     message: "The owner of this website has banned your IP address.",
   },
   waf: {
-    title: "Firewall Block - WAF Blocked",
+    title: "You're blocked by WAF",
     message: "The Cloudflare WAF (Web Application Firewall) has blocked your request.",
   },
   "rate-limit": {

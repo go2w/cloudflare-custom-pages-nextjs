@@ -5,86 +5,73 @@ import { Icon } from "@/components/ui/icon";
 import type { IconKey } from "@/config/icons";
 import { siteConfig } from "@/config/site";
 import print from "@/utils/console";
-import { clsx as cx } from "clsx";
-import type { FC, ReactNode } from "react";
+import { memo } from "react";
+import { clsx } from "clsx";
+import type { FC } from "react";
 
 interface FooterLinkProps {
   href: string;
   icon: IconKey;
+  label: string;
 }
 
-interface FooterSectionProps {
-  children: ReactNode;
-  className?: string;
-  delay?: number;
-}
+const FooterLink = memo<FooterLinkProps>(({ href, icon, label }) => (
+  <a
+    href={href}
+    aria-label={label}
+    target='_blank'
+    rel='noopener noreferrer'
+    className='p-2 rounded-lg transition-all duration-200 hover:scale-105 active:scale-95 hover:bg-default-100 dark:hover:bg-white/5'>
+    <Icon
+      name={icon}
+      className='w-5 h-5 text-default-600 hover:text-primary-600 dark:text-default-400 dark:hover:text-primary-400 transition-colors'
+    />
+  </a>
+));
 
-const FooterLink = ({ href, icon }: FooterLinkProps) => (
-  <div className="p-2 rounded-full hover:bg-default-100 transition-all duration-200 hover:scale-110 active:scale-95">
-    <a
-      href={href}
-      aria-label="External link"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      <Icon
-        name={icon}
-        className="w-5 h-5 text-default-500 hover:text-primary-500 transition-colors"
-      />
-    </a>
-  </div>
-);
+FooterLink.displayName = "FooterLink";
 
-const FooterSection: FC<FooterSectionProps> = ({
-  children,
-  className,
-  delay = 0,
-}) => (
-  <div
-    className={cx("animate-fade-in", className)}
-    style={{ animationDelay: `${delay}s` }}
-  >
-    {children}
-  </div>
-);
-
-const HomeFooter = () => {
-  const links = [
-    { href: siteConfig.links.docs, icon: "book-open" as IconKey },
-    { href: siteConfig.links.github, icon: "github" as IconKey },
+const HomeFooter: FC<{ className?: string }> = ({ className }) => {
+  const links: FooterLinkProps[] = [
+    { href: siteConfig.links.docs, icon: "book-open", label: "Documentation" },
+    { href: siteConfig.links.github, icon: "github", label: "GitHub Repository" },
   ];
 
   print();
 
   return (
-    <footer className="w-full py-8 border-t bg-gradient-to-b from-background/60 to-background/80 backdrop-blur-lg">
-      <div className="container mx-auto max-w-7xl px-4">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8 items-center">
-          <FooterSection className="flex flex-col items-center md:items-start space-y-2">
-            <div className="text-sm text-default-500">
-              Copyright © {new Date().getFullYear()} Alice39s
-            </div>
-          </FooterSection>
+    <footer
+      className={clsx(
+        "w-full py-6 border-t border-default-200 dark:border-default-800 bg-default-50 dark:bg-black",
+        className
+      )}>
+      <div className='container mx-auto max-w-7xl px-6'>
+        <div className='flex flex-col sm:flex-row items-center justify-between gap-4'>
+          <div className='text-sm text-default-500 dark:text-default-400 font-medium order-3 sm:order-1'>
+            © {new Date().getFullYear()} Alice39s
+          </div>
 
-          <FooterSection
-            className="flex justify-center items-center gap-6"
-            delay={0.2}
-          >
-            {links.map((link) => (
-              <FooterLink key={link.href} {...link} />
-            ))}
+          <div className='flex items-center gap-4 order-1 sm:order-2'>
+            <div className='flex items-center gap-1 p-1 rounded-lg bg-default-100 dark:bg-white/10 border border-default-200 dark:border-white/20'>
+              {links.map((link) => (
+                <FooterLink
+                  key={link.href}
+                  {...link}
+                />
+              ))}
+            </div>
+            <div className='w-px h-6 bg-default-300 dark:bg-default-700' />
             <ThemeSwitch />
-          </FooterSection>
+          </div>
 
-          <FooterSection
-            className="flex justify-center md:justify-end"
-            delay={0.4}
-          >
-            <div className="text-xs text-default-400 flex items-center gap-2">
-              Made with <Icon name="heart" className="w-4 h-4 text-red-500" />{" "}
-              by Alice39s
-            </div>
-          </FooterSection>
+          <div className='flex items-center gap-2 text-sm text-default-400 dark:text-default-500 font-medium order-2 sm:order-3'>
+            <span>Made with</span>
+            <Icon
+              name='heart'
+              className='w-4 h-4 text-red-500'
+            />
+            <span>by Alice39s</span>
+          </div>
         </div>
       </div>
     </footer>
