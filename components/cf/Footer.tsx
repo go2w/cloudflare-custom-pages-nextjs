@@ -1,5 +1,5 @@
 import { Card, CardBody } from "@heroui/card";
-import { memo, useCallback, useEffect, useState, useMemo } from "react";
+import { memo, useCallback, useEffect, useMemo, useState } from "react";
 import { CFCardWrap } from "./ui/CFCardWrapper";
 import { countryCodeToFlag } from "./utils";
 
@@ -13,8 +13,17 @@ const useGeoLocation = () => {
   const [geoData, setGeoData] = useState({ text: "", flag: "🌍" });
 
   const updateGeoData = useCallback(() => {
-    const locationMeta = document.querySelector('meta[name="location-code"]');
-    const text = locationMeta?.getAttribute("content") || "";
+    const locationMetas = document.querySelectorAll(
+      'meta[name="location-code"]',
+    );
+    let text = "";
+    for (const m of Array.from(locationMetas)) {
+      const v = m.getAttribute("content");
+      if (v) {
+        text = v;
+        break;
+      }
+    }
 
     let newGeoData: { text: string; flag: string };
     if (text && text.length === 2 && /^[A-Za-z]{2}$/.test(text)) {
@@ -38,6 +47,8 @@ const useGeoLocation = () => {
     observer.observe(document.head, {
       childList: true,
       subtree: true,
+      attributes: true,
+      attributeFilter: ["content"],
     });
 
     const interval = setInterval(updateGeoData, 1000);
@@ -55,8 +66,15 @@ const useMetaContent = (metaName: string, defaultValue: string) => {
   const [content, setContent] = useState(defaultValue);
 
   const updateContent = useCallback(() => {
-    const meta = document.querySelector(`meta[name="${metaName}"]`);
-    const value = meta?.getAttribute("content") || defaultValue;
+    const metas = document.querySelectorAll(`meta[name="${metaName}"]`);
+    let value = defaultValue;
+    for (const m of Array.from(metas)) {
+      const v = m.getAttribute("content");
+      if (v) {
+        value = v;
+        break;
+      }
+    }
     setContent((prev) => (value !== prev ? value : prev));
   }, [metaName, defaultValue]);
 
@@ -67,6 +85,8 @@ const useMetaContent = (metaName: string, defaultValue: string) => {
     observer.observe(document.head, {
       childList: true,
       subtree: true,
+      attributes: true,
+      attributeFilter: ["content"],
     });
 
     const interval = setInterval(updateContent, 1000);
