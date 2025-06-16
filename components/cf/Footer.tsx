@@ -62,44 +62,6 @@ const useGeoLocation = () => {
   return geoData;
 };
 
-const useMetaContent = (metaName: string, defaultValue: string) => {
-  const [content, setContent] = useState(defaultValue);
-
-  const updateContent = useCallback(() => {
-    const metas = document.querySelectorAll(`meta[name="${metaName}"]`);
-    let value = defaultValue;
-    for (const m of Array.from(metas)) {
-      const v = m.getAttribute("content");
-      if (v) {
-        value = v;
-        break;
-      }
-    }
-    setContent((prev) => (value !== prev ? value : prev));
-  }, [metaName, defaultValue]);
-
-  useEffect(() => {
-    updateContent();
-
-    const observer = new MutationObserver(updateContent);
-    observer.observe(document.head, {
-      childList: true,
-      subtree: true,
-      attributes: true,
-      attributeFilter: ["content"],
-    });
-
-    const interval = setInterval(updateContent, 1000);
-
-    return () => {
-      observer.disconnect();
-      clearInterval(interval);
-    };
-  }, [updateContent]);
-
-  return content;
-};
-
 interface InfoItemProps {
   label: string;
   value: string;
@@ -123,20 +85,10 @@ Separator.displayName = "Separator";
 
 export const FooterContent = memo(() => {
   const { text, flag } = useGeoLocation();
-  const clientIp = useMetaContent("client-ip", "");
-  const rayId = useMetaContent("ray-id", "");
 
   const geoDisplayValue = useMemo(() => {
     return text || "Unknown";
   }, [text]);
-
-  const ipDisplayValue = useMemo(() => {
-    return clientIp || "Unknown";
-  }, [clientIp]);
-
-  const rayDisplayValue = useMemo(() => {
-    return rayId || "Unknown";
-  }, [rayId]);
 
   return (
     <CFCardWrap>
@@ -150,9 +102,9 @@ export const FooterContent = memo(() => {
               isGeo={true}
             />
             <Separator />
-            <InfoItem label="IP" value={ipDisplayValue} />
+            <InfoItem label="IP" value="::CLIENT_IP::" />
             <Separator />
-            <InfoItem label="Ray ID" value={rayDisplayValue} />
+            <InfoItem label="Ray ID" value="::RAY_ID::" />
           </div>
         </CardBody>
       </Card>
