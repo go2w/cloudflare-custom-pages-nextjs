@@ -1,33 +1,20 @@
 import { Card, CardBody } from "@heroui/card";
-import { memo, useCallback, useEffect, useState } from "react";
+import { memo, useCallback, useEffect, useState, useMemo } from "react";
 import { CFCardWrap } from "./ui/CFCardWrapper";
-
-const toFlag = (code: string) => {
-  if (!code || code.length !== 2) return "🌍";
-  try {
-    return String.fromCodePoint(
-      ...code
-        .toUpperCase()
-        .split("")
-        .map((c) => 0x1f1a5 + c.charCodeAt(0))
-    );
-  } catch {
-    console.warn("Failed to generate flag for code:", code);
-    return "🌍";
-  }
-};
+import { countryCodeToFlag } from "./utils";
 
 const useGeoLocation = () => {
-  const [geoData, setGeoData] = useState({ text: "::GEO::", flag: "🌍" });
+  const [geoData, setGeoData] = useState({ text: "", flag: "🌍" });
 
   const updateGeoData = useCallback(() => {
     const locationMeta = document.querySelector('meta[name="location-code"]');
-    const text = locationMeta?.getAttribute("content") || "::GEO::";
+    const text = locationMeta?.getAttribute("content") || "";
 
-    if (!text.includes("::GEO::")) {
-      const flag = /^[A-Za-z]{2}$/.test(text) ? toFlag(text.toUpperCase()) : "🌍";
-
+    if (text && text.length === 2 && /^[A-Za-z]{2}$/.test(text)) {
+      const flag = countryCodeToFlag(text);
       setGeoData((prev) => (prev.text !== text || prev.flag !== flag ? { text, flag } : prev));
+    } else {
+      setGeoData((prev) => (prev.text !== text || prev.flag !== "🌍" ? { text, flag: "🌍" } : prev));
     }
   }, []);
 
@@ -35,7 +22,7 @@ const useGeoLocation = () => {
     updateGeoData();
 
     const observer = new MutationObserver(() => {
-      setTimeout(updateGeoData, 200);
+      setTimeout(updateGeoData, 100);
     });
 
     observer.observe(document.head, {
@@ -44,7 +31,7 @@ const useGeoLocation = () => {
       childList: true,
     });
 
-    const interval = setInterval(updateGeoData, 2000);
+    const interval = setInterval(updateGeoData, 1000);
 
     return () => {
       observer.disconnect();
@@ -61,14 +48,16 @@ const useMetaContent = (metaName: string, defaultValue: string) => {
   const updateContent = useCallback(() => {
     const meta = document.querySelector(`meta[name="${metaName}"]`);
     const value = meta?.getAttribute("content") || defaultValue;
-    setContent(value);
-  }, [metaName, defaultValue]);
+    if (value !== content) {
+      setContent(value);
+    }
+  }, [metaName, defaultValue, content]);
 
   useEffect(() => {
     updateContent();
 
     const observer = new MutationObserver(() => {
-      setTimeout(updateContent, 200);
+      setTimeout(updateContent, 100);
     });
 
     observer.observe(document.head, {
@@ -77,7 +66,7 @@ const useMetaContent = (metaName: string, defaultValue: string) => {
       childList: true,
     });
 
-    const interval = setInterval(updateContent, 2000);
+    const interval = setInterval(updateContent, 1000);
 
     return () => {
       observer.disconnect();
@@ -88,46 +77,62 @@ const useMetaContent = (metaName: string, defaultValue: string) => {
   return content;
 };
 
-const InfoItem = memo(
-  ({ label, value, flag, isGeo = false }: { label: string; value: string; flag?: string; isGeo?: boolean }) => (
-    <div className='flex items-center gap-1.5'>
-      <span className='font-medium'>{label}:</span>
-      <span className='font-mono text-xs sm:text-sm bg-gray-100 dark:bg-gray-800/50 px-2 py-1 rounded-md flex items-center gap-1.5'>
-        {flag && <span className='text-base'>{flag}</span>}
-        <span {...(isGeo ? { "data-geo": true } : {})}>{value}</span>
-      </span>
-    </div>
-  )
-);
+interface InfoItemProps {
+  label: string;
+  value: string;
+  flag?: string;
+  isGeo?: boolean;
+}
 
-const Separator = memo(() => <span className='hidden sm:inline text-gray-400 dark:text-gray-600'>•</span>);
+const InfoItem = memo(({ label, value, flag, isGeo = false }: InfoItemProps) => (
+  <span className='text-xs text-gray-500 flex items-center gap-1'>
+    {label}:{flag && <span>{flag}</span>}
+    <span>{value}</span>
+  </span>
+));
+
+InfoItem.displayName = "InfoItem";
+
+const Separator = memo(() => <span className='text-xs text-gray-400'>•</span>);
+Separator.displayName = "Separator";
 
 export const Footer = memo(() => {
   const { text, flag } = useGeoLocation();
-  const clientIp = useMetaContent("client-ip", "::CLIENT_IP::");
-  const rayId = useMetaContent("ray-id", "::RAY_ID::");
+  const clientIp = useMetaContent("client-ip", "");
+  const rayId = useMetaContent("ray-id", "");
+
+  const geoDisplayValue = useMemo(() => {
+    return text || "Unknown";
+  }, [text]);
+
+  const ipDisplayValue = useMemo(() => {
+    return clientIp || "Unknown";
+  }, [clientIp]);
+
+  const rayDisplayValue = useMemo(() => {
+    return rayId || "Unknown";
+  }, [rayId]);
 
   return (
     <CFCardWrap>
-      <Card className='max-w-xl mx-auto overflow-hidden bg-white dark:bg-gray-900 shadow-xl ring-1 ring-gray-900/5 dark:ring-gray-800 rounded-xl'>
-        <CardBody className='py-4 px-4 sm:px-6'>
-          <div className='flex flex-col md:flex-row justify-between items-center gap-3 sm:gap-4 text-gray-600 dark:text-gray-300 text-sm'>
-            <div className='flex flex-col sm:flex-row items-center gap-2 sm:gap-3'>
-              <InfoItem
-                label='IP'
-                value={clientIp}
-              />
-              <Separator />
-              <InfoItem
-                label='Ray ID'
-                value={rayId}
-              />
-            </div>
+      <Card className='w-full border-0 shadow-none bg-transparent'>
+        <CardBody className='p-3'>
+          <div className='flex flex-wrap items-center justify-center gap-2 text-xs'>
             <InfoItem
               label='Location'
-              value={text}
+              value={geoDisplayValue}
               flag={flag}
-              isGeo
+              isGeo={true}
+            />
+            <Separator />
+            <InfoItem
+              label='IP'
+              value={ipDisplayValue}
+            />
+            <Separator />
+            <InfoItem
+              label='Ray ID'
+              value={rayDisplayValue}
             />
           </div>
         </CardBody>
