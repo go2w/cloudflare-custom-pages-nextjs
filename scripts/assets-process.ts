@@ -45,6 +45,11 @@ function processHtmlFile(filePath: string): void {
 
     updateTDK($, filePath);
 
+    // 添加 Cloudflare meta 标签，仅对 out/cf/ 目录下的 HTML 文件处理
+    if (filePath.includes(path.join("out", "cf"))) {
+      addCloudflareMetaTags($);
+    }
+
     fs.writeFileSync(filePath, $.html());
     console.log(`Processed: ${filePath}`);
   } catch (error) {
@@ -98,6 +103,20 @@ function updateTDK($: cheerio.CheerioAPI, filePath: string): void {
       '<meta name="keywords" content="Cloudflare, security, WAF, protection">',
     );
   }
+}
+
+/**
+ * Add Cloudflare-specific meta tags to the head of HTML files
+ * - client-ip: ::CLIENT_IP::
+ * - ray-id: ::RAY_ID::
+ * - location-code: ::GEO::
+ */
+function addCloudflareMetaTags($: cheerio.CheerioAPI): void {
+  $("head").append(`
+    <meta name="client-ip" content="::CLIENT_IP::">
+    <meta name="ray-id" content="::RAY_ID::">
+    <meta name="location-code" content="::GEO::">
+  `);
 }
 
 function main() {
