@@ -1,5 +1,7 @@
+"use client";
+
 import { Card, CardBody } from "@heroui/card";
-import { memo, useCallback, useEffect, useState, useMemo } from "react";
+import { memo, useCallback, useEffect, useMemo, useState } from "react";
 import { CFCardWrap } from "./ui/CFCardWrapper";
 import { countryCodeToFlag } from "./utils";
 
@@ -12,9 +14,13 @@ const useGeoLocation = () => {
 
     if (text && text.length === 2 && /^[A-Za-z]{2}$/.test(text)) {
       const flag = countryCodeToFlag(text);
-      setGeoData((prev) => (prev.text !== text || prev.flag !== flag ? { text, flag } : prev));
+      setGeoData((prev) =>
+        prev.text !== text || prev.flag !== flag ? { text, flag } : prev,
+      );
     } else {
-      setGeoData((prev) => (prev.text !== text || prev.flag !== "🌍" ? { text, flag: "🌍" } : prev));
+      setGeoData((prev) =>
+        prev.text !== text || prev.flag !== "🌍" ? { text, flag: "🌍" } : prev,
+      );
     }
   }, []);
 
@@ -84,16 +90,18 @@ interface InfoItemProps {
   isGeo?: boolean;
 }
 
-const InfoItem = memo(({ label, value, flag, isGeo = false }: InfoItemProps) => (
-  <span className='text-xs text-gray-500 flex items-center gap-1'>
-    {label}:{flag && <span>{flag}</span>}
-    <span>{value}</span>
-  </span>
-));
+const InfoItem = memo(
+  ({ label, value, flag, isGeo = false }: InfoItemProps) => (
+    <span className="text-xs text-gray-500 flex items-center gap-1">
+      {label}:{flag && <span>{flag}</span>}
+      <span>{value}</span>
+    </span>
+  ),
+);
 
 InfoItem.displayName = "InfoItem";
 
-const Separator = memo(() => <span className='text-xs text-gray-400'>•</span>);
+const Separator = memo(() => <span className="text-xs text-gray-400">•</span>);
 Separator.displayName = "Separator";
 
 export const Footer = memo(() => {
@@ -115,25 +123,19 @@ export const Footer = memo(() => {
 
   return (
     <CFCardWrap>
-      <Card className='w-full border-0 shadow-none bg-transparent'>
-        <CardBody className='p-3'>
-          <div className='flex flex-wrap items-center justify-center gap-2 text-xs'>
+      <Card className="w-full border-0 shadow-none bg-transparent">
+        <CardBody className="p-3">
+          <div className="flex flex-wrap items-center justify-center gap-2 text-xs">
             <InfoItem
-              label='Location'
+              label="Location"
               value={geoDisplayValue}
               flag={flag}
               isGeo={true}
             />
             <Separator />
-            <InfoItem
-              label='IP'
-              value={ipDisplayValue}
-            />
+            <InfoItem label="IP" value={ipDisplayValue} />
             <Separator />
-            <InfoItem
-              label='Ray ID'
-              value={rayDisplayValue}
-            />
+            <InfoItem label="Ray ID" value={rayDisplayValue} />
           </div>
         </CardBody>
       </Card>
