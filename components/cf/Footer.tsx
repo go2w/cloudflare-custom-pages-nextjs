@@ -1,5 +1,5 @@
 import { Card, CardBody } from "@heroui/card";
-import { memo, useEffect, useState, useMemo } from "react";
+import { memo, useCallback, useEffect, useState, useMemo } from "react";
 import { CFCardWrap } from "./ui/CFCardWrapper";
 import { countryCodeToFlag } from "./utils";
 
@@ -12,17 +12,41 @@ const useIsClient = () => {
 const useGeoLocation = () => {
   const [geoData, setGeoData] = useState({ text: "", flag: "🌍" });
 
-  useEffect(() => {
+  const updateGeoData = useCallback(() => {
     const locationMeta = document.querySelector('meta[name="location-code"]');
     const text = locationMeta?.getAttribute("content") || "";
 
+    let newGeoData: { text: string; flag: string };
     if (text && text.length === 2 && /^[A-Za-z]{2}$/.test(text)) {
       const flag = countryCodeToFlag(text);
-      setGeoData({ text, flag });
+      newGeoData = { text, flag };
     } else {
-      setGeoData({ text, flag: "🌍" });
+      newGeoData = { text, flag: "🌍" };
     }
+
+    setGeoData((prev) =>
+      prev.text !== newGeoData.text || prev.flag !== newGeoData.flag
+        ? newGeoData
+        : prev,
+    );
   }, []);
+
+  useEffect(() => {
+    updateGeoData();
+
+    const observer = new MutationObserver(updateGeoData);
+    observer.observe(document.head, {
+      childList: true,
+      subtree: true,
+    });
+
+    const interval = setInterval(updateGeoData, 1000);
+
+    return () => {
+      observer.disconnect();
+      clearInterval(interval);
+    };
+  }, [updateGeoData]);
 
   return geoData;
 };
@@ -30,11 +54,28 @@ const useGeoLocation = () => {
 const useMetaContent = (metaName: string, defaultValue: string) => {
   const [content, setContent] = useState(defaultValue);
 
-  useEffect(() => {
+  const updateContent = useCallback(() => {
     const meta = document.querySelector(`meta[name="${metaName}"]`);
     const value = meta?.getAttribute("content") || defaultValue;
-    setContent(value);
+    setContent((prev) => (value !== prev ? value : prev));
   }, [metaName, defaultValue]);
+
+  useEffect(() => {
+    updateContent();
+
+    const observer = new MutationObserver(updateContent);
+    observer.observe(document.head, {
+      childList: true,
+      subtree: true,
+    });
+
+    const interval = setInterval(updateContent, 1000);
+
+    return () => {
+      observer.disconnect();
+      clearInterval(interval);
+    };
+  }, [updateContent]);
 
   return content;
 };
