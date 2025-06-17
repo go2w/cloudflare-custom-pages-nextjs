@@ -106,16 +106,33 @@ function updateTDK($: cheerio.CheerioAPI, filePath: string): void {
 }
 
 /**
- * Add Cloudflare-specific meta tags to the head of HTML files
+ * Add Cloudflare-specific meta tags to the top of head section in HTML files
  * - client-ip: ::CLIENT_IP::
  * - ray-id: ::RAY_ID::
  * - location-code: ::GEO::
+ * - build-date: Current build timestamp
+ * - version: Package version from package.json
  */
 function addCloudflareMetaTags($: cheerio.CheerioAPI): void {
-  $("head").append(`
+  const packagePath = path.join(__dirname, "../package.json");
+  let version = "unknown";
+
+  try {
+    const packageContent = fs.readFileSync(packagePath, "utf-8");
+    const packageJson = JSON.parse(packageContent);
+    version = packageJson.version || "unknown";
+  } catch (error) {
+    console.warn("Failed to read package.json version:", error);
+  }
+
+  const buildDate = new Date().toISOString();
+
+  $("head").prepend(`
     <meta name="client-ip" content="::CLIENT_IP::">
     <meta name="ray-id" content="::RAY_ID::">
     <meta name="location-code" content="::GEO::">
+    <meta name="build-date" content="${buildDate}">
+    <meta name="version" content="${version}">
   `);
 }
 
