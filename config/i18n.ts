@@ -457,6 +457,9 @@ export interface HomePageTranslation {
   blockPagesDescription: string;
   challengePagesTitle: string;
   challengePagesDescription: string;
+  standaloneModeTitle: string;
+  standaloneModeDescription: string;
+  standaloneSuffix: string;
 }
 
 // 首页多语言翻译
@@ -472,6 +475,10 @@ export const homePageTranslations: LocalizedTranslations<HomePageTranslation> =
       blockPagesDescription: "Access denied pages",
       challengePagesTitle: "Challenge Pages",
       challengePagesDescription: "Security verification challenges",
+      standaloneModeTitle: "Standalone Mode",
+      standaloneModeDescription:
+        "Pages optimized for Cloudflare single-page deployment",
+      standaloneSuffix: "(Standalone)",
     },
     zh: {
       siteTitle: "Cloudflare WAF 自定义页面",
@@ -482,6 +489,9 @@ export const homePageTranslations: LocalizedTranslations<HomePageTranslation> =
       blockPagesDescription: "访问被拒绝页面",
       challengePagesTitle: "挑战页面",
       challengePagesDescription: "安全验证挑战",
+      standaloneModeTitle: "独立模式",
+      standaloneModeDescription: "为 Cloudflare 单页部署优化的页面",
+      standaloneSuffix: "(独立)",
     },
     ja: {
       siteTitle: "Cloudflare WAF カスタムページ",
@@ -493,6 +503,10 @@ export const homePageTranslations: LocalizedTranslations<HomePageTranslation> =
       blockPagesDescription: "アクセス拒否ページ",
       challengePagesTitle: "チャレンジページ",
       challengePagesDescription: "セキュリティ検証チャレンジ",
+      standaloneModeTitle: "スタンドアロンモード",
+      standaloneModeDescription:
+        "Cloudflare シングルページデプロイメント用に最適化されたページ",
+      standaloneSuffix: "(スタンドアロン)",
     },
     ko: {
       siteTitle: "Cloudflare WAF 커스텀 페이지",
@@ -504,6 +518,10 @@ export const homePageTranslations: LocalizedTranslations<HomePageTranslation> =
       blockPagesDescription: "액세스 거부 페이지",
       challengePagesTitle: "챌린지 페이지",
       challengePagesDescription: "보안 검증 챌린지",
+      standaloneModeTitle: "독립 모드",
+      standaloneModeDescription:
+        "Cloudflare 단일 페이지 배포에 최적화된 페이지",
+      standaloneSuffix: "(독립)",
     },
     fr: {
       siteTitle: "Pages personnalisées Cloudflare WAF",
@@ -515,6 +533,10 @@ export const homePageTranslations: LocalizedTranslations<HomePageTranslation> =
       blockPagesDescription: "Pages d'accès refusé",
       challengePagesTitle: "Pages de défi",
       challengePagesDescription: "Défis de vérification de sécurité",
+      standaloneModeTitle: "Mode autonome",
+      standaloneModeDescription:
+        "Pages optimisées pour le déploiement de page unique Cloudflare",
+      standaloneSuffix: "(Autonome)",
     },
     de: {
       siteTitle: "Cloudflare WAF Benutzerdefinierte Seiten",
@@ -526,6 +548,10 @@ export const homePageTranslations: LocalizedTranslations<HomePageTranslation> =
       blockPagesDescription: "Zugriff verweigert Seiten",
       challengePagesTitle: "Challenge-Seiten",
       challengePagesDescription: "Sicherheitsüberprüfungs-Challenges",
+      standaloneModeTitle: "Eigenständiger Modus",
+      standaloneModeDescription:
+        "Für Cloudflare Single-Page-Deployment optimierte Seiten",
+      standaloneSuffix: "(Eigenständig)",
     },
     es: {
       siteTitle: "Páginas personalizadas de Cloudflare WAF",
@@ -537,6 +563,10 @@ export const homePageTranslations: LocalizedTranslations<HomePageTranslation> =
       blockPagesDescription: "Páginas de acceso denegado",
       challengePagesTitle: "Páginas de desafío",
       challengePagesDescription: "Desafíos de verificación de seguridad",
+      standaloneModeTitle: "Modo independiente",
+      standaloneModeDescription:
+        "Páginas optimizadas para implementación de página única de Cloudflare",
+      standaloneSuffix: "(Independiente)",
     },
   } as const;
 

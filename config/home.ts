@@ -65,12 +65,20 @@ export const colorSchemes: Record<ColorScheme, ColorClasses> = {
 };
 
 /**
- * 获取指定语言的sections配置
+ * 获取指定语言和模式的sections配置
  * @param locale - 语言代码
- * @returns 对应语言的sections配置
+ * @param isStandalone - 是否为独立模式
+ * @returns 对应语言和模式的sections配置
  */
-export function getSections(locale: SupportedLocale): Section[] {
+export function getSections(
+  locale: SupportedLocale,
+  isStandalone = false,
+): Section[] {
   const homeTranslations = getHomePageTranslation(locale);
+  const pathPrefix = isStandalone ? "/cf-standalone" : "/cf";
+  const titleSuffix = isStandalone
+    ? ` ${homeTranslations.standaloneSuffix}`
+    : "";
 
   return [
     {
@@ -79,8 +87,8 @@ export function getSections(locale: SupportedLocale): Section[] {
       icon: "triangle-alert",
       color: "danger",
       pages: Object.entries(errorPages).map(([type, config]) => ({
-        title: getErrorPageTranslation(type, locale).title,
-        path: `/cf/error/${type}/`,
+        title: `${getErrorPageTranslation(type, locale).title}${titleSuffix}`,
+        path: `${pathPrefix}/error/${type}/`,
         code: config.code,
         icon: config.icon,
       })),
@@ -91,8 +99,8 @@ export function getSections(locale: SupportedLocale): Section[] {
       icon: "lock",
       color: "warning",
       pages: Object.entries(blockPages).map(([type, config]) => ({
-        title: getBlockPageTranslation(type, locale).title,
-        path: `/cf/block/${type}/`,
+        title: `${getBlockPageTranslation(type, locale).title}${titleSuffix}`,
+        path: `${pathPrefix}/block/${type}/`,
         code: config.code,
         icon: config.icon,
       })),
@@ -103,8 +111,8 @@ export function getSections(locale: SupportedLocale): Section[] {
       icon: "shield-check",
       color: "primary",
       pages: Object.entries(challengePages).map(([type, config]) => ({
-        title: getChallengePageTranslation(type, locale).title,
-        path: `/cf/challenge/${type}/`,
+        title: `${getChallengePageTranslation(type, locale).title}${titleSuffix}`,
+        path: `${pathPrefix}/challenge/${type}/`,
         icon: config.icon,
       })),
     },

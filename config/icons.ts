@@ -4,7 +4,9 @@ import {
   ArrowRight,
   BadgeAlert,
   BookOpen,
+  Check,
   CheckCircle,
+  ChevronDown,
   ChevronsLeftRightEllipsis,
   Construction,
   FileQuestion,
@@ -12,6 +14,7 @@ import {
   Heart,
   HelpCircle,
   Info,
+  Layers,
   Lightbulb,
   Loader,
   LoaderCircle,
@@ -58,7 +61,10 @@ export type IconKey =
   | "network"
   | "help-circle"
   | "lightbulb"
-  | "chevron-left-right-ellipsis";
+  | "chevron-left-right-ellipsis"
+  | "chevron-down"
+  | "check"
+  | "layers";
 
 // 3. 在这里添加你想要的图标到 `icons` 映射字典中
 export const icons: Record<IconKey, LucideIcon> = {
@@ -89,4 +95,7 @@ export const icons: Record<IconKey, LucideIcon> = {
   "help-circle": HelpCircle,
   lightbulb: Lightbulb,
   "chevron-left-right-ellipsis": ChevronsLeftRightEllipsis,
+  "chevron-down": ChevronDown,
+  check: Check,
+  layers: Layers,
 };
