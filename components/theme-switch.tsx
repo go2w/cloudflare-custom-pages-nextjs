@@ -23,16 +23,44 @@ export const ThemeSwitch: FC<ThemeSwitchProps> = ({
   const isSSR = useIsSSR();
   const [mounted, setMounted] = useState(false);
 
+  /**
+   * 初始化主题设置
+   * 尝试获取系统主题偏好，失败则默认使用亮色主题
+   */
   useEffect(() => {
-    const initialTheme = theme || systemTheme || "light";
-    setTheme(initialTheme);
     setMounted(true);
-  }, [theme, systemTheme, setTheme]);
+    
+    // 如果没有保存的主题设置，尝试获取系统主题偏好
+    if (!theme) {
+      try {
+        // 尝试检测系统主题偏好
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const initialTheme = prefersDark ? 'dark' : 'light';
+        setTheme(initialTheme);
+      } catch (error) {
+        // 如果获取系统主题失败，默认使用亮色主题
+        console.warn('Failed to detect system theme preference, defaulting to light theme:', error);
+        setTheme('light');
+      }
+    }
+  }, [theme, setTheme]);
 
-  const currentTheme = theme || systemTheme;
+  const currentTheme = theme || systemTheme || 'light';
 
+  /**
+   * 主题切换处理函数
+   * 在亮色和暗色主题之间切换
+   */
   const onChange = () => {
-    currentTheme === "light" ? setTheme("dark") : setTheme("light");
+    const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+    setTheme(newTheme);
+  };
+
+  /**
+   * 获取当前主题模式的描述
+   */
+  const getThemeModeLabel = () => {
+    return `Switch to ${currentTheme === 'light' ? 'dark' : 'light'} mode`;
   };
 
   const {
@@ -44,7 +72,7 @@ export const ThemeSwitch: FC<ThemeSwitchProps> = ({
     getWrapperProps,
   } = useSwitch({
     isSelected: currentTheme === "light" || isSSR,
-    "aria-label": `Switch to ${currentTheme === "light" || isSSR ? "dark" : "light"} mode`,
+    "aria-label": getThemeModeLabel(),
     onChange,
   });
 
@@ -92,7 +120,7 @@ export const ThemeSwitch: FC<ThemeSwitchProps> = ({
           exit={{ rotate: 90, opacity: 0 }}
           transition={{ duration: 0.3 }}
         >
-          {!isSelected || isSSR ? (
+          {currentTheme === 'light' ? (
             <div className="relative">
               <Icon name="sun" className="h-6 w-6" />
               <div className="absolute inset-0 flex items-center justify-center bg-default-100 rounded opacity-0 group-hover:opacity-100 transition-opacity">

@@ -16,7 +16,12 @@ export default function App({ Component, pageProps }: AppProps) {
 
   return (
     <Providers
-      themeProps={{ attribute: "class", defaultTheme: "dark" }}
+      themeProps={{
+        attribute: "class",
+        defaultTheme: "light",
+        enableSystem: true,
+        disableTransitionOnChange: false,
+      }}
       initialLanguage={initialLanguage}
     >
       <Head>
