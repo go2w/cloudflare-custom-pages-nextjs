@@ -1,13 +1,18 @@
 "use client";
 
 import { Icon } from "@/components/ui/icon";
-import { errorPageTranslations, interfaceTranslations } from "@/config/i18n";
+import { getInterfaceTranslation, type ErrorPageTranslation, type SupportedLocale } from "@/config/i18n";
 import type { ErrorPageConfig } from "@/config/routes";
 import { Chip } from "@heroui/react";
+import { useRouter } from "next/router";
 import { CFCard } from "./ui/CFCard";
 import { CFCardWrap } from "./ui/CFCardWrapper";
 import { NetworkStatusBox } from "./ui/NetworkStatusBox";
 import { NetworkStatusWrapper } from "./ui/NetworkStatusWrapper";
+
+interface ErrorBoxProps extends ErrorPageConfig {
+  translations?: ErrorPageTranslation;
+}
 
 export const ErrorBox = ({
   type,
@@ -15,8 +20,17 @@ export const ErrorBox = ({
   box,
   icon,
   networkStatus,
-}: ErrorPageConfig) => {
-  const translation = errorPageTranslations[type];
+  translations,
+}: ErrorBoxProps) => {
+  const router = useRouter();
+  const locale = (router.locale || 'en') as SupportedLocale;
+  const interfaceTranslation = getInterfaceTranslation("error-details", locale);
+  
+  // 如果没有传入translations，则使用默认的英文翻译
+  const translation = translations || {
+    title: "Error",
+    message: "An error occurred",
+  };
 
   return (
     <CFCardWrap>
@@ -53,7 +67,7 @@ export const ErrorBox = ({
             <div className="space-y-2 sm:space-y-3">
               <h3 className="text-sm sm:text-base font-medium text-gray-900 dark:text-gray-100 flex items-center gap-1.5">
                 <Icon name="info" className="w-4 h-4 text-blue-500" />
-                {interfaceTranslations["error-details"].message}
+                {interfaceTranslation.message}
               </h3>
 
               <div className="font-mono text-xs sm:text-sm text-gray-600 dark:text-gray-400 bg-gray-100 dark:bg-gray-800/50 p-3 sm:p-4 rounded-lg overflow-x-auto">

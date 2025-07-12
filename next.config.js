@@ -13,6 +13,16 @@ const baseConfig = {
   compress: true,
 
   trailingSlash: true,
+
+  // 国际化配置
+  i18n: {
+    // 支持的语言列表
+    locales: ['en', 'zh', 'ja', 'ko', 'fr', 'de', 'es'],
+    // 默认语言
+    defaultLocale: 'en',
+    // 禁用Next.js内置的语言检测，使用自定义检测
+    localeDetection: false,
+  },
 };
 
 const devConfig = {

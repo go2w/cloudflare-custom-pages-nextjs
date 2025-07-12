@@ -1,20 +1,29 @@
 "use client";
 
 import { Icon } from "@/components/ui/icon";
-import { challengePageTranslations } from "@/config/i18n";
+import type { ChallengePageTranslation } from "@/config/i18n";
 import type { ChallengePageConfig } from "@/config/routes";
 import { CFCard } from "./ui/CFCard";
 import { CFCardWrap } from "./ui/CFCardWrapper";
 import { NetworkStatusBox } from "./ui/NetworkStatusBox";
 import { NetworkStatusWrapper } from "./ui/NetworkStatusWrapper";
 
+interface CaptchaBoxProps extends ChallengePageConfig {
+  translations?: ChallengePageTranslation;
+}
+
 export const CaptchaBox = ({
   type,
   box,
   icon,
   networkStatus,
-}: ChallengePageConfig) => {
-  const translation = challengePageTranslations[type];
+  translations,
+}: CaptchaBoxProps) => {
+  // 如果没有传入translations，则使用默认的英文翻译
+  const translation = translations || {
+    title: "Security Check",
+    message: "Please complete the security verification",
+  };
   return (
     <CFCardWrap>
       <CFCard

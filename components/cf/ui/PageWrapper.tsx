@@ -7,10 +7,18 @@ import type {
   ErrorPageConfig,
 } from "@/config/routes";
 import type { PageType } from "@/config/routes";
+import {
+  getBlockPageTranslation,
+  getErrorPageTranslation,
+  getChallengePageTranslation,
+  type SupportedLocale,
+} from "@/config/i18n";
+import { useLanguage } from "@/contexts/LanguageContext";
 import { useRouter } from "next/router";
 import { BlockBox } from "../BlockBox";
 import { CaptchaBox } from "../CaptchaBox";
 import { ErrorBox } from "../ErrorBox";
+import { useMemo } from "react";
 
 type PageConfigMap = {
   error: {
@@ -56,11 +64,29 @@ const pageConfigs: {
 export function PageWrapper({ pageType }: { pageType: PageType }) {
   const router = useRouter();
   const { type } = router.query;
+  const { currentLanguage } = useLanguage();
+  const locale = currentLanguage;
   const { pages, defaultType, component: Component } = pageConfigs[pageType];
   const config =
     typeof type === "string" && type in pages
       ? pages[type as keyof typeof pages]
       : pages[defaultType as keyof typeof pages];
+
+  // 获取当前页面类型的翻译
+  const translations = useMemo(() => {
+    const pageTypeStr = typeof type === "string" ? type : defaultType;
+    
+    switch (pageType) {
+      case 'block':
+        return getBlockPageTranslation(pageTypeStr, locale);
+      case 'error':
+        return getErrorPageTranslation(pageTypeStr, locale);
+      case 'challenge':
+        return getChallengePageTranslation(pageTypeStr, locale);
+      default:
+        return null;
+    }
+  }, [pageType, type, defaultType, locale]);
 
   if (router.isFallback) {
     return null;
@@ -70,7 +96,7 @@ export function PageWrapper({ pageType }: { pageType: PageType }) {
     <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
       <CFLayout>
         {/* biome-ignore lint/suspicious/noExplicitAny: TypeScript Too HARD */}
-        <Component {...(config as any)} />
+        <Component {...(config as any)} translations={translations} />
       </CFLayout>
     </Providers>
   );

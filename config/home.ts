@@ -1,7 +1,9 @@
 import {
-  blockPageTranslations,
-  challengePageTranslations,
-  errorPageTranslations,
+  getBlockPageTranslation,
+  getChallengePageTranslation,
+  getErrorPageTranslation,
+  getHomePageTranslation,
+  type SupportedLocale,
 } from "./i18n";
 import type { IconKey } from "./icons";
 import { blockPages, challengePages, errorPages } from "./routes";
@@ -62,40 +64,49 @@ export const colorSchemes: Record<ColorScheme, ColorClasses> = {
   },
 };
 
-export const sections: Section[] = [
-  {
-    title: "Error Pages",
-    description: "Server error pages",
-    icon: "triangle-alert",
-    color: "danger",
-    pages: Object.entries(errorPages).map(([type, config]) => ({
-      title: errorPageTranslations[type].title,
-      path: `/cf/error/${type}/`,
-      code: config.code,
-      icon: config.icon,
-    })),
-  },
-  {
-    title: "Block Pages",
-    description: "Access denied pages",
-    icon: "lock",
-    color: "warning",
-    pages: Object.entries(blockPages).map(([type, config]) => ({
-      title: blockPageTranslations[type].title,
-      path: `/cf/block/${type}/`,
-      code: config.code,
-      icon: config.icon,
-    })),
-  },
-  {
-    title: "Challenge Pages",
-    description: "Security verification challenges",
-    icon: "shield-check",
-    color: "primary",
-    pages: Object.entries(challengePages).map(([type, config]) => ({
-      title: challengePageTranslations[type].title,
-      path: `/cf/challenge/${type}/`,
-      icon: config.icon,
-    })),
-  },
-];
+/**
+ * 获取指定语言的sections配置
+ * @param locale - 语言代码
+ * @returns 对应语言的sections配置
+ */
+export function getSections(locale: SupportedLocale): Section[] {
+  const homeTranslations = getHomePageTranslation(locale);
+  
+  return [
+    {
+      title: homeTranslations.errorPagesTitle,
+      description: homeTranslations.errorPagesDescription,
+      icon: "triangle-alert",
+      color: "danger",
+      pages: Object.entries(errorPages).map(([type, config]) => ({
+        title: getErrorPageTranslation(type, locale).title,
+        path: `/cf/error/${type}/`,
+        code: config.code,
+        icon: config.icon,
+      })),
+    },
+    {
+      title: homeTranslations.blockPagesTitle,
+      description: homeTranslations.blockPagesDescription,
+      icon: "lock",
+      color: "warning",
+      pages: Object.entries(blockPages).map(([type, config]) => ({
+        title: getBlockPageTranslation(type, locale).title,
+        path: `/cf/block/${type}/`,
+        code: config.code,
+        icon: config.icon,
+      })),
+    },
+    {
+      title: homeTranslations.challengePagesTitle,
+      description: homeTranslations.challengePagesDescription,
+      icon: "shield-check",
+      color: "primary",
+      pages: Object.entries(challengePages).map(([type, config]) => ({
+        title: getChallengePageTranslation(type, locale).title,
+        path: `/cf/challenge/${type}/`,
+        icon: config.icon,
+      })),
+    },
+  ];
+}

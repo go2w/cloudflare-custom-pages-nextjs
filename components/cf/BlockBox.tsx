@@ -1,20 +1,29 @@
 "use client";
 
 import { Icon } from "@/components/ui/icon";
-import { blockPageTranslations } from "@/config/i18n";
+import type { BlockPageTranslation } from "@/config/i18n";
 import type { BlockPageConfig } from "@/config/routes";
 import { CFCard } from "./ui/CFCard";
 import { CFCardWrap } from "./ui/CFCardWrapper";
 import { NetworkStatusBox } from "./ui/NetworkStatusBox";
 import { NetworkStatusWrapper } from "./ui/NetworkStatusWrapper";
 
+interface BlockBoxProps extends BlockPageConfig {
+  translations?: BlockPageTranslation;
+}
+
 export const BlockBox = ({
   type,
   code,
   icon,
   networkStatus,
-}: BlockPageConfig) => {
-  const translation = blockPageTranslations[type];
+  translations,
+}: BlockBoxProps) => {
+  // 如果没有传入translations，则使用默认的英文翻译
+  const translation = translations || {
+    title: "Access Denied",
+    message: "Your access has been blocked",
+  };
   return (
     <CFCardWrap>
       <CFCard

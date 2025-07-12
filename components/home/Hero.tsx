@@ -1,8 +1,19 @@
 import { Icon } from "@/components/ui/icon";
-import { siteConfig } from "@/config/site";
+import type { HomePageTranslation } from "@/config/i18n";
 import { clsx as cx } from "clsx";
 
-export function Hero({ className }: { className?: string }) {
+interface HeroProps {
+  className?: string;
+  translations: HomePageTranslation;
+}
+
+/**
+ * Hero组件 - 首页头部展示区域
+ * @param className - 自定义样式类名
+ * @param translations - 多语言翻译数据
+ * @returns Hero组件
+ */
+export function Hero({ className, translations }: HeroProps) {
   return (
     <div
       className={cx(
@@ -20,10 +31,10 @@ export function Hero({ className }: { className?: string }) {
       </div>
       <div className="max-w-xl sm:max-w-2xl md:max-w-3xl mx-auto space-y-3 sm:space-y-4 md:space-y-5 lg:space-y-6">
         <h1 className="text-3xl sm:text-4xl md:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-blue-600 to-blue-500 dark:from-blue-400 dark:to-blue-300 bg-clip-text text-transparent tracking-tight">
-          {siteConfig.name}
+          {translations.siteTitle}
         </h1>
         <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-600 dark:text-gray-400 leading-relaxed">
-          {siteConfig.description}
+          {translations.siteDescription}
         </p>
       </div>
     </div>

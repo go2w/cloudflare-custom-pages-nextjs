@@ -4,14 +4,17 @@ import { Providers } from "@/components/providers";
 import type { ErrorPageConfig } from "@/config/routes";
 import { Button } from "@heroui/button";
 import { useRouter } from "next/router";
+import { useLanguage } from "@/contexts/LanguageContext";
+import { getErrorPageTranslation } from "@/config/i18n";
 
 export default function Custom404() {
   const router = useRouter();
+  const { currentLanguage } = useLanguage();
+  const translations = getErrorPageTranslation('404', currentLanguage);
+  
   const config: ErrorPageConfig = {
     type: "1000s",
     code: "404",
-    title: "Page Not Found",
-    message: "The page you are looking for could not be found.",
     box: "RAY_ID",
     icon: "file-question",
     networkStatus: {
@@ -25,13 +28,13 @@ export default function Custom404() {
     <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
       <CFLayout>
         <div className="space-y-6">
-          <ErrorBox {...config} />
+          <ErrorBox {...config} translations={translations} />
           <div className="flex justify-center gap-4">
             <Button color="primary" onPress={() => router.push("/")}>
-              Return to Home
+              {translations.backHome}
             </Button>
             <Button color="secondary" onPress={() => router.reload()}>
-              Try Again
+              {translations.tryAgain}
             </Button>
           </div>
         </div>

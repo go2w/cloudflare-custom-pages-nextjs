@@ -1,6 +1,7 @@
-import { interfaceTranslations } from "@/config/i18n";
+import { getInterfaceTranslation, type SupportedLocale } from "@/config/i18n";
 import type { NetworkStatusConfig } from "@/config/routes";
 import { clsx } from "clsx";
+import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { NetworkLine } from "./NetworkLine";
 import { NetworkNode } from "./NetworkNode";
@@ -16,7 +17,14 @@ export const NetworkStatusBox = ({
   originStatus,
   className,
 }: NetworkStatusBoxProps) => {
+  const router = useRouter();
+  const locale = (router.locale || 'en') as SupportedLocale;
   const [hostname, setHostname] = useState("");
+
+  // 获取多语言翻译
+  const youTranslation = getInterfaceTranslation("network-status-you", locale);
+  const cdnTranslation = getInterfaceTranslation("network-status-cdn", locale);
+  const originTranslation = getInterfaceTranslation("network-status-origin", locale);
 
   useEffect(() => {
     const domain = window.location.hostname;
@@ -36,13 +44,13 @@ export const NetworkStatusBox = ({
     >
       <div className="flex items-center justify-center gap-1 sm:gap-2">
         <NetworkNode
-          label={interfaceTranslations["network-status-you"].message}
+          label={youTranslation.message}
           status={clientStatus}
           className="w-[100px] sm:w-[120px]"
         />
         <NetworkLine status={clientStatus} />
         <NetworkNode
-          label={interfaceTranslations["network-status-cdn"].message}
+          label={cdnTranslation.message}
           status={edgeStatus}
           className="w-[100px] sm:w-[120px]"
         />
@@ -51,10 +59,7 @@ export const NetworkStatusBox = ({
           <>
             <NetworkLine status={edgeStatus} />
             <NetworkNode
-              label={
-                hostname ||
-                interfaceTranslations["network-status-origin"].message
-              }
+              label={hostname || originTranslation.message}
               status={originStatus}
               className="w-[100px] sm:w-[120px]"
             />
