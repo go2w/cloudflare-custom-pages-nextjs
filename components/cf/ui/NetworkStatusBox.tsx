@@ -1,4 +1,4 @@
-import { getInterfaceTranslation, type SupportedLocale } from "@/config/i18n";
+import { type SupportedLocale, getInterfaceTranslation } from "@/config/i18n";
 import type { NetworkStatusConfig } from "@/config/routes";
 import { clsx } from "clsx";
 import { useRouter } from "next/router";
@@ -18,13 +18,16 @@ export const NetworkStatusBox = ({
   className,
 }: NetworkStatusBoxProps) => {
   const router = useRouter();
-  const locale = (router.locale || 'en') as SupportedLocale;
+  const locale = (router.locale || "en") as SupportedLocale;
   const [hostname, setHostname] = useState("");
 
   // 获取多语言翻译
   const youTranslation = getInterfaceTranslation("network-status-you", locale);
   const cdnTranslation = getInterfaceTranslation("network-status-cdn", locale);
-  const originTranslation = getInterfaceTranslation("network-status-origin", locale);
+  const originTranslation = getInterfaceTranslation(
+    "network-status-origin",
+    locale,
+  );
 
   useEffect(() => {
     const domain = window.location.hostname;

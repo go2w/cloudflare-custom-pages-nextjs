@@ -20,7 +20,7 @@ export const CFLayout = ({ children }: CFLayoutProps) => {
         <div className="flex justify-end pt-4 pb-2">
           <LanguageSwitcher />
         </div>
-        
+
         <div className="flex-grow flex flex-col justify-center items-center">
           <div className="w-full max-w-[360px] sm:max-w-[480px] md:max-w-[720px] lg:max-w-3xl mx-auto">
             <div className="w-full pt-2 pb-4">{children}</div>

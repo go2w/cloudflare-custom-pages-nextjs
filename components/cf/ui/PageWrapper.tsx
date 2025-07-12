@@ -1,5 +1,11 @@
 import { CFLayout } from "@/components/layout/CFLayout";
 import { Providers } from "@/components/providers";
+import {
+  type SupportedLocale,
+  getBlockPageTranslation,
+  getChallengePageTranslation,
+  getErrorPageTranslation,
+} from "@/config/i18n";
 import { blockPages, challengePages, errorPages } from "@/config/routes";
 import type {
   BlockPageConfig,
@@ -7,18 +13,12 @@ import type {
   ErrorPageConfig,
 } from "@/config/routes";
 import type { PageType } from "@/config/routes";
-import {
-  getBlockPageTranslation,
-  getErrorPageTranslation,
-  getChallengePageTranslation,
-  type SupportedLocale,
-} from "@/config/i18n";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useRouter } from "next/router";
+import { useMemo } from "react";
 import { BlockBox } from "../BlockBox";
 import { CaptchaBox } from "../CaptchaBox";
 import { ErrorBox } from "../ErrorBox";
-import { useMemo } from "react";
 
 type PageConfigMap = {
   error: {
@@ -75,13 +75,13 @@ export function PageWrapper({ pageType }: { pageType: PageType }) {
   // 获取当前页面类型的翻译
   const translations = useMemo(() => {
     const pageTypeStr = typeof type === "string" ? type : defaultType;
-    
+
     switch (pageType) {
-      case 'block':
+      case "block":
         return getBlockPageTranslation(pageTypeStr, locale);
-      case 'error':
+      case "error":
         return getErrorPageTranslation(pageTypeStr, locale);
-      case 'challenge':
+      case "challenge":
         return getChallengePageTranslation(pageTypeStr, locale);
       default:
         return null;

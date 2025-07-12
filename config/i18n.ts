@@ -1,5 +1,5 @@
 // 支持的语言类型
-export type SupportedLocale = 'en' | 'zh' | 'ja' | 'ko' | 'fr' | 'de' | 'es';
+export type SupportedLocale = "en" | "zh" | "ja" | "ko" | "fr" | "de" | "es";
 
 // 页面翻译接口
 export interface PageTranslation {
@@ -24,7 +24,10 @@ export interface ChallengePageTranslation extends PageTranslation {}
 export type LocalizedTranslations<T> = Record<SupportedLocale, T>;
 
 // 多语言Block页面翻译
-export const blockPageTranslations: Record<string, LocalizedTranslations<BlockPageTranslation>> = {
+export const blockPageTranslations: Record<
+  string,
+  LocalizedTranslations<BlockPageTranslation>
+> = {
   ip: {
     en: {
       title: "Your IP is blocked",
@@ -58,7 +61,8 @@ export const blockPageTranslations: Record<string, LocalizedTranslations<BlockPa
   waf: {
     en: {
       title: "You're blocked by WAF",
-      message: "The Cloudflare WAF (Web Application Firewall) has blocked your request.",
+      message:
+        "The Cloudflare WAF (Web Application Firewall) has blocked your request.",
     },
     zh: {
       title: "您被WAF拦截",
@@ -66,29 +70,35 @@ export const blockPageTranslations: Record<string, LocalizedTranslations<BlockPa
     },
     ja: {
       title: "WAFによってブロックされています",
-      message: "Cloudflare WAF（Webアプリケーションファイアウォール）があなたのリクエストをブロックしました。",
+      message:
+        "Cloudflare WAF（Webアプリケーションファイアウォール）があなたのリクエストをブロックしました。",
     },
     ko: {
       title: "WAF에 의해 차단되었습니다",
-      message: "Cloudflare WAF(웹 애플리케이션 방화벽)가 귀하의 요청을 차단했습니다.",
+      message:
+        "Cloudflare WAF(웹 애플리케이션 방화벽)가 귀하의 요청을 차단했습니다.",
     },
     fr: {
       title: "Vous êtes bloqué par WAF",
-      message: "Le WAF Cloudflare (Web Application Firewall) a bloqué votre demande.",
+      message:
+        "Le WAF Cloudflare (Web Application Firewall) a bloqué votre demande.",
     },
     de: {
       title: "Sie werden von WAF blockiert",
-      message: "Die Cloudflare WAF (Web Application Firewall) hat Ihre Anfrage blockiert.",
+      message:
+        "Die Cloudflare WAF (Web Application Firewall) hat Ihre Anfrage blockiert.",
     },
     es: {
       title: "Está bloqueado por WAF",
-      message: "El WAF de Cloudflare (Web Application Firewall) ha bloqueado su solicitud.",
+      message:
+        "El WAF de Cloudflare (Web Application Firewall) ha bloqueado su solicitud.",
     },
   },
   "rate-limit": {
     en: {
       title: "Rate Limit Block - 429",
-      message: "You have made too many requests. Please wait a moment before trying again.",
+      message:
+        "You have made too many requests. Please wait a moment before trying again.",
     },
     zh: {
       title: "请求频率限制 - 429",
@@ -104,25 +114,32 @@ export const blockPageTranslations: Record<string, LocalizedTranslations<BlockPa
     },
     fr: {
       title: "Blocage de limite de taux - 429",
-      message: "Vous avez fait trop de demandes. Veuillez attendre un moment avant de réessayer.",
+      message:
+        "Vous avez fait trop de demandes. Veuillez attendre un moment avant de réessayer.",
     },
     de: {
       title: "Rate-Limit-Sperre - 429",
-      message: "Sie haben zu viele Anfragen gestellt. Bitte warten Sie einen Moment, bevor Sie es erneut versuchen.",
+      message:
+        "Sie haben zu viele Anfragen gestellt. Bitte warten Sie einen Moment, bevor Sie es erneut versuchen.",
     },
     es: {
       title: "Bloqueo por límite de velocidad - 429",
-      message: "Ha realizado demasiadas solicitudes. Espere un momento antes de intentarlo de nuevo.",
+      message:
+        "Ha realizado demasiadas solicitudes. Espere un momento antes de intentarlo de nuevo.",
     },
   },
 } as const;
 
 // 多语言错误页面翻译
-export const errorPageTranslations: Record<string, LocalizedTranslations<ErrorPageTranslation>> = {
+export const errorPageTranslations: Record<
+  string,
+  LocalizedTranslations<ErrorPageTranslation>
+> = {
   "500s": {
     en: {
       title: "Internal Server Error",
-      message: "Please try again later, there was an unexpected error on the site.",
+      message:
+        "Please try again later, there was an unexpected error on the site.",
     },
     zh: {
       title: "内部服务器错误",
@@ -130,29 +147,35 @@ export const errorPageTranslations: Record<string, LocalizedTranslations<ErrorPa
     },
     ja: {
       title: "内部サーバーエラー",
-      message: "サイトで予期しないエラーが発生しました。後でもう一度お試しください。",
+      message:
+        "サイトで予期しないエラーが発生しました。後でもう一度お試しください。",
     },
     ko: {
       title: "내부 서버 오류",
-      message: "사이트에서 예기치 않은 오류가 발생했습니다. 나중에 다시 시도해주세요.",
+      message:
+        "사이트에서 예기치 않은 오류가 발생했습니다. 나중에 다시 시도해주세요.",
     },
     fr: {
       title: "Erreur interne du serveur",
-      message: "Veuillez réessayer plus tard, il y a eu une erreur inattendue sur le site.",
+      message:
+        "Veuillez réessayer plus tard, il y a eu une erreur inattendue sur le site.",
     },
     de: {
       title: "Interner Serverfehler",
-      message: "Bitte versuchen Sie es später erneut, es gab einen unerwarteten Fehler auf der Website.",
+      message:
+        "Bitte versuchen Sie es später erneut, es gab einen unerwarteten Fehler auf der Website.",
     },
     es: {
       title: "Error interno del servidor",
-      message: "Inténtelo de nuevo más tarde, hubo un error inesperado en el sitio.",
+      message:
+        "Inténtelo de nuevo más tarde, hubo un error inesperado en el sitio.",
     },
   },
   "1000s": {
     en: {
       title: "DNS Resolution Error",
-      message: "The requested hostname could not be resolved. Don't worry, it's not your problem.",
+      message:
+        "The requested hostname could not be resolved. Don't worry, it's not your problem.",
     },
     zh: {
       title: "DNS解析错误",
@@ -160,23 +183,28 @@ export const errorPageTranslations: Record<string, LocalizedTranslations<ErrorPa
     },
     ja: {
       title: "DNS解決エラー",
-      message: "要求されたホスト名を解決できませんでした。心配しないでください、これはあなたの問題ではありません。",
+      message:
+        "要求されたホスト名を解決できませんでした。心配しないでください、これはあなたの問題ではありません。",
     },
     ko: {
       title: "DNS 해결 오류",
-      message: "요청된 호스트명을 해결할 수 없습니다. 걱정하지 마세요, 이것은 귀하의 문제가 아닙니다.",
+      message:
+        "요청된 호스트명을 해결할 수 없습니다. 걱정하지 마세요, 이것은 귀하의 문제가 아닙니다.",
     },
     fr: {
       title: "Erreur de résolution DNS",
-      message: "Le nom d'hôte demandé n'a pas pu être résolu. Ne vous inquiétez pas, ce n'est pas votre problème.",
+      message:
+        "Le nom d'hôte demandé n'a pas pu être résolu. Ne vous inquiétez pas, ce n'est pas votre problème.",
     },
     de: {
       title: "DNS-Auflösungsfehler",
-      message: "Der angeforderte Hostname konnte nicht aufgelöst werden. Keine Sorge, das ist nicht Ihr Problem.",
+      message:
+        "Der angeforderte Hostname konnte nicht aufgelöst werden. Keine Sorge, das ist nicht Ihr Problem.",
     },
     es: {
       title: "Error de resolución DNS",
-      message: "No se pudo resolver el nombre de host solicitado. No se preocupe, no es su problema.",
+      message:
+        "No se pudo resolver el nombre de host solicitado. No se preocupe, no es su problema.",
     },
   },
   "404": {
@@ -226,7 +254,10 @@ export const errorPageTranslations: Record<string, LocalizedTranslations<ErrorPa
 } as const;
 
 // 多语言挑战页面翻译
-export const challengePageTranslations: Record<string, LocalizedTranslations<ChallengePageTranslation>> = {
+export const challengePageTranslations: Record<
+  string,
+  LocalizedTranslations<ChallengePageTranslation>
+> = {
   interactive: {
     en: {
       title: "Interactive Challenge",
@@ -250,7 +281,8 @@ export const challengePageTranslations: Record<string, LocalizedTranslations<Cha
     },
     de: {
       title: "Interaktive Herausforderung",
-      message: "Bitte vervollständigen Sie dieses CAPTCHA, um auf die Website zuzugreifen.",
+      message:
+        "Bitte vervollständigen Sie dieses CAPTCHA, um auf die Website zuzugreifen.",
     },
     es: {
       title: "Desafío interactivo",
@@ -268,29 +300,35 @@ export const challengePageTranslations: Record<string, LocalizedTranslations<Cha
     },
     ja: {
       title: "攻撃下モード™",
-      message: "続行するにはCAPTCHAを完了してください。これは一般的なセキュリティチェックです。",
+      message:
+        "続行するにはCAPTCHAを完了してください。これは一般的なセキュリティチェックです。",
     },
     ko: {
       title: "공격 받는 중 모드™",
-      message: "계속하려면 CAPTCHA를 완료하세요. 이것은 일반적인 보안 검사입니다.",
+      message:
+        "계속하려면 CAPTCHA를 완료하세요. 이것은 일반적인 보안 검사입니다.",
     },
     fr: {
       title: "Mode Sous Attaque™",
-      message: "Complétez le CAPTCHA pour continuer. Il s'agit d'une vérification de sécurité générale.",
+      message:
+        "Complétez le CAPTCHA pour continuer. Il s'agit d'une vérification de sécurité générale.",
     },
     de: {
       title: "Unter-Angriff-Modus™",
-      message: "Vervollständigen Sie das CAPTCHA, um fortzufahren. Dies ist eine allgemeine Sicherheitsprüfung.",
+      message:
+        "Vervollständigen Sie das CAPTCHA, um fortzufahren. Dies ist eine allgemeine Sicherheitsprüfung.",
     },
     es: {
       title: "Modo Bajo Ataque™",
-      message: "Complete el CAPTCHA para continuar. Esta es una verificación de seguridad general.",
+      message:
+        "Complete el CAPTCHA para continuar. Esta es una verificación de seguridad general.",
     },
   },
   country: {
     en: {
       title: "Challenge",
-      message: "Additional verification is required for visitors from your Country/Region.",
+      message:
+        "Additional verification is required for visitors from your Country/Region.",
     },
     zh: {
       title: "验证挑战",
@@ -306,21 +344,25 @@ export const challengePageTranslations: Record<string, LocalizedTranslations<Cha
     },
     fr: {
       title: "Défi",
-      message: "Une vérification supplémentaire est requise pour les visiteurs de votre pays/région.",
+      message:
+        "Une vérification supplémentaire est requise pour les visiteurs de votre pays/région.",
     },
     de: {
       title: "Herausforderung",
-      message: "Für Besucher aus Ihrem Land/Ihrer Region ist eine zusätzliche Überprüfung erforderlich.",
+      message:
+        "Für Besucher aus Ihrem Land/Ihrer Region ist eine zusätzliche Überprüfung erforderlich.",
     },
     es: {
       title: "Desafío",
-      message: "Se requiere verificación adicional para visitantes de su país/región.",
+      message:
+        "Se requiere verificación adicional para visitantes de su país/región.",
     },
   },
   javascript: {
     en: {
       title: "Please wait...",
-      message: "Please wait a moment while our security system verifies your request.",
+      message:
+        "Please wait a moment while our security system verifies your request.",
     },
     zh: {
       title: "请稍候...",
@@ -328,7 +370,8 @@ export const challengePageTranslations: Record<string, LocalizedTranslations<Cha
     },
     ja: {
       title: "お待ちください...",
-      message: "セキュリティシステムがリクエストを確認している間、しばらくお待ちください。",
+      message:
+        "セキュリティシステムがリクエストを確認している間、しばらくお待ちください。",
     },
     ko: {
       title: "잠시 기다려주세요...",
@@ -336,21 +379,27 @@ export const challengePageTranslations: Record<string, LocalizedTranslations<Cha
     },
     fr: {
       title: "Veuillez patienter...",
-      message: "Veuillez attendre un moment pendant que notre système de sécurité vérifie votre demande.",
+      message:
+        "Veuillez attendre un moment pendant que notre système de sécurité vérifie votre demande.",
     },
     de: {
       title: "Bitte warten...",
-      message: "Bitte warten Sie einen Moment, während unser Sicherheitssystem Ihre Anfrage überprüft.",
+      message:
+        "Bitte warten Sie einen Moment, während unser Sicherheitssystem Ihre Anfrage überprüft.",
     },
     es: {
       title: "Por favor espere...",
-      message: "Espere un momento mientras nuestro sistema de seguridad verifica su solicitud.",
+      message:
+        "Espere un momento mientras nuestro sistema de seguridad verifica su solicitud.",
     },
   },
 } as const;
 
 // 多语言界面翻译
-export const interfaceTranslations: Record<string, LocalizedTranslations<InterfaceTranslations>> = {
+export const interfaceTranslations: Record<
+  string,
+  LocalizedTranslations<InterfaceTranslations>
+> = {
   "error-details": {
     en: { message: "Learn more" },
     zh: { message: "了解更多" },
@@ -411,78 +460,85 @@ export interface HomePageTranslation {
 }
 
 // 首页多语言翻译
-export const homePageTranslations: LocalizedTranslations<HomePageTranslation> = {
-  en: {
-    siteTitle: "Cloudflare WAF Custom Pages",
-    siteDescription: "A beautiful, out-of-the-box Cloudflare WAF custom page template.",
-    errorPagesTitle: "Error Pages",
-    errorPagesDescription: "Server error pages",
-    blockPagesTitle: "Block Pages",
-    blockPagesDescription: "Access denied pages",
-    challengePagesTitle: "Challenge Pages",
-    challengePagesDescription: "Security verification challenges",
-  },
-  zh: {
-    siteTitle: "Cloudflare WAF 自定义页面",
-    siteDescription: "一个美观的、开箱即用的 Cloudflare WAF 自定义页面模板。",
-    errorPagesTitle: "错误页面",
-    errorPagesDescription: "服务器错误页面",
-    blockPagesTitle: "阻止页面",
-    blockPagesDescription: "访问被拒绝页面",
-    challengePagesTitle: "挑战页面",
-    challengePagesDescription: "安全验证挑战",
-  },
-  ja: {
-    siteTitle: "Cloudflare WAF カスタムページ",
-    siteDescription: "美しく、すぐに使える Cloudflare WAF カスタムページテンプレート。",
-    errorPagesTitle: "エラーページ",
-    errorPagesDescription: "サーバーエラーページ",
-    blockPagesTitle: "ブロックページ",
-    blockPagesDescription: "アクセス拒否ページ",
-    challengePagesTitle: "チャレンジページ",
-    challengePagesDescription: "セキュリティ検証チャレンジ",
-  },
-  ko: {
-    siteTitle: "Cloudflare WAF 커스텀 페이지",
-    siteDescription: "아름답고 즉시 사용 가능한 Cloudflare WAF 커스텀 페이지 템플릿.",
-    errorPagesTitle: "오류 페이지",
-    errorPagesDescription: "서버 오류 페이지",
-    blockPagesTitle: "차단 페이지",
-    blockPagesDescription: "액세스 거부 페이지",
-    challengePagesTitle: "챌린지 페이지",
-    challengePagesDescription: "보안 검증 챌린지",
-  },
-  fr: {
-    siteTitle: "Pages personnalisées Cloudflare WAF",
-    siteDescription: "Un modèle de page personnalisée Cloudflare WAF beau et prêt à l'emploi.",
-    errorPagesTitle: "Pages d'erreur",
-    errorPagesDescription: "Pages d'erreur du serveur",
-    blockPagesTitle: "Pages de blocage",
-    blockPagesDescription: "Pages d'accès refusé",
-    challengePagesTitle: "Pages de défi",
-    challengePagesDescription: "Défis de vérification de sécurité",
-  },
-  de: {
-    siteTitle: "Cloudflare WAF Benutzerdefinierte Seiten",
-    siteDescription: "Eine schöne, sofort einsatzbereite Cloudflare WAF benutzerdefinierte Seitenvorlage.",
-    errorPagesTitle: "Fehlerseiten",
-    errorPagesDescription: "Server-Fehlerseiten",
-    blockPagesTitle: "Sperrseiten",
-    blockPagesDescription: "Zugriff verweigert Seiten",
-    challengePagesTitle: "Challenge-Seiten",
-    challengePagesDescription: "Sicherheitsüberprüfungs-Challenges",
-  },
-  es: {
-    siteTitle: "Páginas personalizadas de Cloudflare WAF",
-    siteDescription: "Una plantilla de página personalizada de Cloudflare WAF hermosa y lista para usar.",
-    errorPagesTitle: "Páginas de error",
-    errorPagesDescription: "Páginas de error del servidor",
-    blockPagesTitle: "Páginas de bloqueo",
-    blockPagesDescription: "Páginas de acceso denegado",
-    challengePagesTitle: "Páginas de desafío",
-    challengePagesDescription: "Desafíos de verificación de seguridad",
-  },
-} as const;
+export const homePageTranslations: LocalizedTranslations<HomePageTranslation> =
+  {
+    en: {
+      siteTitle: "Cloudflare WAF Custom Pages",
+      siteDescription:
+        "A beautiful, out-of-the-box Cloudflare WAF custom page template.",
+      errorPagesTitle: "Error Pages",
+      errorPagesDescription: "Server error pages",
+      blockPagesTitle: "Block Pages",
+      blockPagesDescription: "Access denied pages",
+      challengePagesTitle: "Challenge Pages",
+      challengePagesDescription: "Security verification challenges",
+    },
+    zh: {
+      siteTitle: "Cloudflare WAF 自定义页面",
+      siteDescription: "一个美观的、开箱即用的 Cloudflare WAF 自定义页面模板。",
+      errorPagesTitle: "错误页面",
+      errorPagesDescription: "服务器错误页面",
+      blockPagesTitle: "阻止页面",
+      blockPagesDescription: "访问被拒绝页面",
+      challengePagesTitle: "挑战页面",
+      challengePagesDescription: "安全验证挑战",
+    },
+    ja: {
+      siteTitle: "Cloudflare WAF カスタムページ",
+      siteDescription:
+        "美しく、すぐに使える Cloudflare WAF カスタムページテンプレート。",
+      errorPagesTitle: "エラーページ",
+      errorPagesDescription: "サーバーエラーページ",
+      blockPagesTitle: "ブロックページ",
+      blockPagesDescription: "アクセス拒否ページ",
+      challengePagesTitle: "チャレンジページ",
+      challengePagesDescription: "セキュリティ検証チャレンジ",
+    },
+    ko: {
+      siteTitle: "Cloudflare WAF 커스텀 페이지",
+      siteDescription:
+        "아름답고 즉시 사용 가능한 Cloudflare WAF 커스텀 페이지 템플릿.",
+      errorPagesTitle: "오류 페이지",
+      errorPagesDescription: "서버 오류 페이지",
+      blockPagesTitle: "차단 페이지",
+      blockPagesDescription: "액세스 거부 페이지",
+      challengePagesTitle: "챌린지 페이지",
+      challengePagesDescription: "보안 검증 챌린지",
+    },
+    fr: {
+      siteTitle: "Pages personnalisées Cloudflare WAF",
+      siteDescription:
+        "Un modèle de page personnalisée Cloudflare WAF beau et prêt à l'emploi.",
+      errorPagesTitle: "Pages d'erreur",
+      errorPagesDescription: "Pages d'erreur du serveur",
+      blockPagesTitle: "Pages de blocage",
+      blockPagesDescription: "Pages d'accès refusé",
+      challengePagesTitle: "Pages de défi",
+      challengePagesDescription: "Défis de vérification de sécurité",
+    },
+    de: {
+      siteTitle: "Cloudflare WAF Benutzerdefinierte Seiten",
+      siteDescription:
+        "Eine schöne, sofort einsatzbereite Cloudflare WAF benutzerdefinierte Seitenvorlage.",
+      errorPagesTitle: "Fehlerseiten",
+      errorPagesDescription: "Server-Fehlerseiten",
+      blockPagesTitle: "Sperrseiten",
+      blockPagesDescription: "Zugriff verweigert Seiten",
+      challengePagesTitle: "Challenge-Seiten",
+      challengePagesDescription: "Sicherheitsüberprüfungs-Challenges",
+    },
+    es: {
+      siteTitle: "Páginas personalizadas de Cloudflare WAF",
+      siteDescription:
+        "Una plantilla de página personalizada de Cloudflare WAF hermosa y lista para usar.",
+      errorPagesTitle: "Páginas de error",
+      errorPagesDescription: "Páginas de error del servidor",
+      blockPagesTitle: "Páginas de bloqueo",
+      blockPagesDescription: "Páginas de acceso denegado",
+      challengePagesTitle: "Páginas de desafío",
+      challengePagesDescription: "Desafíos de verificación de seguridad",
+    },
+  } as const;
 
 // 工具函数：获取指定语言的翻译
 /**
@@ -495,13 +551,13 @@ export const homePageTranslations: LocalizedTranslations<HomePageTranslation> = 
 export function getPageTranslation<T>(
   type: string,
   locale: SupportedLocale,
-  translations: Record<string, LocalizedTranslations<T>>
+  translations: Record<string, LocalizedTranslations<T>>,
 ): T {
   const translation = translations[type];
   if (!translation) {
     throw new Error(`Translation not found for type: ${type}`);
   }
-  
+
   return translation[locale] || translation.en;
 }
 
@@ -513,7 +569,7 @@ export function getPageTranslation<T>(
  */
 export function getInterfaceTranslation(
   key: string,
-  locale: SupportedLocale
+  locale: SupportedLocale,
 ): InterfaceTranslations {
   return getPageTranslation(key, locale, interfaceTranslations);
 }
@@ -526,7 +582,7 @@ export function getInterfaceTranslation(
  */
 export function getBlockPageTranslation(
   type: string,
-  locale: SupportedLocale
+  locale: SupportedLocale,
 ): BlockPageTranslation {
   return getPageTranslation(type, locale, blockPageTranslations);
 }
@@ -539,7 +595,7 @@ export function getBlockPageTranslation(
  */
 export function getErrorPageTranslation(
   type: string,
-  locale: SupportedLocale
+  locale: SupportedLocale,
 ): ErrorPageTranslation {
   return getPageTranslation(type, locale, errorPageTranslations);
 }
@@ -552,7 +608,7 @@ export function getErrorPageTranslation(
  */
 export function getChallengePageTranslation(
   type: string,
-  locale: SupportedLocale
+  locale: SupportedLocale,
 ): ChallengePageTranslation {
   return getPageTranslation(type, locale, challengePageTranslations);
 }
@@ -563,7 +619,7 @@ export function getChallengePageTranslation(
  * @returns 对应语言的翻译内容
  */
 export function getHomePageTranslation(
-  locale: SupportedLocale
+  locale: SupportedLocale,
 ): HomePageTranslation {
   return homePageTranslations[locale] || homePageTranslations.en;
 }
@@ -571,94 +627,94 @@ export function getHomePageTranslation(
 // 浏览器语言到支持语言的映射表
 const languageMapping: Record<string, SupportedLocale> = {
   // 英语系列
-  'en': 'en',
-  'en-US': 'en',
-  'en-GB': 'en',
-  'en-CA': 'en',
-  'en-AU': 'en',
-  
+  en: "en",
+  "en-US": "en",
+  "en-GB": "en",
+  "en-CA": "en",
+  "en-AU": "en",
+
   // 中文系列
-  'zh': 'zh',
-  'zh-CN': 'zh',
-  'zh-TW': 'zh', // 繁体中文映射到简体中文
-  'zh-HK': 'zh', // 香港中文映射到简体中文
-  'zh-SG': 'zh', // 新加坡中文映射到简体中文
-  
+  zh: "zh",
+  "zh-CN": "zh",
+  "zh-TW": "zh", // 繁体中文映射到简体中文
+  "zh-HK": "zh", // 香港中文映射到简体中文
+  "zh-SG": "zh", // 新加坡中文映射到简体中文
+
   // 日语系列
-  'ja': 'ja',
-  'ja-JP': 'ja',
-  
+  ja: "ja",
+  "ja-JP": "ja",
+
   // 韩语系列
-  'ko': 'ko',
-  'ko-KR': 'ko',
-  
+  ko: "ko",
+  "ko-KR": "ko",
+
   // 法语系列
-  'fr': 'fr',
-  'fr-FR': 'fr',
-  'fr-CA': 'fr',
-  'fr-BE': 'fr',
-  'fr-CH': 'fr',
-  
+  fr: "fr",
+  "fr-FR": "fr",
+  "fr-CA": "fr",
+  "fr-BE": "fr",
+  "fr-CH": "fr",
+
   // 德语系列
-  'de': 'de',
-  'de-DE': 'de',
-  'de-AT': 'de',
-  'de-CH': 'de',
-  
+  de: "de",
+  "de-DE": "de",
+  "de-AT": "de",
+  "de-CH": "de",
+
   // 西班牙语系列
-  'es': 'es',
-  'es-ES': 'es',
-  'es-MX': 'es',
-  'es-AR': 'es',
-  'es-CO': 'es',
-  'es-CL': 'es',
-  'es-PE': 'es',
-  'es-VE': 'es',
-  
+  es: "es",
+  "es-ES": "es",
+  "es-MX": "es",
+  "es-AR": "es",
+  "es-CO": "es",
+  "es-CL": "es",
+  "es-PE": "es",
+  "es-VE": "es",
+
   // 其他语言映射到最相近的支持语言
-  'pt': 'es', // 葡萄牙语映射到西班牙语
-  'pt-BR': 'es', // 巴西葡萄牙语映射到西班牙语
-  'pt-PT': 'es', // 葡萄牙葡萄牙语映射到西班牙语
-  'it': 'en', // 意大利语映射到英语
-  'it-IT': 'en',
-  'ru': 'en', // 俄语映射到英语
-  'ru-RU': 'en',
-  'ar': 'en', // 阿拉伯语映射到英语
-  'hi': 'en', // 印地语映射到英语
-  'th': 'en', // 泰语映射到英语
-  'vi': 'en', // 越南语映射到英语
-  'id': 'en', // 印尼语映射到英语
-  'ms': 'en', // 马来语映射到英语
-  'tr': 'en', // 土耳其语映射到英语
-  'pl': 'en', // 波兰语映射到英语
-  'nl': 'en', // 荷兰语映射到英语
-  'sv': 'en', // 瑞典语映射到英语
-  'da': 'en', // 丹麦语映射到英语
-  'no': 'en', // 挪威语映射到英语
-  'fi': 'en', // 芬兰语映射到英语
-  'he': 'en', // 希伯来语映射到英语
-  'cs': 'en', // 捷克语映射到英语
-  'sk': 'en', // 斯洛伐克语映射到英语
-  'hu': 'en', // 匈牙利语映射到英语
-  'ro': 'en', // 罗马尼亚语映射到英语
-  'bg': 'en', // 保加利亚语映射到英语
-  'hr': 'en', // 克罗地亚语映射到英语
-  'sr': 'en', // 塞尔维亚语映射到英语
-  'sl': 'en', // 斯洛文尼亚语映射到英语
-  'et': 'en', // 爱沙尼亚语映射到英语
-  'lv': 'en', // 拉脱维亚语映射到英语
-  'lt': 'en', // 立陶宛语映射到英语
-  'uk': 'en', // 乌克兰语映射到英语
-  'be': 'en', // 白俄罗斯语映射到英语
-  'mk': 'en', // 马其顿语映射到英语
-  'sq': 'en', // 阿尔巴尼亚语映射到英语
-  'mt': 'en', // 马耳他语映射到英语
-  'is': 'en', // 冰岛语映射到英语
-  'ga': 'en', // 爱尔兰语映射到英语
-  'cy': 'en', // 威尔士语映射到英语
-  'eu': 'es', // 巴斯克语映射到西班牙语
-  'ca': 'es', // 加泰罗尼亚语映射到西班牙语
-  'gl': 'es', // 加利西亚语映射到西班牙语
+  pt: "es", // 葡萄牙语映射到西班牙语
+  "pt-BR": "es", // 巴西葡萄牙语映射到西班牙语
+  "pt-PT": "es", // 葡萄牙葡萄牙语映射到西班牙语
+  it: "en", // 意大利语映射到英语
+  "it-IT": "en",
+  ru: "en", // 俄语映射到英语
+  "ru-RU": "en",
+  ar: "en", // 阿拉伯语映射到英语
+  hi: "en", // 印地语映射到英语
+  th: "en", // 泰语映射到英语
+  vi: "en", // 越南语映射到英语
+  id: "en", // 印尼语映射到英语
+  ms: "en", // 马来语映射到英语
+  tr: "en", // 土耳其语映射到英语
+  pl: "en", // 波兰语映射到英语
+  nl: "en", // 荷兰语映射到英语
+  sv: "en", // 瑞典语映射到英语
+  da: "en", // 丹麦语映射到英语
+  no: "en", // 挪威语映射到英语
+  fi: "en", // 芬兰语映射到英语
+  he: "en", // 希伯来语映射到英语
+  cs: "en", // 捷克语映射到英语
+  sk: "en", // 斯洛伐克语映射到英语
+  hu: "en", // 匈牙利语映射到英语
+  ro: "en", // 罗马尼亚语映射到英语
+  bg: "en", // 保加利亚语映射到英语
+  hr: "en", // 克罗地亚语映射到英语
+  sr: "en", // 塞尔维亚语映射到英语
+  sl: "en", // 斯洛文尼亚语映射到英语
+  et: "en", // 爱沙尼亚语映射到英语
+  lv: "en", // 拉脱维亚语映射到英语
+  lt: "en", // 立陶宛语映射到英语
+  uk: "en", // 乌克兰语映射到英语
+  be: "en", // 白俄罗斯语映射到英语
+  mk: "en", // 马其顿语映射到英语
+  sq: "en", // 阿尔巴尼亚语映射到英语
+  mt: "en", // 马耳他语映射到英语
+  is: "en", // 冰岛语映射到英语
+  ga: "en", // 爱尔兰语映射到英语
+  cy: "en", // 威尔士语映射到英语
+  eu: "es", // 巴斯克语映射到西班牙语
+  ca: "es", // 加泰罗尼亚语映射到西班牙语
+  gl: "es", // 加利西亚语映射到西班牙语
 } as const;
 
 /**
@@ -666,25 +722,27 @@ const languageMapping: Record<string, SupportedLocale> = {
  * @param browserLanguages - 浏览器语言列表（按优先级排序）
  * @returns 匹配的支持语言代码
  */
-export function detectBestLanguage(browserLanguages: readonly string[]): SupportedLocale {
+export function detectBestLanguage(
+  browserLanguages: readonly string[],
+): SupportedLocale {
   // 遍历浏览器语言列表，按优先级查找匹配
   for (const browserLang of browserLanguages) {
     const normalizedLang = browserLang.toLowerCase();
-    
+
     // 精确匹配
     if (languageMapping[normalizedLang]) {
       return languageMapping[normalizedLang];
     }
-    
+
     // 尝试匹配语言代码的前缀（如 'zh-Hans-CN' -> 'zh'）
-    const langPrefix = normalizedLang.split('-')[0];
+    const langPrefix = normalizedLang.split("-")[0];
     if (languageMapping[langPrefix]) {
       return languageMapping[langPrefix];
     }
   }
-  
+
   // 如果没有匹配到任何语言，返回默认语言
-  return 'en';
+  return "en";
 }
 
 /**
@@ -692,28 +750,31 @@ export function detectBestLanguage(browserLanguages: readonly string[]): Support
  * @returns 浏览器语言列表
  */
 export function getBrowserLanguages(): readonly string[] {
-  if (typeof window === 'undefined') {
+  if (typeof window === "undefined") {
     // 服务端渲染时返回空数组
     return [];
   }
-  
+
   const languages: string[] = [];
-  
+
   // 获取 navigator.languages（现代浏览器支持）
   if (navigator.languages && navigator.languages.length > 0) {
     languages.push(...navigator.languages);
   }
-  
+
   // 获取 navigator.language（所有浏览器支持）
   if (navigator.language) {
     languages.push(navigator.language);
   }
-  
+
   // 获取 navigator.userLanguage（IE支持）
-  if ((navigator as any).userLanguage) {
-    languages.push((navigator as any).userLanguage);
+  const navigatorWithUserLanguage = navigator as Navigator & {
+    userLanguage?: string;
+  };
+  if (navigatorWithUserLanguage.userLanguage) {
+    languages.push(navigatorWithUserLanguage.userLanguage);
   }
-  
+
   // 去重并返回
   return [...new Set(languages)];
 }

@@ -14,15 +14,8 @@ const baseConfig = {
 
   trailingSlash: true,
 
-  // 国际化配置
-  i18n: {
-    // 支持的语言列表
-    locales: ['en', 'zh', 'ja', 'ko', 'fr', 'de', 'es'],
-    // 默认语言
-    defaultLocale: 'en',
-    // 禁用Next.js内置的语言检测，使用自定义检测
-    localeDetection: false,
-  },
+  // 注意：由于使用了 output: "export"，不能使用 Next.js 内置的 i18n 配置
+  // 项目使用自定义的语言检测和切换系统
 };
 
 const devConfig = {

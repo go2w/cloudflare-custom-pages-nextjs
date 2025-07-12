@@ -1,9 +1,9 @@
 import {
+  type SupportedLocale,
   getBlockPageTranslation,
   getChallengePageTranslation,
   getErrorPageTranslation,
   getHomePageTranslation,
-  type SupportedLocale,
 } from "./i18n";
 import type { IconKey } from "./icons";
 import { blockPages, challengePages, errorPages } from "./routes";
@@ -71,7 +71,7 @@ export const colorSchemes: Record<ColorScheme, ColorClasses> = {
  */
 export function getSections(locale: SupportedLocale): Section[] {
   const homeTranslations = getHomePageTranslation(locale);
-  
+
   return [
     {
       title: homeTranslations.errorPagesTitle,

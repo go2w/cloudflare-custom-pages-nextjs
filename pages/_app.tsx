@@ -1,8 +1,8 @@
 import "@/styles/globals.css";
 import { Providers } from "@/components/providers";
+import type { SupportedLocale } from "@/config/i18n";
 import { siteConfig } from "@/config/site";
 import type { AppProps } from "next/app";
-import type { SupportedLocale } from "@/config/i18n";
 import Head from "next/head";
 import { useRouter } from "next/router";
 
@@ -12,10 +12,10 @@ import { useRouter } from "next/router";
  */
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
-  const initialLanguage = (router.locale || 'en') as SupportedLocale;
+  const initialLanguage = (router.locale || "en") as SupportedLocale;
 
   return (
-    <Providers 
+    <Providers
       themeProps={{ attribute: "class", defaultTheme: "dark" }}
       initialLanguage={initialLanguage}
     >

@@ -1,17 +1,17 @@
 import { ErrorBox } from "@/components/cf/ErrorBox";
 import { CFLayout } from "@/components/layout/CFLayout";
 import { Providers } from "@/components/providers";
+import { getErrorPageTranslation } from "@/config/i18n";
 import type { ErrorPageConfig } from "@/config/routes";
+import { useLanguage } from "@/contexts/LanguageContext";
 import { Button } from "@heroui/button";
 import { useRouter } from "next/router";
-import { useLanguage } from "@/contexts/LanguageContext";
-import { getErrorPageTranslation } from "@/config/i18n";
 
 export default function Custom404() {
   const router = useRouter();
   const { currentLanguage } = useLanguage();
-  const translations = getErrorPageTranslation('404', currentLanguage);
-  
+  const translations = getErrorPageTranslation("404", currentLanguage);
+
   const config: ErrorPageConfig = {
     type: "1000s",
     code: "404",

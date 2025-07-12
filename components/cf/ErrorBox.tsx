@@ -1,7 +1,11 @@
 "use client";
 
 import { Icon } from "@/components/ui/icon";
-import { getInterfaceTranslation, type ErrorPageTranslation, type SupportedLocale } from "@/config/i18n";
+import {
+  type ErrorPageTranslation,
+  type SupportedLocale,
+  getInterfaceTranslation,
+} from "@/config/i18n";
 import type { ErrorPageConfig } from "@/config/routes";
 import { Chip } from "@heroui/react";
 import { useRouter } from "next/router";
@@ -23,9 +27,9 @@ export const ErrorBox = ({
   translations,
 }: ErrorBoxProps) => {
   const router = useRouter();
-  const locale = (router.locale || 'en') as SupportedLocale;
+  const locale = (router.locale || "en") as SupportedLocale;
   const interfaceTranslation = getInterfaceTranslation("error-details", locale);
-  
+
   // 如果没有传入translations，则使用默认的英文翻译
   const translation = translations || {
     title: "Error",
