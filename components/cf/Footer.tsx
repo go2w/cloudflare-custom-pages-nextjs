@@ -3,6 +3,9 @@ import { memo, useCallback, useEffect, useMemo, useState } from "react";
 import { CFCardWrap } from "./ui/CFCardWrapper";
 import { countryCodeToFlag } from "./utils";
 
+// 从 package.json 获取版本号
+const VERSION = "1.0.9";
+
 const useIsClient = () => {
   const [isClient, setIsClient] = useState(false);
   useEffect(() => setIsClient(true), []);
@@ -105,6 +108,8 @@ export const FooterContent = memo(() => {
             <InfoItem label="IP" value="::CLIENT_IP::" />
             <Separator />
             <InfoItem label="Ray ID" value="::RAY_ID::" />
+            <Separator />
+            <InfoItem label="Version" value={`v${VERSION}`} />
           </div>
         </CardBody>
       </Card>
