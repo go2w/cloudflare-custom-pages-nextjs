@@ -26,6 +26,7 @@ import {
   ShieldEllipsis,
   Sun,
   TriangleAlert,
+  X,
   XCircle,
 } from "lucide-react";
 
@@ -48,6 +49,7 @@ export type IconKey =
   | "book-open"
   | "github"
   | "heart"
+  | "x"
   | "arrow-right"
   | "check-circle"
   | "x-circle"
@@ -77,6 +79,7 @@ export const icons: Record<IconKey, LucideIcon> = {
   "book-open": BookOpen,
   github: Github,
   heart: Heart,
+  x: X,
   "arrow-right": ArrowRight,
   "check-circle": CheckCircle,
   "x-circle": XCircle,

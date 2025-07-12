@@ -1,49 +1,39 @@
-import { clsx } from "clsx";
+import { Icon } from '@/components/ui/icon';
+import { clsx } from 'clsx';
 
-type NetworkStatus = "success" | "error" | "challenging";
+type NetworkStatus = 'success' | 'error';
 
 interface NetworkLineProps {
   status: NetworkStatus;
+  width?: number;
 }
 
-export const NetworkLine = ({ status }: NetworkLineProps) => {
-  const styles = {
-    success: {
-      base: "bg-green-100/50 dark:bg-green-900/30",
-      animation: "animate-flow",
-      gradient:
-        "bg-gradient-to-r from-transparent via-green-500/60 to-transparent dark:via-green-400/80",
-    },
-    error: {
-      base: "bg-red-100/50 dark:bg-red-900/30",
-      animation: "animate-flow",
-      gradient:
-        "bg-gradient-to-r from-transparent via-red-500/60 to-transparent dark:via-red-400/80",
-    },
-    challenging: {
-      base: "bg-orange-100/50 dark:bg-orange-900/30",
-      animation: "animate-network-loading",
-      gradient:
-        "bg-gradient-to-r from-transparent via-orange-500/60 to-transparent dark:via-orange-400/80",
-    },
-  }[status];
+/**
+ * Renders a network line with arrows and an optional 'X' for error status.
+ *
+ * @param {NetworkStatus} status - The status of the network connection.
+ * @param {number} [width=48] - The width of the line.
+ * @returns
+ */
+export const NetworkLine = ({ status, width = 48 }: NetworkLineProps) => {
+  const isSuccess = status === 'success';
+  const strokeColor = isSuccess ? 'text-blue-500' : 'text-red-500';
 
   return (
-    <div className="flex-1 flex items-center px-3">
-      <div
-        className={clsx(
-          "h-0.5 w-full relative transition-all duration-500 overflow-hidden",
-          styles.base,
-        )}
-      >
-        <div
-          className={clsx(
-            "absolute inset-0 w-full h-full",
-            styles.animation,
-            styles.gradient,
-          )}
+    <div className="relative flex items-center justify-center" style={{ width }}>
+      <svg width="100%" height="24" viewBox={`0 0 ${width} 24`} fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d={`M11 12 H ${width - 11}`} className={clsx('stroke-current', strokeColor)} strokeWidth="2" strokeDasharray="0 6" strokeLinecap="round" />
+        <path d="M5 12 L10 7" className={clsx('stroke-current', strokeColor)} strokeWidth="2" strokeLinecap="round" />
+        <path d="M5 12 L10 17" className={clsx('stroke-current', strokeColor)} strokeWidth="2" strokeLinecap="round" />
+        <path d={`M${width - 5} 12 L${width - 10} 7`} className={clsx('stroke-current', strokeColor)} strokeWidth="2" strokeLinecap="round" />
+        <path d={`M${width - 5} 12 L${width - 10} 17`} className={clsx('stroke-current', strokeColor)} strokeWidth="2" strokeLinecap="round" />
+      </svg>
+      {!isSuccess && (
+        <Icon
+          name="x"
+          className="absolute w-4 h-4 text-red-500"
         />
-      </div>
+      )}
     </div>
   );
 };
