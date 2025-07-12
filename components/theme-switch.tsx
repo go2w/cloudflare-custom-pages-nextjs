@@ -29,30 +29,35 @@ export const ThemeSwitch: FC<ThemeSwitchProps> = ({
    */
   useEffect(() => {
     setMounted(true);
-    
+
     // 如果没有保存的主题设置，尝试获取系统主题偏好
     if (!theme) {
       try {
         // 尝试检测系统主题偏好
-        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        const initialTheme = prefersDark ? 'dark' : 'light';
+        const prefersDark = window.matchMedia(
+          "(prefers-color-scheme: dark)",
+        ).matches;
+        const initialTheme = prefersDark ? "dark" : "light";
         setTheme(initialTheme);
       } catch (error) {
         // 如果获取系统主题失败，默认使用亮色主题
-        console.warn('Failed to detect system theme preference, defaulting to light theme:', error);
-        setTheme('light');
+        console.warn(
+          "Failed to detect system theme preference, defaulting to light theme:",
+          error,
+        );
+        setTheme("light");
       }
     }
   }, [theme, setTheme]);
 
-  const currentTheme = theme || systemTheme || 'light';
+  const currentTheme = theme || systemTheme || "light";
 
   /**
    * 主题切换处理函数
    * 在亮色和暗色主题之间切换
    */
   const onChange = () => {
-    const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+    const newTheme = currentTheme === "light" ? "dark" : "light";
     setTheme(newTheme);
   };
 
@@ -60,7 +65,7 @@ export const ThemeSwitch: FC<ThemeSwitchProps> = ({
    * 获取当前主题模式的描述
    */
   const getThemeModeLabel = () => {
-    return `Switch to ${currentTheme === 'light' ? 'dark' : 'light'} mode`;
+    return `Switch to ${currentTheme === "light" ? "dark" : "light"} mode`;
   };
 
   const {
@@ -120,7 +125,7 @@ export const ThemeSwitch: FC<ThemeSwitchProps> = ({
           exit={{ rotate: 90, opacity: 0 }}
           transition={{ duration: 0.3 }}
         >
-          {currentTheme === 'light' ? (
+          {currentTheme === "light" ? (
             <div className="relative">
               <Icon name="sun" className="h-6 w-6" />
               <div className="absolute inset-0 flex items-center justify-center bg-default-100 rounded opacity-0 group-hover:opacity-100 transition-opacity">
