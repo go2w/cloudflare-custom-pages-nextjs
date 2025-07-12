@@ -51,7 +51,13 @@ export const NetworkStatusBox = ({
           status={clientStatus}
           className="w-[100px] sm:w-[120px]"
         />
-        <NetworkLine status={clientStatus === 'error' || edgeStatus === 'error' ? 'error' : 'success'} />
+        <NetworkLine
+          status={
+            clientStatus === "error" || edgeStatus === "error"
+              ? "error"
+              : "success"
+          }
+        />
         <NetworkNode
           label={cdnTranslation.message}
           status={edgeStatus}
@@ -60,7 +66,13 @@ export const NetworkStatusBox = ({
 
         {originStatus && (
           <>
-            <NetworkLine status={edgeStatus === 'error' || originStatus === 'error' ? 'error' : 'success'} />
+            <NetworkLine
+              status={
+                edgeStatus === "error" || originStatus === "error"
+                  ? "error"
+                  : "success"
+              }
+            />
             <NetworkNode
               label={hostname || originTranslation.message}
               status={originStatus}
