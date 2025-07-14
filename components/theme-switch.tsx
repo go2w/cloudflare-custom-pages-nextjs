@@ -7,7 +7,7 @@ import { VisuallyHidden } from "@react-aria/visually-hidden";
 import { clsx as cx } from "clsx";
 import { motion } from "framer-motion";
 import { useTheme } from "next-themes";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import type { FC } from "react";
 
 /**
@@ -36,7 +36,7 @@ export const ThemeSwitch: FC<ThemeSwitchProps> = ({
    * 检测系统是否支持偏好设置查询
    * 如果不支持则回退到亮色模式
    */
-  const detectSystemSupport = () => {
+  const detectSystemSupport = useCallback(() => {
     try {
       if (typeof window !== "undefined" && window.matchMedia) {
         const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
@@ -47,7 +47,7 @@ export const ThemeSwitch: FC<ThemeSwitchProps> = ({
       console.warn("系统主题检测失败，回退到亮色模式:", error);
       return false;
     }
-  };
+  }, []);
 
   /**
    * 初始化主题设置
@@ -55,14 +55,14 @@ export const ThemeSwitch: FC<ThemeSwitchProps> = ({
   useEffect(() => {
     const systemSupport = detectSystemSupport();
     setHasSystemSupport(systemSupport);
-    
+
     // 如果系统不支持偏好设置或检测失败，回退到亮色模式
     if (!systemSupport && theme === "system") {
       setTheme("light");
     }
-    
+
     setMounted(true);
-  }, [theme, setTheme]);
+  }, [theme, setTheme, detectSystemSupport]);
 
   /**
    * 监听系统主题变化
@@ -71,7 +71,7 @@ export const ThemeSwitch: FC<ThemeSwitchProps> = ({
     if (!hasSystemSupport || typeof window === "undefined") return;
 
     const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
-    
+
     const handleChange = (e: MediaQueryListEvent) => {
       try {
         // 只有在使用系统主题时才自动切换
@@ -181,14 +181,20 @@ export const ThemeSwitch: FC<ThemeSwitchProps> = ({
           transition={{ duration: 0.3 }}
         >
           {currentTheme === "light" ? (
-            <div className="relative" title={theme === "system" ? "系统模式 (亮色)" : "亮色模式"}>
+            <div
+              className="relative"
+              title={theme === "system" ? "系统模式 (亮色)" : "亮色模式"}
+            >
               <Icon name="sun" className="h-6 w-6" />
               <div className="absolute inset-0 flex items-center justify-center bg-default-100 rounded opacity-0 group-hover:opacity-100 transition-opacity">
                 {theme === "system" ? "🔄" : "☀️"}
               </div>
             </div>
           ) : (
-            <div className="relative" title={theme === "system" ? "系统模式 (暗色)" : "暗色模式"}>
+            <div
+              className="relative"
+              title={theme === "system" ? "系统模式 (暗色)" : "暗色模式"}
+            >
               <Icon name="moon" className="h-6 w-6" />
               <div className="absolute inset-0 flex items-center justify-center bg-default-100 rounded opacity-0 group-hover:opacity-100 transition-opacity">
                 {theme === "system" ? "🔄" : "🌙"}

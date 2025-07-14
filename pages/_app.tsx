@@ -10,12 +10,12 @@ import Head from "next/head";
  */
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <Providers 
-      themeProps={{ 
-        attribute: "class", 
-        defaultTheme: "system", 
+    <Providers
+      themeProps={{
+        attribute: "class",
+        defaultTheme: "system",
         enableSystem: true,
-        storageKey: "theme"
+        storageKey: "theme",
       }}
     >
       <Head>
