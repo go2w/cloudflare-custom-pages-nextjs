@@ -10,8 +10,6 @@ export default function Custom404() {
   const config: ErrorPageConfig = {
     type: "1000s",
     code: "404",
-    title: "Page Not Found",
-    message: "The page you are looking for could not be found.",
     box: "RAY_ID",
     icon: "file-question",
     networkStatus: {
